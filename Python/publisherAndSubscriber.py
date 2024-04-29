@@ -25,23 +25,27 @@ client.connect(mqttBroker)
 def tratarSens():
     
     #tratando da distância da água
-    if distance < 100 and (humidity > 70 and temperature < 20):
+    if distance > 100 and (humidity > 70 and temperature > 25):
         client.loop()
-        mensagem = "O nível da água ultrapassou o limite, riscos de alagamento na próxima chuva!"
+        mensagem = "O nível da água ultrapassou o limite e provavelmente choverá forte! Risco de alagamento!"
         client.publish(myTopicMensagem, mensagem)
         #client.publish(myTopicAction, "1")
 
-    elif distance == 100 and (humidity > 70 and temperature < 25):
+    elif distance == 100 and (humidity > 70 and temperature > 25):
         client.loop()
-        mensagem = "O nível da água atingiu o limite, riscos de alagamento. Provavelmente choverá forte!"
+        mensagem = "O nível da água atingiu o limite e provavelmente choverá forte! Risco de alagamento!"
+        client.publish(myTopicMensagem, mensagem)
+        #client.publish(myTopicAction, "1")
+    elif distance < 100 and (humidity > 70 and temperature > 25):
+        client.loop()
+        mensagem = "Nível de água regular e provavelmente choverá forte! Risco de alagamento!"
         client.publish(myTopicMensagem, mensagem)
         #client.publish(myTopicAction, "1")
     else:
         client.loop()
-        mensagem = "Sem riscos de alagamento!"
+        mensagem = "Não há riscos de alagamento."
         client.publish(myTopicMensagem, mensagem)
         #client.publish(myTopicAction, "0")
-
 
 # Esta função analisa o tópico que deverá ser escutado e armazena o conteúdo do tópico (payload) em uma variável
 def callback(client, userdata, message):
