@@ -1,0 +1,50 @@
+html {
+    background: url("../../../public/assets/home.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    margin-top: 16%;
+    top: 50%;
+    left: 0;
+    right: 0;
+}
+
+.logo img {
+    width: 402.5px;
+    height: 227.22px;
+}
+
+.button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn_login{
+    position: absolute;
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    color: #fff; 
+    padding: 10px 20px; 
+    cursor: pointer;
+}
+
+.list-icons {
+    margin-top: 2%;
+    font-size: 40px;
+    color: aliceblue;
+    position: absolute;
+    bottom: 30;
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+
+
+

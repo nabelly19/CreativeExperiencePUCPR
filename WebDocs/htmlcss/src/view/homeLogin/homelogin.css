@@ -1,0 +1,99 @@
+html {
+    background: url("../../../public/assets/backgroundgeral.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+
+.welcome-container {
+    position: absolute;
+    height: 100vh;
+    width: 35%;
+    background: rgb(0, 216, 255);
+    background: linear-gradient(180deg, rgba(0, 216, 255, 0.50) 0%, rgba(16, 107, 135, 0.50) 50%, rgba(0, 63, 105, 0.50) 100%);
+}
+
+.title {
+    position: absolute;
+    width: 100%;
+    top: 25%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    color: aliceblue;
+    font-family: "Julius Sans One";
+    text-align: center;
+}
+
+.content {
+    position: absolute;
+    top: 40%;
+    /* Define a posição vertical do conteúdo abaixo do título */
+    left: 47%;
+    transform: translateX(-50%);
+    /* Move o conteúdo horizontalmente para o centro */
+    font-family: "Montserrat";
+    color: aliceblue;
+    font-size: small;
+    font-size: larger;
+    text-align: center;
+}
+
+.content_form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-top: 16.5% ;
+    top: 0;
+    right: 0;
+    width: 60%;
+}
+
+.logo {
+    position: absolute;
+    margin-bottom: 400px
+}
+
+.logo img {
+    width: 201.25px;
+    height: 113.61px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input::placeholder {
+    color: aliceblue;
+}
+
+.login {
+    font-family: "Julius Sans One";
+    background-color: rgba(227, 227, 227, 0.50);
+    border-style: none;
+    border-radius: 30px;
+    height: 35px;
+    padding: 0px 10px 0px 10px;
+    width: 400px;
+    height: 45px;
+}
+
+.esquecer_senha{
+    display: flex;
+    margin-left: 30%;
+    color: aliceblue;
+}
+
+.btn_login{
+    border-style: none;
+    height: 45px;
+    width: 123.5px;
+    border-radius: 30px;
+    font-weight: bold;
+}
