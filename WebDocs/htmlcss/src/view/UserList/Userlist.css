@@ -9,6 +9,7 @@ html {
 
 .search_area{
     position: absolute;
+    flex-wrap: nowrap;
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -23,3 +24,40 @@ html {
     font-family: "Julius Sans One";
     color: aliceblue;
 }
+
+.card{
+    background: rgb(0, 216, 255);
+    background: linear-gradient(180deg, rgba(0, 216, 255, 1) 0%, rgba(0, 216, 255, 1) 50%, rgba(0, 216, 255, 1) 100%);
+    font-family: "Julius Sans One";
+    font-weight: bold;
+}
+
+.card-body h3{
+    color: aliceblue;
+}
+
+.card-body p {
+    color: aliceblue;
+}
+
+.btn-search{
+    border-style: none;
+    border-radius: 50px;
+    width: 35px;
+    height: 35px;
+    background-color: #260D33;
+}
+
+.btn-search i{
+    color: aliceblue;
+}
+
+.input_search{
+    padding: 4%;
+    border-style: none;
+    border-radius: 30px;
+    font-family: "Julius Sans One";
+    background-color: rgba(227, 227, 227, 0.50);
+    color: aliceblue;
+}
+
