@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Hardware</title>
+    <title>Lista de Usuários</title>
     <link rel="stylesheet" href="Userlist.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -71,11 +71,12 @@
         </div>
     </nav>
 
-    
+
+    <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col">
+            <div class="col-sm-5">
                 <div class="search_area">
-                    <h1>LISTA DE USUÁRIOS</h1>
+                    <h2>LISTA DE USUÁRIOS &nbsp;</h2>
                     <form class="form-inline">
                         <input class="input_search" type="search" placeholder="PESQUISAR USUÁRIOS" aria-label="Search">
                         <button class="btn-search" type="submit"><i class="bi bi-search"></i></button>
@@ -84,24 +85,107 @@
             </div>
         </div>
 
-        
-        <div class="user_list">
-            <div class="col-6">
-                
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Card title</h5>
-                            <h3 class="card-text mb-2">Card subtitle</h3>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                <div class="container user_list">
+                    <div class="row justify-content-center">
+                       
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem; border-radius: 30px;">
+                                <div class="card-body">
+                                    <h4 class="card-title">Nome Fulano</h4>
+                                    <h5 class="card-text mb-2">Breve descrição</h5>
+                                    <div class="card_btn_area mt-4">
+                                        <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
+                                        data-bs-target="#ModalEdit">EDITAR</button>
+                                        <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
+                                            data-bs-target="#JanelaModal">DELETAR</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+           
+
+        <!-- modal validação -->
+        <div id="JanelaModal" class="modal fade">
+            <div class="modal-dialog border-rounded">
+                <div class="modal-content strongbg">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn btn-close " style="background-color:#b9b9b9;"
+                            data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <h3 class="text-center mx-auto">Confirme a remoção deste usuário</h3>
+
+                        <!-- <div class="hide alerta" id="error">
+                        <span>Validação não realizada, revise e tente novamente</span>
+                        <button id="alertabutton">&times;</button>
+                    </div> -->
+
+                        <form action="/" method="post" id="login">
+
+                            <div class="col-6 mt-5 mx-auto">
+                                <label for="senha" class="form-label text-center">
+                                    <h5>Digite "APAGAR":</h5>
+                                </label>
+                                <div class="validation_position">
+                                    <input class="form-control mx-auto" type="text" id="validation" name="validation">
+                                </div>
+                            </div>
+                            <div class="col-6 my-5 mx-auto">
+                                <input type="button" class="btn btn-danger mx-auto btn-lg" onclick="request()"
+                                    value="Apagar usuário" id="apagar">
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+        <!-- modal editar usuário -->
+        <div id="ModalEdit" class="modal fade">
+            <div class="modal-dialog border-rounded">
+                <div class="modal-content strongbg">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn btn-close " style="background-color:#b9b9b9;"
+                            data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <h3 class="text-center mx-auto">Edição de usuário</h3>
+
+                        <!-- <div class="hide alerta" id="error">
+                        <span>Validação não realizada, revise e tente novamente</span>
+                        <button id="alertabutton">&times;</button>
+                    </div> -->
+
+                        <form action="/" method="post" id="login">
+
+                            <div class="col-6 mt-5 mx-auto">
+                                <label for="senha" class="form-label text-center">
+                                    <h5>Digite "APAGAR":</h5>
+                                </label>
+                                <div class="validation_position">
+                                    <input class="form-control mx-auto" type="text" id="validation" name="validation">
+                                </div>
+                            </div>
+                            <div class="col-6 my-5 mx-auto">
+                                <input type="button" class="btn btn-danger mx-auto btn-lg"
+                                    value="Apagar usuário" id="apagar">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="Userlist.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
