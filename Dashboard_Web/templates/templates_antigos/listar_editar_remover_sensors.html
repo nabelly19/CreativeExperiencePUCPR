@@ -1,0 +1,107 @@
+<div>
+    {% if users|length > 0 %}
+        <table id="view_users" style="width:100%">
+            <p>Usuários:</p>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Senha</th>
+                    <th>Deletar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in users.items() %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>{{ value }}</td>
+                        <td><a href="http://localhost:8080/del_user?user={{key}}">Deletar</a></td> <!-- Este endereço envia uma solicitação GET -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form action= "http://localhost:8080/register_user">
+            <p><input type= "submit" value= "Adicionar Usuário"/></p>
+        </form>
+    {% else %}
+        <p>Ainda não há usuários registrados!<p>
+        <form action= "http://localhost:8080/register_user">
+            <p><input type= "submit" value= "Adicionar Usuário"/></p>
+        </form>
+    {% endif %}
+
+</div>
+
+    <!-- Sensores -->
+<div class="vertical-center">
+    <div class="container view">
+        <div class="justify-content-center">
+            {% if devices|length> 0 %}
+                <table id="view_users" class="table table-striped table-bordered" style="width:100%">
+                    <p>Sensores:</p>
+                    <thead>
+                        <tr>
+                            <th>Nome do Sensor</th>
+                            <th>Valor</th>
+                            <th>Deletar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, value in devices.items() %}
+                            <tr>
+                                <td>{{ key }}</td>
+                                <td>{{ value }}</td>
+                                <td><a href="http://localhost:8080/del_sensor?sensor_name={{key}}">Deletar</a></td> <!-- Este endereço envia uma solicitação GET -->
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <form action= "http://localhost:8080/cadastro_devices">
+                    <p><input type= "submit" value= "Adicionar Sensor"/></p>
+                </form>
+            {% else %}
+                <p>Ainda não sensores registrados!<p>
+                <form action= "http://localhost:8080/cadastro_devices">
+                    <p><input type= "submit" value= "Adicionar Sensor"/></p>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+    <!-- Atuadores -->
+<div class="vertical-center">
+<div class="container view">
+    <div class="justify-content-center">
+        {% if devices|length> 0 %}
+            <table id="view_users" class="table table-striped table-bordered" style="width:100%">
+                <p>Atuadores:</p>
+                <thead>
+                    <tr>
+                        <th>Nome do Atuador</th>
+                        <th>Valor</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in devices.items() %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            <td>{{ value }}</td>
+                            <td><a href="http://localhost:8080/del_actuator?actuator_name={{key}}">Deletar</a></td> <!-- Este endereço envia uma solicitação GET -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <form action= "http://localhost:8080/cadastro_devices">
+                <p><input type= "submit" value= "Adicionar Atuador"/></p>
+            </form>
+        {% else %}
+            <p>Ainda não sensores registrados!<p>
+            <form action= "http://localhost:8080/cadastro_devices">
+                <p><input type= "submit" value= "Adicionar Atuador"/></p>
+            </form>
+        {% endif %}
+    </div>
+</div>
+</div>
+    

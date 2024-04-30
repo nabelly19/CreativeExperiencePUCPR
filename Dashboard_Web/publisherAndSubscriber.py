@@ -9,6 +9,7 @@ myTopicDistancia = "/Distancia"
 myTopicMensagem = "/Mensagem/alerta"
 myTopicAction = "/Action/alerta"
 myTopicButton = "/Botao/alerta"
+myTopicWaterLevel = "/mensagem/nivelDaAgua"
 
 # Variáveis que receberão os valores de temp. e umid. do sensor DHT22 (Wokwi)
 temperature = 0
@@ -19,30 +20,41 @@ distance = 0
 # Conexão com o Broker
 mqttBroker ="mqtt-dashboard.com"
 
-client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
+client = mqtt.Client("Publica")
 client.connect(mqttBroker) 
-
 
 def tratarSens():
     
     #tratando da distância da água
-    if distance < 100 and (humidity > 70 and temperature < 20):
+    if distance > 100 and (humidity > 70 and temperature > 25):
         client.loop()
-        mensagem = "O nível da água ultrapassou o limite, riscos de alagamento na próxima chuva!"
+        mensagem = "Nível de água regular e provavelmente choverá forte! Risco de alagamento!"
+        mensagem2 = "Baixo"
         client.publish(myTopicMensagem, mensagem)
-        #client.publish(myTopicAction, "1")
+        client.publish(myTopicWaterLevel, mensagem2)
+        client.publish(myTopicAction, "1")
 
-    elif distance == 100 and (humidity > 70 and temperature < 25):
+    elif distance == 100 and (humidity > 70 and temperature > 25):
         client.loop()
-        mensagem = "O nível da água atingiu o limite, riscos de alagamento. Provavelmente choverá forte!"
+        mensagem = "O nível da água atingiu o limite e provavelmente choverá forte! Risco de alagamento!"
+        mensagem2 = "Médio"
         client.publish(myTopicMensagem, mensagem)
-        #client.publish(myTopicAction, "1")
+        client.publish(myTopicWaterLevel, mensagem2)
+        client.publish(myTopicAction, "1")
+    elif distance < 100 and (humidity > 70 and temperature > 25):
+        client.loop()
+        mensagem = "O nível da água ultrapassou o limite e provavelmente choverá forte! Risco de alagamento!"
+        mensagem2 = "Alto"
+        client.publish(myTopicMensagem, mensagem)
+        client.publish(myTopicWaterLevel, mensagem2)
+        client.publish(myTopicAction, "1")
     else:
         client.loop()
-        mensagem = "Sem riscos de alagamento!"
+        mensagem = "Não há riscos de alagamento."
+        mensagem2 = "Baixo"
         client.publish(myTopicMensagem, mensagem)
-        #client.publish(myTopicAction, "0")
-
+        client.publish(myTopicWaterLevel, mensagem2)
+        client.publish(myTopicAction, "0")
 
 # Esta função analisa o tópico que deverá ser escutado e armazena o conteúdo do tópico (payload) em uma variável
 def callback(client, userdata, message):
@@ -85,4 +97,4 @@ while True:
     print("Temperatura: ", temperature)
     print("Umidade: ", humidity)
 
-    #time.sleep(3)
+    time.sleep(10)

@@ -1,0 +1,27 @@
+/* Gerais */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    background: linear-gradient(180deg, rgba(0,63,105,1) 0%, #178aad 50%, rgba(0,216,255,1) 100%); /* Gradiente linear vertical */
+    background-image: url("/static/img/bg-wallpaper.svg"), linear-gradient(180deg, rgba(0,63,105,1) 0%, #178aad 50%, rgba(0,216,255,1) 100%);
+    background-size: cover; /* Ajusta a imagem para cobrir todo o elemento */
+    background-repeat: no-repeat; /* Evita que a imagem seja repetida */
+    background-position: center center; /* Centraliza a imagem no elemento */
+    background-attachment: fixed; /* Fixa a imagem de fundo enquanto a página rola */
+}
+  
+/* Barra de navegação */
+header, .navbar {
+    background-color: #260D33;
+}
+
+#logo {
+    width: 70px;
+}

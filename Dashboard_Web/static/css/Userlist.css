@@ -1,0 +1,125 @@
+html {
+    background: url("../img/backgroundgeral.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+
+.search_area{
+    position: absolute;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+}
+
+.user_list{
+    margin-top: 15%;
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: baseline;
+}
+
+.search_area h2{
+    font-family: "Julius Sans One";
+    color: aliceblue;
+    margin-right: 20%;
+}
+
+.card{
+    background: rgb(0, 216, 255);
+    background: linear-gradient(180deg, rgba(0, 216, 255, 1) 0%, rgba(0, 216, 255, 1) 50%, rgba(0, 216, 255, 1) 100%);
+    font-family: "Montserrat";
+    font-weight: bold;
+    padding: 0px 10px 0px 0px;
+    margin-bottom: 50px;
+}
+
+.card-body h4{
+    color: aliceblue;
+}
+
+.card-body h5{
+    color: aliceblue;
+}
+
+.card-body p {
+    color: aliceblue;
+}
+
+.btn-search{
+    border-style: none;
+    border-radius: 50px;
+    width: 65px;
+    height: 45px;
+    background-color: #260D33;
+}
+
+.btn-search i{
+    color: aliceblue;
+}
+
+.input_search{
+    padding: 4%;
+    border-style: none;
+    border-radius: 30px;
+    font-family: "Julius Sans One";
+    background-color: rgba(227, 227, 227, 0.50);
+    color: aliceblue;
+}
+
+.container{
+    position: absolute;
+}
+
+.form-inline{
+    margin-left: 35%;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: baseline;
+}
+
+.card_btn_area{
+
+}
+
+.card-btn{
+    padding: 5px 20px 5px 20px;
+    border-style: none;
+    border-radius: 30px;
+    color: aliceblue;
+}
+
+.editar{
+    background-color: #003F69;
+}
+
+.editar:hover{
+    background-color: #002a46;
+}
+
+.apagar{
+    margin-left: 20px;
+    background-color: #A80D0D;
+}
+
+.apagar:hover{
+    margin-left: 20px;
+    background-color: #6f0a0a;
+}
+
+.modal-body{
+    background-color: #260D33;
+    color: aliceblue;
+    font-family: "Montserrat";
+}
+
+.modal-header{
+    background-color: #260D33;
+    color: aliceblue;
+    font-family: "Montserrat";
+}
