@@ -7,6 +7,11 @@ users = {
     "user2":"12345"
 }
 
+@login.route('/login_user')
+def login_user():
+    return render_template('homelogin.html')
+
+
 @login.route('/validated_user', methods=['POST'])
 def validated_user():   
     if request.method == 'POST': # Verifica se o método de envio das informações ao servidor é POST
