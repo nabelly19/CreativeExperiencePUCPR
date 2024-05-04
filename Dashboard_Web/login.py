@@ -28,7 +28,7 @@ def validated_user():
 
 @login.route('/register_user')
 def register_user():
-    return render_template("cadastro_users.html") # Encaminha o usuário para um formulário
+    return render_template("addUser.html") # Encaminha o usuário para um formulário
 
 
 @login.route('/add_user', methods=['GET','POST'])

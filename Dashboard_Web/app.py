@@ -61,7 +61,7 @@ def home():
 
 @app.route('/devices')
 def cadastro_devices():
-    return render_template("add_hardware.html")
+    return render_template("addHardware.html")
 
 @app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
@@ -80,10 +80,10 @@ def cadastro():
         actuators_list[device_name] = device_value
     return render_template('listar_editar_remover.html')
 
-@app.route('/dashboard')
+@app.route('/dashboard') 
 def dashboard():
     global temperature, humidity, mensagem_de_alerta, mensagem_nivel_da_agua, alerta_value
-    values = {"Temperatura:":temperature, "Umidade:":humidity, "Mensagem de alerta:":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme:":alerta_value}
+    values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
     return render_template("dashboard.html", values=values)
 
 # publicar em um tópico a partir da interface web. Configurar esta parte lá no HTML da dashboard, para que quando o botão seja precionado (ligar/desligar) a mesnsagem seja encaminhada para esta rota, afim de enviar ao tópico de "/Botao/alerta", parando ou ligando o sistema IOT.
@@ -120,13 +120,17 @@ def handle_mqtt_message(client, userdata, message):
         temperature = message.payload.decode()
     if(message.topic==myTopicUmidade):
         global humidity
-        huminity = message.payload.decode()
+        humidity = message.payload.decode()
     if(message.topic==myTopicMensagem):
         global mensagem_de_alerta
         mensagem_de_alerta = message.payload.decode()
     if(message.topic==myTopicAction):
         global alerta_value
         alerta_value = message.payload.decode()
+        if alerta_value == '0':
+            alerta_value = "Desligado"
+        elif alerta_value == "1":
+            alerta_value = "Ligado"
     if(message.topic==myTopicButton):
         global botao_value
         botao_value = message.payload.decode()

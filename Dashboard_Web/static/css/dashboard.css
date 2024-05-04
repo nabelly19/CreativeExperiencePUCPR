@@ -1,69 +1,241 @@
-*{
-    margin: 0;
-    padding: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body{
-    background-color: cadetblue;
-}
-
-a{
-    color: whitesmoke;
-    text-decoration: none;
-}
-
-section{
-    min-height: 100vh;
-    padding-top: 8rem;
-}
-
-.container-navbar{
+.home{
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: #2c0d49;
-    width: 100vw;
-    color: whitesmoke;
-} #menu{
-    list-style: none;
+    height: 530px;
+    width: 1300px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.home_left{
     display: flex;
+    height: 100%;
+    width: 70%;
+    margin-right: 10px;
+    justify-content: space-between;
+    flex-direction: column;
+
+}
+.top{
+    display: flex;
+    height: 30%;
 }
 
-.container-navbar img{
-  width: 100px;
-}
-
-#desc{
-    padding: 20px;
-}
-
-.temperatura{
-    width: 250px;
-    height: 100px;
-    background-color: #2c0d49;
-    color: whitesmoke;
-    border-radius: 10px;
+.temperature{
     display: flex;
     flex-direction: column;
+    width: 405px;
+    height: 135px;
+    background-color: #260D33;
+    border-radius: 20px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    position: relative;
+}
+
+.humidity{
+    display: flex;
+    flex-direction: column;
+    width: 405px;
+    height: 135px;
+    background-color: #260D33;
+    border-radius: 20px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    margin-left: 70px;
+}
+
+.icon-custom {
+    border: 1px solid #CCB800;
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    position: absolute;
+    border-radius: 100px;
+    top: 35px;
+    right: 20px;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.temperatura h3{
-    margin: 0px 20px;
+.icon-custom i{
+    color: #CCB800;
+    font-size: 2em;
 }
 
-.temperatura label{
-    font-size: min(40px, 6vw);
-    width: 100%;
-    margin: 5px 20px 0px 20px;
+.bottom{
+    display: flex;
+    height: 70%;
+    flex-direction: column;
 }
 
-.temperatura img{
-    width: 20px;
-    border: 1px solid rgb(248, 223, 0);
-    border-radius: 50%;
-    padding: 10px 15px;
-    position: relative;
-    background-color: aliceblue;
+.alert_message{
+    display: flex;
+    flex-direction: column;
+    width: 890px;
+    height: 135px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+
+.null_rectangle{
+    display: flex;
+    flex-direction: column;
+    width: 890px;
+    height: 235px;
+    background-color: #260D33;
+    border-radius: 20px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+.home_right{
+    display: flex;
+    height: 100%;
+    width: 30%;
+    margin-left: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.water_level{
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    height: 135px;
+    margin: 10px;
+    background-color: #260D33;
+    border-radius: 20px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.alert_status{
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    height: 200px;
+    margin: 10px;
+    align-items: flex-end;
+}
+.data_status{
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    height: 135px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.action_button{
+    padding-left: 100px;
+}
+
+.button{
+    display: flex;
+    width: 140px;
+    height: 50px;
+    border-radius: 100px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    cursor: pointer;
+    padding-top: 30px;
+    background-color: white;
+}
+
+/* Estilo do botão quando clicado (cor verde) */
+.control.clicked {
+    background-color: green;
+}
+
+/* Estilo do botão quando clicado (cor vermelha) */
+.control.clicked-red {
+    background-color: red;
+}
+
+.date_time{
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    height: 135px;
+    margin: 10px;
+    background-color: #260D33;
+    border-radius: 20px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 23px;
+}
+
+
+.title_sensor{
+    color:#F5F5F5;
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin: 0px;
+    margin-top: 10px;
+
+}
+
+.title_sensor_white{
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.information{
+    color: #F5F5F5;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+    padding-left: 10px;
+}
+
+.information_hour{
+    padding-top: 10px;
+    padding-left: 20px;
+    color: #F5F5F5;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+}
+
+.information_white{
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+    padding-left: 10px;
+}
+
+ul{
+    padding-left: 10px;
+}
+
+#data{
+    color: #F5F5F5;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+    padding-left: 23px;
+
+}
+
+#hora{
+    padding-left: 20px;
+    color: #F5F5F5;
+    font-size: 60px;
+    height: 70px;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
 }

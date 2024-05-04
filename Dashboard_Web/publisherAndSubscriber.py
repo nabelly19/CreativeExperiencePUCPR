@@ -94,7 +94,7 @@ while True:
     tratarSens()
 
     # Indica o assunto de cada tópico
-    print("Temperatura: ", temperature)
-    print("Umidade: ", humidity)
+    #print("Temperatura: ", temperature)
+    #print("Umidade: ", humidity)
 
     time.sleep(10)

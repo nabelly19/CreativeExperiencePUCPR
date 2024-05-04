@@ -1,4 +1,9 @@
 {% extends"base.html" %}
+{% block styles %}
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <script defer src="../static/js/hora.js" type="text/javascript" defer></script>
+{% endblock %}
+
 {% block content%}
     <div class="home">
         <div class="home_left">
@@ -6,17 +11,16 @@
                 <div class="temperature">
                     <p class="title_sensor">TEMPERATURA</p>
                     <ul>
-                        {% for key, value in temperature.items() %}
-                        <p class="information">{{ value }}</p>
-                        {% endfor %}
+                        <p class="information">{{ values["Temperatura"] }}ºC</p>
                     </ul>
+                    <div class="icon-custom">
+                        <i class="fa-solid fa-temperature-half"></i>
+                    </div>
                 </div>
                 <div class="humidity">
                     <p class="title_sensor">UMIDADE</p>
                     <ul>
-                        {% for key, value in humidity.items() %}
-                        <p class="information">{{ value }}</p>
-                        {% endfor %}    
+                        <p class="information">{{ values["Umidade"] }}%</p>
                     </ul>   
                 </div>
             </div>
@@ -24,9 +28,7 @@
                 <div class="alert_message">
                     <p class="title_sensor_white">MENSAGEM DO ALERTA</p>
                     <ul>
-                        {% for key, value in mensagem_de_alerta.items() %}
-                        <p class="information_white">{{ value }}</p>
-                        {% endfor %}    
+                        <p class="information_white">{{ values["Mensagem de alerta"] }}</p>  
                     </ul>   
                 </div>
                 <div class="null_rectangle">
@@ -39,18 +41,14 @@
             <div class="water_level">
                     <p class="title_sensor">NÍVEL DE ÁGUA</p>
                         <ul>
-                            {% for key, value in mensagem_nivel_da_agua.items() %}
-                            <p class="information" style="font-size: 40px;">{{ value }}</p>
-                            {% endfor %}
+                            <p class="information" style="font-size: 40px;">{{ values["Nível da água"] }}</p>
                         </ul>
             </div>
             <div class="alert_status">
                 <div class="data_status">
                     <p class="information_white", style="font-size: 15px; font-style: none; padding-top: 15px; padding-left: 20px;">STATUS DO ALERTA</p>
                     <ul>
-                        {% for key, value in alerta_value.items() %}
-                        <p class="information_white", style="font-size: 30px;">{{ value }}</p>
-                        {% endfor %}
+                        <p class="information_white", style="font-size: 30px;">{{ values["Status do alarme"] }}</p>
                     </ul>
                     <div class="action_button">
                         <input onclick='action(this,this.id);' id="control" class="button" type="button">

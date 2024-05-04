@@ -1,14 +1,4 @@
-/* Gerais */
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
     background: linear-gradient(180deg, rgba(0,63,105,1) 0%, #178aad 50%, rgba(0,216,255,1) 100%); /* Gradiente linear vertical */
     background-image: url("/static/img/bg-wallpaper.svg"), linear-gradient(180deg, rgba(0,63,105,1) 0%, #178aad 50%, rgba(0,216,255,1) 100%);
     background-size: cover; /* Ajusta a imagem para cobrir todo o elemento */

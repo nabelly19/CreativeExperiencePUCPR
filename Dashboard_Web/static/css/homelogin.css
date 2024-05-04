@@ -1,4 +1,4 @@
-html {
+body {
     background: url("../img/backgroundgeral.svg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -23,6 +23,8 @@ html {
     transform: translate(-50%, -50%);
     color: aliceblue;
     text-align: center;
+    font-size: 2rem;
+    font-weight: 200;
 }
 
 .content {
@@ -34,6 +36,7 @@ html {
     /* Move o conteúdo horizontalmente para o centro */
     color: aliceblue;
     text-align: center;
+    font-size: 1.2rem;
 }
 
 .content_form {
@@ -69,12 +72,17 @@ input::placeholder {
     color: aliceblue;
 }
 
+input:focus, input:hover {
+    outline: #F5F5F5;
+    border: 0.5px solid #F5F5F5;
+}
+
 .login {
     background-color: rgba(227, 227, 227, 0.50);
     border-style: none;
     border-radius: 30px;
     height: 35px;
-    padding: 0px 10px 0px 10px;
+    padding: 0px 10px;
     width: 400px;
     height: 45px;
 }
@@ -90,6 +98,6 @@ input::placeholder {
     height: 45px;
     width: 123.5px;
     border-radius: 30px;
-    font-weight: bold;
+    font-weight: 700;
     margin-top: 48px;
 }
