@@ -59,9 +59,9 @@ def logoff():
 def home():
     return render_template("home.html")
 
-@app.route('/cadastro_devices')
+@app.route('/devices')
 def cadastro_devices():
-    return render_template('cadastro_sensors_actuators.html')
+    return render_template("add_hardware.html")
 
 @app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
