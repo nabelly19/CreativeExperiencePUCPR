@@ -1,5 +1,5 @@
 html {
-    background: url("../img/backgroundgeral.png") no-repeat center center fixed;
+    background: url("../img/backgroundgeral.svg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -22,7 +22,6 @@ html {
     left: 47%;
     transform: translate(-50%, -50%);
     color: aliceblue;
-    font-family: "Julius Sans One";
     text-align: center;
 }
 
@@ -33,10 +32,7 @@ html {
     left: 47%;
     transform: translateX(-50%);
     /* Move o conteúdo horizontalmente para o centro */
-    font-family: "Montserrat";
     color: aliceblue;
-    font-size: small;
-    font-size: larger;
     text-align: center;
 }
 
@@ -74,7 +70,6 @@ input::placeholder {
 }
 
 .login {
-    font-family: "Julius Sans One";
     background-color: rgba(227, 227, 227, 0.50);
     border-style: none;
     border-radius: 30px;
@@ -96,4 +91,5 @@ input::placeholder {
     width: 123.5px;
     border-radius: 30px;
     font-weight: bold;
+    margin-top: 48px;
 }

@@ -1,5 +1,5 @@
 html {
-    background: linear-gradient(180deg, rgba(0,63,105,1) 0%, rgba(63,34,103,1) 100%); /* Gradiente linear vertical */
+    background: linear-gradient(180deg, rgba(0,63,105,1) 0%, #3f2267 100%); /* Gradiente linear vertical */
     background-image: url("../img/bg-wallpaper.svg"), linear-gradient(180deg, rgba(0,63,105,1) 0%, rgba(63,34,103,1) 100%);
     background-size: cover; /* Ajusta a imagem para cobrir todo o elemento */
     background-repeat: no-repeat; /* Evita que a imagem seja repetida */
@@ -26,14 +26,18 @@ html {
     justify-content: flex-end;
 }
 
-.btn_login{
+.btn_login {
     position: absolute;
     background: none;
-    border: 1px solid #fff;
+    border: 1px solid #F5F5F5;
     border-radius: 30px;
-    color: #fff; 
+    color: #F5F5F5; 
     padding: 10px 20px; 
     cursor: pointer;
+    transition-duration: 0.25s;
+} .btn_login:hover {
+    background-color: #F5F5F5;
+    color: #003F69;
 }
 
 .list-icons {
