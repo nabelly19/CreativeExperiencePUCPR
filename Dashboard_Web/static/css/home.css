@@ -50,6 +50,7 @@ html {
     transform: translateX(-50%); 
 }
 
-
-
-
+.list-icons i {
+    margin: 2px;
+    cursor: pointer;
+}

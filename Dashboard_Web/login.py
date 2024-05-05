@@ -9,7 +9,7 @@ users = {
 
 @login.route('/login_user')
 def login_user():
-    return render_template('homelogin.html')
+    return render_template('homeLogin.html')
 
 
 @login.route('/validated_user', methods=['POST'])
@@ -17,13 +17,13 @@ def validated_user():
     if request.method == 'POST': # Verifica se o método de envio das informações ao servidor é POST
         user = request.form['user']  # Define uma variável "user", que armazena o que o usuário digitou no input com name = "user"
         password = request.form['password'] # Define uma variável "password", que armazena o que o usuário digitou no input com name = "password"
-        print(user, password) # Imprime aqui no terminal o "user" e a "passaword" do usuário
+        # print(user, password) # Imprime aqui no terminal o "user" e a "passaword" do usuário
         if user in users and users[user] == password: # Esta condição vefica se o "user" inserido pelo usuário é uma das chaves do dicionário e se no dicionário posição "user" ("user" que o usuário digitou) a senha é igual aquela digitada pelo usuário
-            return render_template('dashboard.html') # Caso seja, retorna a home do site
+            return redirect('/dashboard')
         else:
             return '<h1>invalid credentials!</h1>' # Caso não seja, retorna uma página com texto escrito: "invalid credencials"
     else:
-        return render_template('homelogin.html') # Caso o método do usuário não seja POST (envio ao servidor), apenas atualiza a página de login, não realizando as verificações
+        return render_template('homeLogin.html') # Caso o método do usuário não seja POST (envio ao servidor), apenas atualiza a página de login, não realizando as verificações
 
 
 @login.route('/register_user')

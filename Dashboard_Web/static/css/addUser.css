@@ -1,5 +1,5 @@
 html {
-    background: url("../img/backgroundgeral.png") no-repeat center center fixed;
+    background: url("../img/backgroundgeral.svg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -26,7 +26,6 @@ html {
     left: 45.2%;
     transform: translate(-50%, -50%);
     color: aliceblue;
-    font-family: "Julius Sans One";
     text-align: left;
 }
 
@@ -37,7 +36,6 @@ html {
     left: 47%;
     transform: translateX(-50%);
     /* Move o conteúdo horizontalmente para o centro */
-    font-family: "Montserrat";
     color: aliceblue;
     font-size: small;
     font-size: larger;
@@ -69,35 +67,25 @@ input::placeholder {
 }
 
 .login {
-    font-family: "Julius Sans One";
     background-color: rgba(227, 227, 227, 0.50);
     border-style: none;
     border-radius: 30px;
-    height: 35px;
-    padding: 0px 10px 0px 10px;
+    height: 50px;
+    padding: 0px 20px;
     width: 400px;
-    height: 45px;
 }
 
-.checkbox   {
+.checkbox {
     display: flex;
     flex-direction: row;
     margin-right: 10%;
     color: aliceblue;
 }
 
-.form-check{
+.form-check {
     color: rgba(227, 227, 227, 0.50)  ;
 }
 
-.two{
-    margin-left: 40%;
-}
-
-.btn_cad{
-    border-style: none;
-    height: 45px;
-    width: 123.5px;
-    border-radius: 30px;
-    font-weight: bold;
+.two {
+    margin-left: 25%;
 }

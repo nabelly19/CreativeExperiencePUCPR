@@ -1,114 +1,42 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends"base.html" %}
+{% block styles %}
+<link rel="stylesheet" href="../static/css/addUser.css">
+{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Usuário</title>
-    <link rel="stylesheet" href="../static/css/addUser.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="icon" type="image/x-icon" href="../static/img/logo.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <style>
-        .navbar {
-            background-color: #260D33;
-            font-family: "Julius Sans One";
-        }
-
-        .navbar-nav .nav-link {
-            color: #b9b9b9;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #6e6e6e;
-        }
-    </style>
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                    <a class="navbar-brand logo" href="#">
-                        <img src="../static/img/logo.svg" width="70" class="img-fluid">
-                    </a>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#" style="color: aliceblue;">PÁGINA
-                            INICIAL</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" style="color: aliceblue;">INDICADORES</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false" style="color: aliceblue;">
-                            CONFIGURAÇÕES
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">CADASTRAR USUÁRIOS</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">LISTAR USUÁRIOS</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="welcome-container">
-        <div class="title">
-            <h1>Cadastrar Usuário</h1>
-        </div>
-
-        <div class="content">
-            <p>Uma ferramenta poderosa nas mãos da comunidade para enfrentar as inundações.</p>
-        </div>
+{% block content%}
+<div class="welcome-container">
+    <div class="title">
+        <h1>Cadastrar usuário</h1>
     </div>
 
-    <div class="content_form">
-        <form class="form mt-1" method="POST" >
-            <input class="login mb-4" placeholder="Nome">
-
-            <input class="login mb-4" placeholder="Senha">
-
-            <input class="login mb-2" placeholder="Confirme a senha">
-        </form>
-        <div class="checkbox mt-5 mb-5">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    ADMINISTRADOR
-                </label>
-            </div>
-
-            <div class="form-check two">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    COMUNIDADE
-                </label>
-            </div>
-        </div>
-        <button type="button" class="btn_cad">CADASTRAR</button>
+    <div class="content">
+        <p>Uma ferramenta poderosa nas mãos da comunidade para enfrentar as inundações.</p>
     </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-</body>
+<div class="content_form">
+    <form class="form mt-1" method="POST" >
+        <input class="login mb-4" placeholder="Nome">
 
-</html>
+        <input class="login mb-4" placeholder="Senha">
+
+        <input class="login mb-2" placeholder="Confirme a senha">
+    </form>
+    <div class="checkbox mt-5 mb-5">
+        <div class="form-check">
+            <input class="form-check-input" name="user_type" type="radio" value="adm" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                ADMINISTRADOR
+            </label>
+        </div>
+
+        <div class="form-check two">
+            <input class="form-check-input" name="user_type" type="radio" value="user" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                COMUNIDADE
+            </label>
+        </div>
+    </div>
+    <button type="button" class="btn_geral">Cadastrar</button>
+</div>
+{% endblock %}

@@ -99,3 +99,25 @@ body {
 input {
     outline: none;
 }
+
+input::placeholder {
+  color: aliceblue;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+input:focus, input:hover {
+  outline: #F5F5F5;
+  border: 1px solid #F5F5F5;
+}
+
+.btn_geral{
+  border-style: none;
+  height: 50px;
+  width: 123.5px;
+  border-radius: 30px;
+  font-weight: 700;
+  color: #260D33;
+}

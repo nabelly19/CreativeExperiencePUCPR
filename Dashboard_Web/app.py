@@ -1,9 +1,8 @@
-
 # app.py
 # pip install flask-mqtt
 # pip install flask-socketio
 
-from flask import Flask, render_template, request,redirect, url_for,jsonify
+from flask import Flask, render_template, request, redirect, url_for,jsonify
 from login import login
 from sensors import sensors, sensors_list
 from actuators import actuators, actuators_list
@@ -19,7 +18,6 @@ mensagem_de_alerta = ""
 alerta_value = 0
 botao_value = 0
 mensagem_nivel_da_agua = ""
-
 
 app= Flask(__name__)
 ## __name__ is the application name

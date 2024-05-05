@@ -70,21 +70,26 @@ body {
 
 input::placeholder {
     color: aliceblue;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
 }
 
 input:focus, input:hover {
     outline: #F5F5F5;
-    border: 0.5px solid #F5F5F5;
+    border: 1px solid #F5F5F5;
 }
 
 .login {
     background-color: rgba(227, 227, 227, 0.50);
     border-style: none;
     border-radius: 30px;
-    height: 35px;
-    padding: 0px 10px;
+    padding: 0px 20px;
     width: 400px;
-    height: 45px;
+    height: 50px;
+    color: #F5F5F5;
+    font-size: 1rem;
 }
 
 .esquecer_senha{
@@ -94,10 +99,20 @@ input:focus, input:hover {
 }
 
 .btn_login{
-    border-style: none;
-    height: 45px;
-    width: 123.5px;
-    border-radius: 30px;
-    font-weight: 700;
     margin-top: 48px;
+}
+
+.list-icons {
+    margin-top: 15%;
+    font-size: 30px;
+    color: aliceblue;
+    position: absolute;
+    bottom: 30;
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.list-icons i {
+    margin: 2px;
+    cursor: pointer;
 }

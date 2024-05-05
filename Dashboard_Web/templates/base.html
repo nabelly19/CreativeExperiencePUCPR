@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="../static/css/base.css">
     <link rel="stylesheet" href="/static/css/config_geral.css">
     <link rel="stylesheet" href="/static/css/fontawesome-free-web/css/all.css">
+    <link rel="icon" type="image/x-icon" href="../static/img/logo.ico">
+
 
     <!-- Inserir os estilos específicos aqui -->
     {% block styles %} {% endblock %}
@@ -26,7 +28,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="../static/img/logo.svg" alt="Logo" id="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,10 +37,10 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Página inicial</a>
+                            <a class="nav-link active" aria-current="page" href="/">Página inicial</a>
                         </li>
                         <li class="nav-item">                            
-                            <a class="nav-link" href="#">Painel de eventos</a>
+                            <a class="nav-link" href="/dashboard">Painel de eventos</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,7 +48,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Cadastrar sensor e atuador</a></li>
-                                <li><a class="dropdown-item" href="#">Cadastrar usuário</a></li>
+                                <li><a class="dropdown-item" href="/register_user">Cadastrar usuário</a></li>
                                 <li><a class="dropdown-item" href="#">Editar usuário</a></li>
                             </ul>
                         </li>
