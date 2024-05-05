@@ -7,6 +7,10 @@ html {
     position: relative;
 }
 
+#config-nav {
+    color: #F5F5F5;
+}
+
 .welcome-container {
     display: flex;
     flex-wrap: wrap;
@@ -73,12 +77,13 @@ input::placeholder {
     height: 50px;
     padding: 0px 20px;
     width: 400px;
+    color: #f5f5f5;
 }
 
 .checkbox {
     display: flex;
     flex-direction: row;
-    margin-right: 10%;
+    margin-right: 20%;
     color: aliceblue;
 }
 

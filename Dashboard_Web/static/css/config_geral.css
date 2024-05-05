@@ -129,3 +129,7 @@ input:focus, input:hover {
   border: 1px solid #F5F5F5;
   color: #F5F5F5;
 }
+
+.titulos-p {
+  font-size: 2.1rem;
+}
