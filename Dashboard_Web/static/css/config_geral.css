@@ -116,8 +116,16 @@ input:focus, input:hover {
 .btn_geral{
   border-style: none;
   height: 50px;
-  width: 123.5px;
+  width: 150px;
   border-radius: 30px;
   font-weight: 700;
   color: #260D33;
+  border: 1px solid #F5F5F5;
+  transition-duration: 0.25s;
+}
+
+.btn_geral:hover {
+  background: transparent;
+  border: 1px solid #F5F5F5;
+  color: #F5F5F5;
 }
