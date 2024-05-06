@@ -75,8 +75,10 @@ def add_device():
         device_name = request.args.get('device_name', None)
         device_type = request.args.get['device_type', None]
     if device_type == 'sensor':
+        device_name = device_name.upper()
         sensors_list.append(device_name)
     elif device_type == 'actuator':
+        device_name = device_name.upper()
         actuators_list.append(device_name)
     return redirect("/devices_list")
 
@@ -90,10 +92,14 @@ def del_device():
     global sensors_list, actuators_list
     if request.method == 'POST':
         device_name = request.form['validation']
+        device_name = device_name.upper()
     else:
         device_name = request.args.get('validation', None)
-    sensors_list.pop(device_name)
-    return render_template("devicesList.html", sensors=sensors_list, actuators=actuators_list)
+    if device_name in sensors_list:
+        sensors_list.remove(device_name)
+    elif device_name in actuators_list:
+        actuators_list.remove(device_name)
+    return redirect("/devices_list")
 
 @app.route('/dashboard') 
 def dashboard():

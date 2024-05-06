@@ -2,17 +2,14 @@
     color: #F5F5F5;
 }
 
-.home{
+.home {
     display: flex;
     height: 530px;
     width: 1300px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin: 50px 100px;
 }
 
-.home_left{
+.home_left {
     display: flex;
     height: 100%;
     width: 70%;
@@ -21,12 +18,13 @@
     flex-direction: column;
 
 }
-.top{
+
+.top {
     display: flex;
     height: 30%;
 }
 
-.temperature{
+.temperature {
     display: flex;
     flex-direction: column;
     width: 405px;
@@ -38,7 +36,7 @@
     position: relative;
 }
 
-.humidity{
+.humidity {
     display: flex;
     flex-direction: column;
     width: 405px;
@@ -90,13 +88,13 @@
     top: 20px;
 }
 
-.bottom{
+.bottom {
     display: flex;
     height: 70%;
     flex-direction: column;
 }
 
-.alert_message{
+.alert_message {
     display: flex;
     flex-direction: column;
     width: 890px;
@@ -107,17 +105,18 @@
     margin: 10px;
 }
 
-.null_rectangle{
+.null_rectangle {
     display: flex;
     flex-direction: column;
     width: 890px;
-    height: 135px;
+    height: 200px;
     background-color: #260D33;
     border-radius: 20px;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
     margin: 10px;
 }
-.home_right{
+
+.home_right {
     display: flex;
     height: 100%;
     width: 30%;
@@ -138,16 +137,18 @@
     position: relative;
 }
 
-.alert_status{
+.alert_status {
     display: flex;
     flex-direction: column;
     width: 280px;
     height: 135px;
-    margin: 10px;
+    margin-left: 10px;
+    margin-bottom: 35px;
     align-items: flex-end;
     position: relative;
 }
-.data_status{
+
+.data_status {
     display: flex;
     flex-direction: column;
     width: 280px;
@@ -157,21 +158,39 @@
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.action_button{
-    padding-left: 100px;
+.action_button {
+    padding-left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 10px;
 }
 
-.button{
-    display: flex;
+.action_button label {
+    color: #F5F5F5;
+    position: absolute;
+    margin-right: 24px;
+    padding: 13px 32px;
+    border-radius: 30px;
+}
+
+.action_button label:hover {
+    color: #260D33;
+}
+
+.button {
     width: 140px;
     height: 50px;
     border-radius: 100px;
+    border-style: none;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
     font-family: 'Montserrat', sans-serif;
     justify-content: center;
     cursor: pointer;
     padding-top: 30px;
-    background-color: white;
+    background-color: #260D33;
+    position: relative;
+    margin-right: 25px;
 }
 
 /* Estilo do botão quando clicado (cor verde) */
@@ -184,11 +203,11 @@
     background-color: red;
 }
 
-.date_time{
+.date_time {
     display: flex;
     flex-direction: column;
     width: 270px;
-    height: 135px;
+    height: 150px;
     margin: 10px;
     background-color: #260D33;
     border-radius: 20px;
@@ -196,8 +215,7 @@
     margin-bottom: 23px;
 }
 
-
-.title_sensor{
+.title_sensor {
     color:#F5F5F5;
     font-family: 'Montserrat', sans-serif;
     padding-left: 20px;
@@ -207,7 +225,7 @@
 
 }
 
-.title_sensor_white{
+.title_sensor_white {
     color: black;
     font-family: 'Montserrat', sans-serif;
     padding-left: 20px;
@@ -216,53 +234,53 @@
     margin-top: 10px;
 }
 
-.information{
+.information {
     color: #F5F5F5;
     font-size: 50px;
     font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
     margin: 0px;
     padding-left: 10px;
 }
 
-.information_hour{
+.information_hour {
     padding-top: 10px;
     padding-left: 20px;
     color: #F5F5F5;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
     margin: 0px;
 }
 
-.information_white{
+.information_white {
     color: black;
     font-size: 25px;
     font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
     margin: 0px;
     padding-left: 10px;
 }
 
-ul{
+ul {
     padding-left: 10px;
 }
 
-#data{
+#data {
     color: #F5F5F5;
     font-size: 10px;
-    font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     margin: 0px;
     padding-left: 23px;
 
 }
 
-#hora{
+#hora {
     padding-left: 20px;
     color: #F5F5F5;
     font-size: 60px;
     height: 70px;
-    font-family: 'Montserrat', sans-serif;
     margin: 0px;
+    font-weight: 600;
+}
+
+input:hover {
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+    background-color: #F5F5F5;
+    border: 2px solid #260D33;
 }
