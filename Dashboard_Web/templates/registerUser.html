@@ -22,9 +22,9 @@
     <form class="form mt-1" action="http://localhost:8080/add_user" method="POST" >
         <input class="login mb-4" placeholder="Nome" name="user">
 
-        <input type="password" class="login mb-4" placeholder="Senha" name="password">
+        <input type="password" class="login mb-4" placeholder="Senha" name="password" id="senha">
 
-        <input type="password" class="login mb-2" placeholder="Confirme a senha" name="confirm_password">
+        <input type="password" class="login mb-2" placeholder="Confirme a senha" name="confirm_password" id="senhaC">
     
         <div class="checkbox mt-5 mb-5">
             <div class="form-check">
@@ -43,6 +43,6 @@
         </div>
         <input type = "submit" class="btn_geral" value = "Cadastrar" />
     </form>
-    
 </div>
+<script src="../static/js/addUser.js"></script>
 {% endblock %}
