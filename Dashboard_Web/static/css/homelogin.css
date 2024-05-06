@@ -98,6 +98,32 @@ input:focus, input:hover {
     color: aliceblue;
 }
 
+.bi-eye {
+    color: aliceblue;
+    position: absolute;
+    cursor: pointer;
+    right: 10px; /* Ajuste a posição conforme necessário */
+    top: 30%;
+    transform: translateY(-50%);
+}
+
+.bi-eye-slash {
+    color: aliceblue;
+    position: absolute;
+    cursor: pointer;
+    right: 10px; /* Ajuste a posição conforme necessário */
+    top: 30%;
+    transform: translateY(-50%);
+}
+
+.password_position {
+    position: relative;
+}
+
+.login {
+    padding-right: 25px; /* Para deixar espaço para o ícone dentro do campo */
+}
+
 .btn_login{
     margin-top: 48px;
 }
@@ -115,4 +141,163 @@ input:focus, input:hover {
 .list-icons i {
     margin: 2px;
     cursor: pointer;
+}
+
+/* responsividade (media queries) */
+
+@media (max-width: 1090px) {
+    .welcome-container{
+        height: 100vh;
+    }
+
+    .title{
+        top: 26%;
+    }
+
+    .content {
+        top: 35%;
+    }
+
+    .content_form{
+        margin-top: 25%;
+    }
+
+    .content p {
+        font-size: small;
+        text-align: center;
+    }
+
+
+    .list-icons{
+        width: 200px;
+    }
+}
+
+@media (max-width: 820px) {
+    .welcome-container{
+        height: 100vh;
+    }
+
+    .content_form{
+        margin-top: 40%;
+    }
+
+    .content {
+        top: 40%;
+    }
+
+    .list-icons{
+        width: 200px;
+    }
+
+    .content p {
+        font-size: small;
+        text-align: center;
+    }
+}
+
+@media (max-width: 790px) {
+    .welcome-container{
+        height: 100vh;
+    }
+
+    .content_form{
+        margin-top: 30%;
+    }
+
+    .content {
+        top: 42%;
+    }
+
+    .content p {
+        font-size: small;
+        text-align: center;
+    }
+
+    .list-icons{
+        width: 200px;
+    }
+}
+
+
+@media (max-width: 650px) {
+    .welcome-container{
+        height: 100vh;
+    }
+
+    .title{
+        font-size: 1.7rem;
+    }
+
+    .content {
+        top: 46%;
+    }
+
+    .content p {
+        display: none;
+    }
+
+    .list-icons{
+        margin-top: 30%;
+    }
+
+    .content_form{
+        margin-top: 40%;
+    }
+
+    .login {
+        width: 250px;
+    }
+    
+}
+
+@media (max-width: 541px) {
+    .welcome-container{
+        height: 100vh;
+    }
+
+    .title{
+        font-size: 1.7rem;
+    }
+
+    .content {
+        top: 40%;
+    }
+
+    .content p {
+        display: none;
+    }
+
+    .list-icons{
+        margin-top: 30%;
+    }
+
+    .content_form{
+        margin-top: 45%;
+    }
+
+    .login {
+        width: 250px;
+    }
+    
+}
+
+@media (max-width: 500px) {
+    .welcome-container{
+        display: none;
+    }
+
+    .content_form{
+        margin-top: 45%;
+        position: relative;
+        left: 0;
+        right: 0;
+        margin-left: 20%;
+      
+    }
+
+    .login {
+        width: 250px;
+    }
+    
 }
