@@ -2,9 +2,7 @@ from flask import Blueprint, Flask, render_template, request
 
 actuators = Blueprint("actuators", __name__, template_folder = "template")
 
-actuators_list = {
-    'LED':'Ligado'
-}
+actuators_list = ["Led", "Servo Motor"]
 
 #@actuators.route('/register_actuator')
 #def register_actuator():
@@ -22,9 +20,9 @@ actuators_list = {
 #    actuators_list[actuator_name] = actuator_value
 #    return render_template('listar_editar_remover.html', actuators=actuators_list)
 
-@actuators.route('/list_actuators')
-def list_actuators():
-    return render_template('listar_editar_remover.html', actuators=actuators_list)
+# @actuators.route('/list_actuators')
+# def list_actuators():
+#    return render_template('listar_editar_remover.html', actuators=actuators_list)
 
 @actuators.route('/remove_actuator')
 def remove_actuator():

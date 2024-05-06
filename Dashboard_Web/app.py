@@ -4,13 +4,16 @@
 
 from flask import Flask, render_template, request, redirect, url_for,jsonify
 from login import login
-from sensors import sensors, sensors_list
-from actuators import actuators, actuators_list
+from sensors import sensors
+from actuators import actuators
 from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
 import json
 
 #https://wokwi.com/projects/394918938756685825
+
+actuators_list = ["Led", "Servo Motor"]
+sensors_list = ["DHT22", "HC-ST04"]
 
 temperature = 0
 humidity = 0
@@ -57,32 +60,36 @@ def logoff():
 def home():
     return render_template("home.html")
 
-@app.route('/devices')
-def cadastro_devices():
+@app.route('/register_devices')
+def register_devices():
     return render_template("addHardware.html")
 
-@app.route('/cadastro', methods=['POST', 'GET'])
-def cadastro():
+@app.route('/add_device', methods=['POST', 'GET'])
+def add_device():
     global actuators_list, sensors_list
     if request.method == 'POST':
         device_name = request.form['device_name']
-        device_value = request.form['device_value']
         device_type = request.form['device_type']
     else:
         device_name = request.args.get('device_name', None)
-        device_value = request.args.get('device_value', None)
-        device_type = request.form['device_type', None]
+        device_type = request.args.get['device_type', None]
     if device_type == 'sensor':
-        sensors_list[device_name] = device_value
+        sensors_list.append(device_name)
     elif device_type == 'actuator':
-        actuators_list[device_name] = device_value
-    return render_template('listar_editar_remover.html')
+        actuators_list.append(device_name)
+    return redirect("/devices_list")
+
+@app.route('/devices_list')
+def devices_list():
+    global actuators_list, sensors_list
+    return render_template("devicesList.html", actuators=actuators_list, sensors=sensors_list)
 
 @app.route('/dashboard') 
 def dashboard():
     global temperature, humidity, mensagem_de_alerta, mensagem_nivel_da_agua, alerta_value
     values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
     return render_template("dashboard.html", values=values)
+
 
 # publicar em um tópico a partir da interface web. Configurar esta parte lá no HTML da dashboard, para que quando o botão seja precionado (ligar/desligar) a mesnsagem seja encaminhada para esta rota, afim de enviar ao tópico de "/Botao/alerta", parando ou ligando o sistema IOT.
 @app.route('/publish_message', methods=['GET','POST'])

@@ -66,10 +66,6 @@ html {
     align-items: center;
 }
 
-input::placeholder {
-    color: aliceblue;
-}
-
 .login {
     background-color: rgba(227, 227, 227, 0.50);
     border-style: none;

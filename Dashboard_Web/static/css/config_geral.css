@@ -101,7 +101,7 @@ input {
 }
 
 input::placeholder {
-  color: aliceblue;
+  color: #F5F5F5;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;

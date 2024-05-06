@@ -1,5 +1,5 @@
 html {
-    background: url("../img/backgroundgeral.png") no-repeat center center fixed;
+    background: url("../img/backgroundgeral.svg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -7,10 +7,15 @@ html {
     position: relative;
 }
 
+#config-nav {
+    color: #F5F5F5;
+}
+
 .welcome-container {
     display: flex;
+    align-content: center;
+    justify-content: center;
     flex-wrap: wrap;
-    align-items: flex-start;
     position: absolute;
     height: 93.1vh;
     width: 35%;
@@ -19,24 +24,14 @@ html {
 }
 
 .title {
-    position: absolute;
-    width: 50%;
-    top: 25%;
-    left: 45.2%;
-    transform: translate(-50%, -50%);
-    color: aliceblue;
-    font-family: "Julius Sans One";
+    width: 80%;
+    color: #f5f5f5;
     text-align: left;
+    margin-bottom: 50px;
 }
 
 .content {
-    position: absolute;
-    top: 40%;
-    /* Define a posição vertical do conteúdo abaixo do título */
-    left: 47%;
-    transform: translateX(-50%);
-    /* Move o conteúdo horizontalmente para o centro */
-    font-family: "Montserrat";
+    width: 80%;
     color: aliceblue;
     font-size: small;
     font-size: larger;
@@ -50,7 +45,7 @@ html {
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-top: 19.5% ;
+    margin-top: 19.5%;
     top: 0;
     right: 0;
     width: 60%;
@@ -62,40 +57,36 @@ html {
     align-items: center;
 }
 
-input::placeholder {
-    color: aliceblue;
-}
-
-.login {
-    font-family: "Julius Sans One";
+.nome-hardware {
     background-color: rgba(227, 227, 227, 0.50);
     border-style: none;
     border-radius: 30px;
-    height: 35px;
-    padding: 0px 10px 0px 10px;
+    height: 50px;
+    padding: 0px 20px;
     width: 400px;
     height: 45px;
+    color: #f5f5f5;
 }
 
-.checkbox   {
+.checkbox {
     display: flex;
     flex-direction: row;
+    width: 100%;
     margin-right: 20%;
-    color: aliceblue;
+    color: #f5f5f5;
+    position: relative;
 }
 
 .form-check{
     color: rgba(227, 227, 227, 0.50)  ;
 }
 
-.two{
-    margin-left: 100%;
+.one{
+    position: absolute;
+    left: 50px
 }
 
-.btn_cad{
-    border-style: none;
-    height: 45px;
-    width: 123.5px;
-    border-radius: 30px;
-    font-weight: bold;
+.two{
+    position: absolute;
+    right: -35px;
 }
