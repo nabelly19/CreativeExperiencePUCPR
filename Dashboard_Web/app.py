@@ -24,6 +24,7 @@ mensagem_nivel_da_agua = ""
 
 app= Flask(__name__)
 ## __name__ is the application name
+SocketIO = SocketIO(app)
 
 app.register_blueprint(login, url_prefix='/')
 app.register_blueprint(sensors, url_prefix='/')
@@ -83,6 +84,16 @@ def add_device():
 def devices_list():
     global actuators_list, sensors_list
     return render_template("devicesList.html", actuators=actuators_list, sensors=sensors_list)
+
+@app.route('/del_device', methods=['GET', 'POST'])
+def del_device():
+    global sensors_list, actuators_list
+    if request.method == 'POST':
+        device_name = request.form['validation']
+    else:
+        device_name = request.args.get('validation', None)
+    sensors_list.pop(device_name)
+    return render_template("devicesList.html", sensors=sensors_list, actuators=actuators_list)
 
 @app.route('/dashboard') 
 def dashboard():

@@ -17,15 +17,14 @@
                     <ul>
                         <p class="information">{{ values["Temperatura"] }}ºC</p>
                     </ul>
-                    <div class="icon-custom">
-                        <i class="fa-solid fa-temperature-half"></i>
-                    </div>
+                    <i class="fa-solid fa-temperature-half icon-custom"></i>
                 </div>
                 <div class="humidity">
                     <p class="title_sensor">UMIDADE</p>
                     <ul>
                         <p class="information">{{ values["Umidade"] }}%</p>
                     </ul>   
+                    <i class="fa-solid fa-droplet icon-custom"></i>
                 </div>
             </div>
             <div class="bottom">
@@ -33,7 +32,7 @@
                     <p class="title_sensor_white">MENSAGEM DO ALERTA</p>
                     <ul>
                         <p class="information_white">{{ values["Mensagem de alerta"] }}</p>  
-                    </ul>   
+                    </ul>
                 </div>
                 <div class="null_rectangle">
                     <p class="title_sensor">Nulo</p>
@@ -43,10 +42,11 @@
         <!--________________________________________________________________________________________________-->
         <div class="home_right">
             <div class="water_level">
-                    <p class="title_sensor">NÍVEL DE ÁGUA</p>
-                        <ul>
-                            <p class="information" style="font-size: 40px;">{{ values["Nível da água"] }}</p>
-                        </ul>
+                <p class="title_sensor">NÍVEL DE ÁGUA</p>
+                <ul>
+                    <p class="information" style="font-size: 40px;">{{ values["Nível da água"] }}</p>
+                </ul>
+                <i class="fa-solid fa-water icon-custom"></i>
             </div>
             <div class="alert_status">
                 <div class="data_status">
@@ -54,6 +54,7 @@
                     <ul>
                         <p class="information_white", style="font-size: 30px;">{{ values["Status do alarme"] }}</p>
                     </ul>
+                    <i class="fa-solid fa-triangle-exclamation icon-custom"></i>
                     <div class="action_button">
                         <input onclick='action(this,this.id);' id="control" class="button" type="button">
                         <label for="control">ACIONAR</label>
