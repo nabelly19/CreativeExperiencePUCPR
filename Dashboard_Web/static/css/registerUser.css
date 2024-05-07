@@ -46,6 +46,11 @@ html {
     text-align: left;
 }
 
+input[type="radio"]:checked + label {
+    color: white; 
+    font-weight: bold; 
+}
+
 .content_form {
     left: 0;
     display: flex;
