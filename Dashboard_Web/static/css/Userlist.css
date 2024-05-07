@@ -35,6 +35,12 @@ body {
     border: none;
 }
 
+.card_btn_area{
+    display: flex;
+    justify-content: center;
+  
+}
+
 .card-body h4{
     color: aliceblue;
 }
@@ -112,4 +118,19 @@ body {
 .modal-header{
     background-color: #260D33;
     color: aliceblue;
+}
+
+@media (max-width: 610px){
+    .search_area{
+        flex-direction: column;
+
+    }
+
+    #apagar{
+        width: 100%;
+    }
+
+    #editar{
+        width: 100%;
+    }
 }

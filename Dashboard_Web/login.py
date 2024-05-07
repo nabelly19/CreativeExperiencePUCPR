@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for
+from flask import Blueprint, jsonify, request, render_template, redirect, url_for
 
 login = Blueprint("login",__name__, template_folder="templates") #Esta linha cria um novo blueprint chamado ‘login’. O segundo argumento, __name__, é o nome do módulo onde o blueprint é definido (neste caso, é o módulo atual). O argumento template_folder especifica o diretório onde o Flask deve procurar por templates para este blueprint.
 
@@ -88,3 +88,15 @@ def del_user():
     users.pop(user)
     return render_template("listar_editar_remover", users=users)
 
+#Em fase de testes
+# @login.route('/buscar_usuario', methods=['GET'])
+# def search_user():
+#     global users
+#     termo_busca = request.args.get('#input_search')
+    
+#     if termo_busca:
+#         resultados = [usuario for usuario in users if termo_busca.lower() in usuario.lower()]
+#     else:
+#         resultados = users
+    
+#     return jsonify(resultados)

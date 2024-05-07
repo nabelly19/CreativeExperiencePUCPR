@@ -90,3 +90,32 @@ html {
 .two {
     margin-left: 25%;
 }
+
+@media (max-width: 1440px){
+    .content_form{
+       margin-top: 25%;
+    }
+}
+
+@media (max-width: 1024){
+    .content_form{
+       margin-top: 30%;
+    }
+}
+
+@media (max-width: 768px){
+    .welcome-container{
+        display: none;
+    }
+    
+    .content_form{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       right: 0;
+       left: 0;
+       flex-wrap: nowrap;
+       width: 100%;
+       margin-top: 45%;
+    }
+}

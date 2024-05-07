@@ -14,7 +14,7 @@
                 <div class="search_area">
                     <p class="titulos-p">Lista de usuários &nbsp;</p>
                     <form class="form-inline">
-                        <input class="input_search" type="search" placeholder="Pesquisar usuário" aria-label="Search">
+                        <input class="input_search" id="input_search" type="search" placeholder="Pesquisar usuário" aria-label="Search">
                         <button class="btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="col-6 my-5 mx-auto">
                                         <input type="button" class="btn btn-danger mx-auto btn-lg" onclick="request()"
-                                            value="Apagar usuário" id="apagar">
+                                            value="Apagar" id="apagar">
                                     </div>
                                 </form>
         
@@ -111,16 +111,11 @@
                                 <form action="/" method="post" id="login">
         
                                     <div class="col-6 mt-5 mx-auto">
-                                        <label for="senha" class="form-label text-center">
-                                            <h5>Digite "APAGAR":</h5>
-                                        </label>
-                                        <div class="validation_position">
-                                            <input class="form-control mx-auto" type="text" id="validation" name="validation">
-                                        </div>
+                                      
                                     </div>
-                                    <div class="col-6 my-5 mx-auto">
-                                        <input type="button" class="btn btn-danger mx-auto btn-lg"
-                                            value="Apagar usuário" id="apagar">
+                                    <div class="col-3 my-5 mx-auto">
+                                        <input type="button" class="btn btn-primary mx-auto btn-lg"
+                                            value="Editar" id="editar">
                                     </div>
                                 </form>
         
