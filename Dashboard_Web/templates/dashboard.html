@@ -2,6 +2,10 @@
 {% block styles %}
     <link rel="stylesheet" href="../static/css/dashboard.css">
     <script defer src="../static/js/hora.js" type="text/javascript" defer></script>
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+
 {% endblock %}
 
 {% block title %}
@@ -10,8 +14,7 @@
 
 {% block content%}
     <div class="home">
-        <div class="home_left">
-            <div class="top">
+            <div class="orientacao-cards">
                 <div class="temperature">
                     <p class="title_sensor">TEMPERATURA</p>
                     <ul>
@@ -26,47 +29,47 @@
                     </ul>   
                     <i class="fa-solid fa-droplet icon-custom"></i>
                 </div>
+                <div class="water_level">
+                    <p class="title_sensor">NÍVEL DE ÁGUA</p>
+                    <ul>
+                        <p class="information" style="font-size: 40px;">{{ values["Nível da água"] }}</p>
+                    </ul>
+                    <i class="fa-solid fa-water icon-custom"></i>
+                </div>
             </div>
-            <div class="bottom">
+            <div class="orientacao-cards">
                 <div class="alert_message">
                     <p class="title_sensor_white">MENSAGEM DO ALERTA</p>
                     <ul>
                         <p class="information_white">{{ values["Mensagem de alerta"] }}</p>  
                     </ul>
                 </div>
-                <div class="null_rectangle">
-                    <p class="title_sensor">Nulo</p>
-                </div>
-            </div>
-        </div>
-        <!--________________________________________________________________________________________________-->
-        <div class="home_right">
-            <div class="water_level">
-                <p class="title_sensor">NÍVEL DE ÁGUA</p>
-                <ul>
-                    <p class="information" style="font-size: 40px;">{{ values["Nível da água"] }}</p>
-                </ul>
-                <i class="fa-solid fa-water icon-custom"></i>
-            </div>
-            <div class="alert_status">
-                <div class="data_status">
-                    <p class="information_white", style="font-size: 15px; font-style: none; padding-top: 15px; padding-left: 20px;">STATUS DO ALERTA</p>
-                    <ul>
-                        <p class="information_white", style="font-size: 30px;">{{ values["Status do alarme"] }}</p>
-                    </ul>
-                    <i class="fa-solid fa-triangle-exclamation icon-custom"></i>
-                    <div class="action_button">
-                        <input onclick='action(this,this.id);' id="control" class="button" type="button">
-                        <label for="control">ACIONAR</label>
+                <div class="alert_status">
+                    <div class="data_status">
+                        <p class="information_white", style="font-size: 15px; font-style: none; padding-top: 15px; padding-left: 20px;">STATUS DO ALERTA</p>
+                        <ul>
+                            <p class="information_white", style="font-size: 30px;">{{ values["Status do alarme"] }}</p>
+                        </ul>
+                        <i class="fa-solid fa-triangle-exclamation icon-custom"></i>
+                        <div class="action_button">
+                            <input onclick='action(this,this.id);' id="control" class="button" type="button">
+                            <!--<input type="submit" name="botao" value="acionar" action="http//localhost:8080/publish_action" method="post">-->
+                            <label for="control">ACIONAR</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="date_time">
-                <p class="information_hour">HORÁRIO
-                    <div id="hora" ></div>
-                    <div id="data" ></div>
-                </p>
+            <div class="orientacao-cards">
+                <div class="null_rectangle">
+                    <p class="title_sensor">Nulo</p>
+                </div>
+                <div class="date_time">
+                    <p class="information_hour">HORÁRIO
+                        <div id="hora" ></div>
+                        <div id="data" ></div>
+                    </p>
+                </div>
             </div>
-        </div>
+        <!--________________________________________________________________________________________________-->
     </div>
 {% endblock %}

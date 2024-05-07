@@ -1,27 +1,23 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #dashboard-nav {
     color: #F5F5F5;
 }
 
 .home {
-    display: flex;
-    height: 530px;
-    width: 1300px;
-    margin: 50px 100px;
+    width: 100%;
+    margin-top: 50px;
 }
 
-.home_left {
+.orientacao-cards{
     display: flex;
-    height: 100%;
-    width: 70%;
-    margin-right: 10px;
-    justify-content: space-between;
-    flex-direction: column;
-
-}
-
-.top {
-    display: flex;
-    height: 30%;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .temperature {
@@ -32,8 +28,8 @@
     background-color: #260D33;
     border-radius: 20px;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
-    margin: 10px;
     position: relative;
+    margin: 10px 20px;
 }
 
 .humidity {
@@ -44,9 +40,8 @@
     background-color: #260D33;
     border-radius: 20px;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
-    margin: 10px;
-    margin-left: 70px;
     position: relative;
+    margin: 10px 20px;
 }
 
 .icon-custom {
@@ -97,32 +92,23 @@
 .alert_message {
     display: flex;
     flex-direction: column;
-    width: 890px;
+    width: 855px;
     height: 135px;
-    background-color: white;
+    background-color: #F5F5F5;
     border-radius: 20px;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
-    margin: 10px;
+    margin: 20px;
 }
 
 .null_rectangle {
     display: flex;
     flex-direction: column;
-    width: 890px;
+    width: 855px;
     height: 200px;
     background-color: #260D33;
     border-radius: 20px;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
-    margin: 10px;
-}
-
-.home_right {
-    display: flex;
-    height: 100%;
-    width: 30%;
-    margin-left: 10px;
-    flex-direction: column;
-    justify-content: space-between;
+    margin: 20px;
 }
 
 .water_level {
@@ -130,11 +116,11 @@
     flex-direction: column;
     width: 280px;
     height: 135px;
-    margin: 10px;
     background-color: #260D33;
     border-radius: 20px;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
     position: relative;
+    margin: 10px 20px;
 }
 
 .alert_status {
@@ -142,10 +128,9 @@
     flex-direction: column;
     width: 280px;
     height: 135px;
-    margin-left: 10px;
-    margin-bottom: 35px;
     align-items: flex-end;
     position: relative;
+    margin: 20px;
 }
 
 .data_status {
@@ -153,7 +138,7 @@
     flex-direction: column;
     width: 280px;
     height: 135px;
-    background-color: white;
+    background-color: #F5F5F5;
     border-radius: 20px;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
 }
@@ -172,6 +157,7 @@
     margin-right: 24px;
     padding: 13px 32px;
     border-radius: 30px;
+    cursor: pointer;
 }
 
 .action_button label:hover {
@@ -184,9 +170,7 @@
     border-radius: 100px;
     border-style: none;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
-    font-family: 'Montserrat', sans-serif;
     justify-content: center;
-    cursor: pointer;
     padding-top: 30px;
     background-color: #260D33;
     position: relative;
@@ -206,28 +190,24 @@
 .date_time {
     display: flex;
     flex-direction: column;
-    width: 270px;
-    height: 150px;
-    margin: 10px;
+    width: 280px;
+    height: 200px;
     background-color: #260D33;
     border-radius: 20px;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
-    margin-bottom: 23px;
+    margin: 20px;
 }
 
 .title_sensor {
     color:#F5F5F5;
-    font-family: 'Montserrat', sans-serif;
     padding-left: 20px;
     padding-top: 10px;
     margin: 0px;
     margin-top: 10px;
-
 }
 
 .title_sensor_white {
     color: black;
-    font-family: 'Montserrat', sans-serif;
     padding-left: 20px;
     padding-top: 10px;
     margin: 0px;
@@ -243,14 +223,14 @@
 }
 
 .information_hour {
-    padding-top: 10px;
     padding-left: 20px;
     color: #F5F5F5;
-    margin: 0px;
+    margin-top: 30px;
+    margin-bottom: 0px;
 }
 
 .information_white {
-    color: black;
+    color: #260D33;
     font-size: 25px;
     font-weight: bold;
     margin: 0px;
@@ -263,23 +243,20 @@ ul {
 
 #data {
     color: #F5F5F5;
-    font-size: 10px;
-    font-family: 'Montserrat', sans-serif;
-    margin: 0px;
     padding-left: 23px;
-
+    font-size: 1.2rem;
 }
 
 #hora {
     padding-left: 20px;
     color: #F5F5F5;
-    font-size: 60px;
-    height: 70px;
-    margin: 0px;
+    font-size: 3.5rem;
     font-weight: 600;
+    margin-bottom: 0px;
 }
 
 input:hover {
+    transition-duration: 0.5s;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
     background-color: #F5F5F5;
     border: 2px solid #260D33;
