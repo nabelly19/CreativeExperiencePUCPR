@@ -10,6 +10,7 @@ body {
 /* Barra de navegação */
 header, .navbar {
     background-color: #260D33;
+    width: 100%;
 }
 
 #logo {

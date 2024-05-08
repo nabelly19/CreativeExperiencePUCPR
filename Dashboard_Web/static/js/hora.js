@@ -24,8 +24,20 @@ function action(cb, id) {
   }else{
     data = "0";
   }
-  // Aqui você pode adicionar sua lógica de AJAX conforme necessário
+
+  $.ajax({
+    url: "{{url_for('publish_message')}}",
+    contentType: 'application/json;charset=UTF-8',
+    cache: false,
+    method: 'POST',
+    dataType: 'json',
+    data: JSON.stringify({
+        message: data,
+        topic: topic
+    })
+  })
 }
+
 
 // Atualizar a hora a cada segundo
 setInterval(updateDateTime, 1000);

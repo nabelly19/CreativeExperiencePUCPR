@@ -115,6 +115,12 @@ def publish_message():
     publish_result = mqtt_client.publish(request_data['topic'], request_data['message'])
     return jsonify(publish_result)
 
+# @app.route('/publish_action', methods=['POST'])
+# def publish_action(): 
+#   
+#
+#
+
 # Configuração da conexão com o broker (tópicos)
 @mqtt_client.on_connect()
 def handle_connect(client, userdata, flags, rc):
