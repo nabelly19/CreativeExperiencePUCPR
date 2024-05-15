@@ -117,10 +117,59 @@ input[type="radio"]:checked + label {
        display: flex;
        align-items: center;
        justify-content: center;
+       position: inherit;
+       background: url("../img/backgroundgeral.svg") no-repeat center center fixed;
        right: 0;
        left: 0;
        flex-wrap: nowrap;
        width: 100%;
        margin-top: 45%;
     }
+
+    body{
+        background: url("../img/backgroundgeral.svg") no-repeat center center fixed;
+    }
+}
+
+@media (max-width: 440px){
+    .welcome-container{
+        display: none;
+    }
+    
+    .content_form{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       position: inherit;
+       background: url("../img/backgroundgeral.svg") no-repeat center center fixed;
+       right: 0;
+       left: 0;
+       flex-wrap: nowrap;
+       width: 100%;
+       margin-top: 45%;
+    }
+
+    .content_form .login{
+        width: 80%;
+    }
+
+    .checkbox {
+        display: flex;
+        justify-content: center;
+        align-items: left;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-left: 20%;
+        color: aliceblue;
+    }
+
+    .two {
+        margin-left: 0%;
+    }
+
+
+    body{
+        background: url("../img/backgroundgeral.svg") no-repeat center center fixed;
+    }
+
 }
