@@ -12,36 +12,6 @@ function updateDateTime() {
   document.getElementById('hora').textContent = formattedTime;
 }
 
-<<<<<<< Updated upstream
-function action(cb, id) {
-  var topic = "";
-  if (id == "control"){
-    topic="/Action/alerta";
-  }
-
-  var data = "";
-  if (cb.checked){
-    data = "1";
-  }else{
-    data = "0";
-  }
-
-  $.ajax({
-    url: "{{url_for('publish_message')}}",
-    contentType: 'application/json;charset=UTF-8',
-    cache: false,
-    method: 'POST',
-    dataType: 'json',
-    data: JSON.stringify({
-        message: data,
-        topic: topic
-    })
-  })
-}
-
-
-=======
->>>>>>> Stashed changes
 // Atualizar a hora a cada segundo
 setInterval(updateDateTime, 1000);
 

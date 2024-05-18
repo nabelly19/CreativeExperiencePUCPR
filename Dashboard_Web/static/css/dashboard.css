@@ -151,19 +151,6 @@ body {
     margin-top: 10px;
 }
 
-<<<<<<< Updated upstream
-.action_button label {
-    color: #F5F5F5;
-    position: absolute;
-    margin-right: 24px;
-    padding: 13px 32px;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-.action_button label:hover {
-    color: #260D33;
-=======
 .action_button button {
     color: #F5F5F5;
     margin-right: 24px;
@@ -171,7 +158,6 @@ body {
     border-radius: 30px;
     cursor: pointer;
     text-transform: uppercase;
->>>>>>> Stashed changes
 }
 
 .button {
@@ -187,18 +173,6 @@ body {
     margin-right: 25px;
 }
 
-<<<<<<< Updated upstream
-/* Estilo do botão quando clicado (cor verde) */
-.control.clicked {
-    background-color: green;
-}
-
-/* Estilo do botão quando clicado (cor vermelha) */
-.control.clicked-red {
-    background-color: red;
-}
-=======
->>>>>>> Stashed changes
 
 .date_time {
     display: flex;
@@ -268,18 +242,10 @@ ul {
     margin-bottom: 0px;
 }
 
-<<<<<<< Updated upstream
-input:hover {
-    transition-duration: 0.5s;
-    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
-    background-color: #F5F5F5;
-    border: 2px solid #260D33;
-=======
 button:hover {
     transition-duration: 0.25s;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
     background-color: #F5F5F5;
     border: 0.5px solid #260D33;
     color: #260D33;
->>>>>>> Stashed changes
 }
