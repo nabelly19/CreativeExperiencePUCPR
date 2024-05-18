@@ -100,6 +100,14 @@ input {
     outline: none;
 }
 
+<<<<<<< Updated upstream
+=======
+input[type="radio"]:checked + label {
+  color: white; 
+  font-weight: bold; 
+}
+
+>>>>>>> Stashed changes
 input::placeholder {
   color: #F5F5F5;
   font-family: "Montserrat", sans-serif;

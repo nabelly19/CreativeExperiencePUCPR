@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Listar usuários | Flood Prevention</title>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/css/userList.css"> 
+    <script defer src="../static/js/Userlist.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div>
+                <div class="search_area">
+                    <p class="titulos-p">Lista de usuários &nbsp;</p>
+                    <form class="form-inline">
+                        <input class="input_search" type="search" placeholder="Pesquisar usuário" aria-label="Search">
+                        <button class="btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+
+        <section class="lista-card-users">
+            <!-- cards user -->
+                {% for key, value in users.items() %}
+                        <div class="card" style="width: 18rem; border-radius: 30px;">
+                            <div class="card-body">
+                                <h4 class="card-title">Usuário: {{key}}</h4>
+                                <h5 class="card-text mb-2">Tipo: Comunidade</h5>
+                                <div class="card_btn_area mt-4">
+                                    <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
+                                    data-bs-target="#ModalEdit">Editar</button>
+                                    <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
+                                        data-bs-target="#JanelaModal">Deletar</button>
+                                </div>
+                            </div>
+                        </div>
+                {% endfor %}
+
+                <!-- cards adm -->
+                {% for key, value in adm.items() %}
+
+                        <div class="card" style="width: 18rem; border-radius: 30px;">
+                            <div class="card-body">
+                                <h4 class="card-title">Usuário: {{key}}</h4>
+                                <h5 class="card-text mb-2">Tipo: Administrador</h5>
+                                <div class="card_btn_area mt-4">
+                                    <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
+                                    data-bs-target="#ModalEdit">Editar</button>
+                                    <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
+                                        data-bs-target="#JanelaModal">Deletar</button>
+                                </div>
+                            </div>
+                        </div>
+                {% endfor %}
+
+                <!-- modal validação -->
+                <div id="JanelaModal" class="modal fade">
+                    <div class="modal-dialog border-rounded">
+                        <div class="modal-content strongbg">
+                            <div class="modal-header border-0">
+                                <button type="button" class="btn btn-close " style="background-color:#b9b9b9;" data-bs-dismiss="modal">
+                                </button>
+                            </div>
+                            <div class="modal-body">
+        
+                                <h3 class="text-center mx-auto">Confirme a remoção deste usuário</h3>
+        
+                                <!-- <div class="hide alerta" id="error">
+                                <span>Validação não realizada, revise e tente novamente</span>
+                                <button id="alertabutton">&times;</button>
+                                </div> -->
+        
+                                <form action="/" method="post" id="login">
+        
+                                    <div class="col-6 mt-5 mx-auto">
+                                        <label for="senha" class="form-label text-center">
+                                            <h5>Digite "APAGAR":</h5>
+                                        </label>
+                                        <div class="validation_position">
+                                            <input class="form-control mx-auto" type="text" id="validation" name="validation">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 my-5 mx-auto">
+                                        <input type="button" class="btn btn-danger mx-auto btn-lg" onclick="request()"
+                                            value="Apagar usuário" id="apagar">
+                                    </div>
+                                </form>
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- modal editar usuário -->
+                <div id="ModalEdit" class="modal fade">
+                    <div class="modal-dialog border-rounded">
+                        <div class="modal-content strongbg">
+                            <div class="modal-header border-0">
+                                <button type="button" class="btn btn-close " style="background-color:#b9b9b9;"
+                                    data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+        
+                                <h3 class="text-center mx-auto">Edição de usuário</h3>
+        
+                                <!-- <div class="hide alerta" id="error">
+                                <span>Validação não realizada, revise e tente novamente</span>
+                                <button id="alertabutton">&times;</button>
+                            </div> -->
+        
+                                <form action="/" method="post" id="login">
+        
+                                    <div class="col-6 mt-5 mx-auto">
+                                        <label for="senha" class="form-label text-center">
+                                            <h5>Digite "APAGAR":</h5>
+                                        </label>
+                                        <div class="validation_position">
+                                            <input class="form-control mx-auto" type="text" id="validation" name="validation">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 my-5 mx-auto">
+                                        <input type="button" class="btn btn-danger mx-auto btn-lg"
+                                            value="Apagar usuário" id="apagar">
+                                    </div>
+                                </form>
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </section>   
+
+
+    </div>
+{% endblock %}

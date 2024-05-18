@@ -46,11 +46,14 @@ html {
     text-align: left;
 }
 
+<<<<<<< Updated upstream
 input[type="radio"]:checked + label {
     color: white; 
     font-weight: bold; 
 }
 
+=======
+>>>>>>> Stashed changes
 .content_form {
     left: 0;
     display: flex;
@@ -94,6 +97,7 @@ input[type="radio"]:checked + label {
 
 .two {
     margin-left: 25%;
+<<<<<<< Updated upstream
 }
 
 @media (max-width: 1440px){
@@ -172,4 +176,6 @@ input[type="radio"]:checked + label {
         background: url("../img/backgroundgeral.svg") no-repeat center center fixed;
     }
 
+=======
+>>>>>>> Stashed changes
 }

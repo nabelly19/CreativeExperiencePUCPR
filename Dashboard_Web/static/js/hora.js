@@ -12,6 +12,7 @@ function updateDateTime() {
   document.getElementById('hora').textContent = formattedTime;
 }
 
+<<<<<<< Updated upstream
 function action(cb, id) {
   var topic = "";
   if (id == "control"){
@@ -39,6 +40,8 @@ function action(cb, id) {
 }
 
 
+=======
+>>>>>>> Stashed changes
 // Atualizar a hora a cada segundo
 setInterval(updateDateTime, 1000);
 

@@ -23,12 +23,15 @@ html {
     background: linear-gradient(180deg, rgba(0, 216, 255, 0.50) 0%, rgba(16, 107, 135, 0.50) 50%, rgba(0, 63, 105, 0.50) 100%);
 }
 
+<<<<<<< Updated upstream
 input[type="radio"]:checked + label {
     color: white; 
     font-weight: bold; 
 }
 
 
+=======
+>>>>>>> Stashed changes
 .title {
     width: 80%;
     color: #f5f5f5;
@@ -95,4 +98,8 @@ input[type="radio"]:checked + label {
 .two{
     position: absolute;
     right: -35px;
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

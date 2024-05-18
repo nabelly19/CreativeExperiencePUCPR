@@ -11,6 +11,7 @@ function request(){
     else 
         console.log("não tá podendo");
         return false;
+<<<<<<< Updated upstream
 }
 
 
@@ -26,3 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+=======
+}
+>>>>>>> Stashed changes

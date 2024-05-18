@@ -35,12 +35,15 @@ body {
     border: none;
 }
 
+<<<<<<< Updated upstream
 .card_btn_area{
     display: flex;
     justify-content: center;
   
 }
 
+=======
+>>>>>>> Stashed changes
 .card-body h4{
     color: aliceblue;
 }
@@ -119,6 +122,7 @@ body {
     background-color: #260D33;
     color: aliceblue;
 }
+<<<<<<< Updated upstream
 
 @media (max-width: 610px){
     .search_area{
@@ -134,3 +138,5 @@ body {
         width: 100%;
     }
 }
+=======
+>>>>>>> Stashed changes

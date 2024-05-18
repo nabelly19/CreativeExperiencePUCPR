@@ -1,20 +1,16 @@
-<<<<<<< Updated upstream
 # app.py
 # pip install flask-mqtt
 # pip install flask-socketio
+#08/05/2024 - Josiel
 
 from flask import Flask, render_template, request, redirect, url_for,jsonify
 from login import login
-from sensors import sensors
-from actuators import actuators
+from devices import devices
 from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
 import json
 
 #https://wokwi.com/projects/394918938756685825
-
-actuators_list = ["Led", "Servo Motor"]
-sensors_list = ["DHT22", "HC-ST04"]
 
 temperature = 0
 humidity = 0
@@ -28,8 +24,7 @@ app= Flask(__name__)
 SocketIO = SocketIO(app)
 
 app.register_blueprint(login, url_prefix='/')
-app.register_blueprint(sensors, url_prefix='/')
-app.register_blueprint(actuators, url_prefix='/')
+app.register_blueprint(devices, url_prefix='/')
 
 
 app.config['MQTT_BROKER_URL'] = 'mqtt-dashboard.com'
@@ -62,46 +57,6 @@ def logoff():
 def home():
     return render_template("home.html")
 
-@app.route('/register_devices')
-def register_devices():
-    return render_template("addHardware.html")
-
-@app.route('/add_device', methods=['POST', 'GET'])
-def add_device():
-    global actuators_list, sensors_list
-    if request.method == 'POST':
-        device_name = request.form['device_name']
-        device_type = request.form['device_type']
-    else:
-        device_name = request.args.get('device_name', None)
-        device_type = request.args.get['device_type', None]
-    if device_type == 'sensor':
-        device_name = device_name.upper()
-        sensors_list.append(device_name)
-    elif device_type == 'actuator':
-        device_name = device_name.upper()
-        actuators_list.append(device_name)
-    return redirect("/devices_list")
-
-@app.route('/devices_list')
-def devices_list():
-    global actuators_list, sensors_list
-    return render_template("devicesList.html", actuators=actuators_list, sensors=sensors_list)
-
-@app.route('/del_device', methods=['GET', 'POST'])
-def del_device():
-    global sensors_list, actuators_list
-    if request.method == 'POST':
-        device_name = request.form['validation']
-        device_name = device_name.upper()
-    else:
-        device_name = request.args.get('validation', None)
-    if device_name in sensors_list:
-        sensors_list.remove(device_name)
-    elif device_name in actuators_list:
-        actuators_list.remove(device_name)
-    return redirect("/devices_list")
-
 @app.route('/dashboard') 
 def dashboard():
     global temperature, humidity, mensagem_de_alerta, mensagem_nivel_da_agua, alerta_value
@@ -109,18 +64,17 @@ def dashboard():
     return render_template("dashboard.html", values=values)
 
 
-# publicar em um tópico a partir da interface web. Configurar esta parte lá no HTML da dashboard, para que quando o botão seja precionado (ligar/desligar) a mesnsagem seja encaminhada para esta rota, afim de enviar ao tópico de "/Botao/alerta", parando ou ligando o sistema IOT.
-@app.route('/publish_message', methods=['GET','POST'])
-def publish_message():
-    request_data = request.get_json()
-    publish_result = mqtt_client.publish(request_data['topic'], request_data['message'])
-    return jsonify(publish_result)
+### AQUI JOSIEL - 11/05/2024 ##############################
+@app.route('/action_alert', methods=['POST'])
+def action_alert():
+    global alerta_value
 
-# @app.route('/publish_action', methods=['POST'])
-# def publish_action(): 
-#   
-#
-#
+    if alerta_value == 'Ligado': # Caso o botão esteja ligado, então publicar para que ele desligue
+        mqtt_client.publish(myTopicButton, '0')
+    elif alerta_value == 'Desligado': # Caso o botão esteja desligado, então publicar para que ele ligue
+        mqtt_client.publish(myTopicButton, '1')   
+    return redirect('/dashboard')
+
 
 # Configuração da conexão com o broker (tópicos)
 @mqtt_client.on_connect()
@@ -169,17 +123,3 @@ def handle_mqtt_message(client, userdata, message):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080, debug=True) 
-=======
-from controllers.app_controller import create_app
-from utils.create_db import create_db
-
-if __name__ == "__main__":
-    app = create_app()
-    print("Criando o Banco de Dados!")
-    #create_db(app)
-    app.run(host='0.0.0.0', port=8080, debug=False)
-
-
-# Debug=False > evita a duplicação dos dados 
-# create_db(app) > se comentado não sobescreverá o banco de dados existente
->>>>>>> Stashed changes
