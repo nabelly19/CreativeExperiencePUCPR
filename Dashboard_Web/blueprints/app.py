@@ -64,8 +64,8 @@ def dashboard():
     return render_template("dashboard.html", values=values)
 
 
-### AQUI JOSIEL - 11/05/2024 ##############################
-@app.route('/action_alert', methods=['POST'])
+### FALTA TRANSFERIR - 18/05 -> COLOCAR NO ARQUIVO DO ACTUATOR_CONTROLLER
+'''@app.route('/action_alert', methods=['POST'])
 def action_alert():
     global alerta_value
 
@@ -73,7 +73,7 @@ def action_alert():
         mqtt_client.publish(myTopicButton, '0')
     elif alerta_value == 'Desligado': # Caso o botão esteja desligado, então publicar para que ele ligue
         mqtt_client.publish(myTopicButton, '1')   
-    return redirect('/dashboard')
+    return redirect('/dashboard')'''
 
 
 # Configuração da conexão com o broker (tópicos)

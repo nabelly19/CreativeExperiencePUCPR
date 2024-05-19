@@ -1,6 +1,4 @@
 from models import db
-from models.iot.topic import Topic
-from models.iot.device import Device
 from models.db import datetime
 
 class Log(db.Model):
@@ -11,8 +9,8 @@ class Log(db.Model):
     creation_date = db.Column(db.DateTime, nullable = False, default=datetime.now)
 
     # Foreign Key
-    topic_id= db.Column(db.Integer, db.ForeignKey(Topic.id,  ondelete='SET NULL'), nullable=False)
-    device_id = db.Column(db.Integer, db.ForeignKey(Device.id, ondelete='SET NULL'), nullable=False)
+    topic_id= db.Column(db.Integer, db.ForeignKey('topic.id',  ondelete='SET NULL'), nullable=True)
+    device_id = db.Column(db.Integer, db.ForeignKey('device.id', ondelete='SET NULL'), nullable=True)
 
     # Relationships
     topic = db.relationship('Topic', foreign_keys=[topic_id], back_populates='log', lazy=True, uselist=False)
