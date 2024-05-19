@@ -1,0 +1,56 @@
+html {
+    background: linear-gradient(180deg, rgba(0,63,105,1) 0%, #3f2267 100%); /* Gradiente linear vertical */
+    background-image: url("../img/bg-wallpaper.svg"), linear-gradient(180deg, rgba(0,63,105,1) 0%, rgba(63,34,103,1) 100%);
+    background-size: cover; /* Ajusta a imagem para cobrir todo o elemento */
+    background-repeat: no-repeat; /* Evita que a imagem seja repetida */
+    background-position: center center; /* Centraliza a imagem no elemento */
+    background-attachment: fixed; /* Fixa a imagem de fundo enquanto a página rola */
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    margin-top: 16%;
+    top: 50%;
+    left: 0;
+    right: 0;
+}
+
+.logo img {
+    width: 402.5px;
+    height: 227.22px;
+}
+
+.button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn_login {
+    position: absolute;
+    background: none;
+    border: 1px solid #F5F5F5;
+    border-radius: 30px;
+    color: #F5F5F5; 
+    padding: 10px 20px; 
+    cursor: pointer;
+    transition-duration: 0.25s;
+} .btn_login:hover {
+    background-color: #F5F5F5;
+    color: #003F69;
+}
+
+.list-icons {
+    margin-top: 2%;
+    font-size: 40px;
+    color: aliceblue;
+    position: absolute;
+    bottom: 30;
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.list-icons i {
+    margin: 2px;
+    cursor: pointer;
+}

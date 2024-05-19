@@ -1,0 +1,92 @@
+html {
+    background: url("../img/backgroundgeral.svg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+
+#config-nav {
+    color: #F5F5F5;
+}
+
+.welcome-container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: absolute;
+    height: 93.1vh;
+    width: 35%;
+    background: rgb(0, 216, 255);
+    background: linear-gradient(180deg, rgba(0, 216, 255, 0.50) 0%, rgba(16, 107, 135, 0.50) 50%, rgba(0, 63, 105, 0.50) 100%);
+}
+
+.title {
+    width: 80%;
+    color: #f5f5f5;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.content {
+    width: 80%;
+    color: aliceblue;
+    font-size: small;
+    font-size: larger;
+    text-align: left;
+}
+
+.content_form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-top: 19.5%;
+    top: 0;
+    right: 0;
+    width: 60%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nome-hardware {
+    background-color: rgba(227, 227, 227, 0.50);
+    border-style: none;
+    border-radius: 30px;
+    height: 50px;
+    padding: 0px 20px;
+    width: 400px;
+    height: 45px;
+    color: #f5f5f5;
+}
+
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-right: 20%;
+    color: #f5f5f5;
+    position: relative;
+}
+
+.form-check{
+    color: rgba(227, 227, 227, 0.50)  ;
+}
+
+.one{
+    position: absolute;
+    left: 50px
+}
+
+.two{
+    position: absolute;
+    right: -35px;
+}
