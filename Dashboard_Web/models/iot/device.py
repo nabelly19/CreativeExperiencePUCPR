@@ -1,6 +1,4 @@
 from models.db import db
-from models.iot.log import Log
-from models.associative_entity.admin_device import AdminDevice
 from models.db import datetime
 from enum import Enum
 
@@ -21,5 +19,15 @@ class Device(db.Model):
     creation_date = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
     # Relationship
-    admin_device = db.relationship('AdminDevice', foreign_keys=[AdminDevice.device_id], back_populates='device', cascade='all, delete', lazy=True)
-    log = db.relationship('Log', foreign_keys=[Log.id], back_populates='device', cascade='all, delete', lazy=True)
+    admin_device = db.relationship('AdminDevice', back_populates='device', cascade='all, delete', lazy=True)
+    log = db.relationship('Log', back_populates='device', cascade='all, delete', lazy=True)
+
+
+    def add_device(name, brand, type, is_active):
+        device = Device(name = name, 
+                        brand = brand, 
+                        type = type, 
+                        is_active = is_active)
+        
+        db.session.add(device)
+        db.session.commit()
