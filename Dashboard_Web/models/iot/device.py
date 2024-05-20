@@ -23,7 +23,7 @@ class Device(db.Model):
     log = db.relationship('Log', back_populates='device', cascade='all, delete', lazy=True)
 
 
-    def add_device(name, brand, type, is_active):
+    def create_device(name, brand, type, is_active):
         device = Device(name = name, 
                         brand = brand, 
                         type = type, 
@@ -31,3 +31,4 @@ class Device(db.Model):
         
         db.session.add(device)
         db.session.commit()
+        
