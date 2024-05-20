@@ -30,3 +30,7 @@ class Device(db.Model):
                         is_active = is_active)
         
         return create_with_integrity(new_device, Device.__tablename__)
+    
+    def read_devices():
+        device = Device.query.all()
+        return device

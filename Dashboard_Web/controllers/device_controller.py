@@ -19,6 +19,6 @@ def add_device():
 
     if not new_device["success"]:
         flash(", ".join(new_device["errors"]))
-        return redirect(url_for('auth.signup'))
+        return redirect(url_for('devices.add_device'))
 
-    return redirect(url_for('main.index')) # MUDAR O REDIRECIONAMENTO
+    return redirect(url_for('read.devices_list'))

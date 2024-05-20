@@ -37,12 +37,12 @@
                 {% endfor %}
 
                 <!-- cards atuators -->
-                {% for key in actuators %}
+                {% for key in devices %}
 
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Nome: {{key}}</h4>
-                                <h5 class="card-text mb-2">Tipo: Atuador</h5>
+                                <h4 class="card-title">Nome: {{key.name}}</h4>
+                                <h5 class="card-text mb-2">Tipo: {{key.type}}</h5>
                                 <div class="card_btn_area">
                                     <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
                                     data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
