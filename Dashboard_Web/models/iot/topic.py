@@ -19,5 +19,5 @@ class Topic(db.Model):
         new_topic = Topic(name = name,
                       information = information)
 
-        return create_integrify(new_topic, Topic.__tablename__)
+        return create_with_integrity(new_topic, Topic.__tablename__)
     

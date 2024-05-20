@@ -29,4 +29,4 @@ class Device(db.Model):
                         type = type, 
                         is_active = is_active)
         
-        return create_integrify(new_device, Device.__tablename__)
+        return create_with_integrity(new_device, Device.__tablename__)
