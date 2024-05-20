@@ -10,11 +10,11 @@ def register_sensor():
 
 @devices.route('/add_device', methods=['POST'])
 def add_device():
-    name = request.form.get("name")
-    brand = request.form.get("brand")
-    type = request.form.get("type")
+    name = request.form.get("device_name")
+    brand = request.form.get("device_brand")
+    type = request.form.get("device_type")
     is_active = True if request.form.get("is_active") == "on" else False
 
     Device.create_device(name, brand, type, is_active)
 
-    return redirect(url_for('devices.add_device'))
+    return redirect(url_for('read.device_list'))

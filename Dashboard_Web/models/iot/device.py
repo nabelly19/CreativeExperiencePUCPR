@@ -1,5 +1,5 @@
-from models.db import db
-from models.db import datetime
+from models.db import db, datetime
+from models.validate.integrity import *
 from enum import Enum
 
 # Definição de Enum para o tipo de dispositivo
@@ -24,11 +24,9 @@ class Device(db.Model):
 
 
     def create_device(name, brand, type, is_active):
-        device = Device(name = name, 
+        new_device = Device(name = name, 
                         brand = brand, 
                         type = type, 
                         is_active = is_active)
         
-        db.session.add(device)
-        db.session.commit()
-        
+        return create_integrify(new_device, Device.__tablename__)

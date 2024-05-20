@@ -5,8 +5,9 @@ from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
 
 # Importação dos BLUEPRINTS
-from controllers.auth_controller import auth
 from controllers.main_controller import main
+from controllers.auth_controller import auth
+from controllers.read_controller import read
 
 #https://wokwi.com/projects/394918938756685825
 
@@ -35,6 +36,7 @@ def create_app():
     # Blueprints --------------------------------------------------------------------------------------
     app.register_blueprint(main, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(read, url_prefix='/')
 
     @app.route('/action_alert', methods=['POST'])
     def action_alert():

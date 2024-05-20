@@ -32,8 +32,12 @@ def signup():
 
 @auth.route('/signup', methods=['POST'])
 def signup_post():
-    email = request.form.get('email')
     name = request.form.get('name')
+    cpf = request.form.get('cpf')
+    birth_date = request.form.get('birth_date')
+    gender = request.form.get('gender')
+    email = request.form.get('email')
+    nickname = request.form.get('nickname')
     password = request.form.get('password')
 
     user = Users.query.filter_by(email=email).first()
@@ -42,10 +46,18 @@ def signup_post():
         flash('Email address already exists')
         return redirect(url_for('auth.signup'))
 
-    new_user = Users(email=email, name=name, password=generate_password_hash(password, method='pbkdf2:sha256'))
-
-    db.session.add(new_user)
-    db.session.commit()
+    new_user = Users.create_user(
+        name=name, 
+        cpf=cpf, 
+        birth_date=birth_date,
+        gender=gender, 
+        email=email, 
+        nickname=nickname, 
+        password=generate_password_hash(password, method='pbkdf2:sha256'))
+    
+    if not new_user["success"]:
+        flash(", ".join(new_user["errors"]))
+        return redirect(url_for('auth.signup'))
 
     return redirect(url_for('auth.login'))
 
