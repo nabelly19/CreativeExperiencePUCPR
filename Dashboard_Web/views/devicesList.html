@@ -42,12 +42,14 @@
                                     <h4 class="card-title">Nome: {{ device.name }}</h4>
                                     <h5 class="card-text mb-2">Marca: {{ device.brand }}</h5>
                                     <h5 class="card-text mb-2">Tipo: {{ device.type.value }}</h5>
- 
-                                <!-- Iterar sobre tópicos do dispositivo -->
-                                {% for topic in device.topics %}
-                                    <h5 class="card-text mb-2">Tópico: {{ topic.name }}</h5>
-                                {% endfor %}
-                
+
+                                    <!-- Iterar sobre os tópicos do dispositivo -->
+                                    {% for topic in device.topic %}
+                                        <h5 class="card-text mb-2">Tópico: {{ topic.title }}</h5>
+                                    {% endfor %}
+
+                                    <h5 class="card-text mb-2">Status: {{ device.is_active }}</h5>
+                                    
                                     <div class="card_btn_area">
                                         <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
                                                 data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
@@ -59,22 +61,24 @@
                         {% endif %}
                     {% endfor %}
                 
-                    <!-- Iterar sobre todos os dispositivos novamente para Atuators -->
+                    <!-- Iterar sobre todos os dispositivos para Atuadores-->
                     {% for device in devices %}
-                        <!-- Verificar se o tipo do dispositivo é "Atuador" -->
+                        <!-- Verificar se o tipo do dispositivo é um Atuador -->
                         {% if device.type.value == 'Atuador' %}
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Nome: {{ device.name }}</h4>
+                                    <h5 class="card-text mb-2">Marca: {{ device.brand }}</h5>
                                     <h5 class="card-text mb-2">Tipo: {{ device.type.value }}</h5>
+
+                                    <!-- Iterar sobre os tópicos do dispositivo -->
+                                    {% for topic in device.topic %}
+                                        <h5 class="card-text mb-2">Tópico: {{ topic.title }}</h5>
+                                    {% endfor %}
+
+                                    <h5 class="card-text mb-2">Status: {{ device.is_active }}</h5>
+
                                     
-                                    <!-- Iterar sobre tópicos do dispositivo -->
-                                    <ul>
-                                        {% for topic in device.topics %}
-                                            <li>Tópico: {{ topic.name }}</li>
-                                        {% endfor %}
-                                    </ul>
-                
                                     <div class="card_btn_area">
                                         <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
                                                 data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>

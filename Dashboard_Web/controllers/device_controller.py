@@ -26,7 +26,7 @@ def add_device():
         #flash(", ".join(new_device["errors"]))
         return redirect(url_for('devices.add_device'))
 
-    return redirect(url_for('read.devices_list'))
+    return redirect(url_for('devices.devices_list'))
 
 @devices.route('/devices_list')
 def devices_list():

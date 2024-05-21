@@ -23,7 +23,7 @@ class Device(db.Model):
     # Relationship
     admin_device = db.relationship('AdminDevice', back_populates='device', cascade='all, delete', lazy=True)
     log = db.relationship('Log', back_populates='device', cascade='all, delete', lazy=True)
-    topic = db.relationship('Topic', back_populates='device', lazy=True)
+    topic = db.relationship('Topic', back_populates='device', lazy='joined')
 
 
     def create_device(name, brand, type, is_active):
@@ -35,5 +35,5 @@ class Device(db.Model):
         return create_with_integrity(new_device, Device.__tablename__)
     
     def get_sensors_with_topics():
-        sensors = db.session.query(Device).filter_by(type='Sensor').options(joinedload(Device.topic)).all()
-        return sensors
+        devices = Device.query.options(joinedload(Device.topic)).all()
+        return devices

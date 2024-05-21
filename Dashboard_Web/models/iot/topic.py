@@ -20,6 +20,5 @@ class Topic(db.Model):
 
     def create_topic(title, device_id):
         new_topic = Topic(title = title, device_id = device_id)
-
         return create_with_integrity(new_topic, Topic.__tablename__)
     
