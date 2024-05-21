@@ -27,3 +27,13 @@ def add_device():
         return redirect(url_for('devices.add_device'))
 
     return redirect(url_for('read.devices_list'))
+
+@devices.route('/devices_list')
+def devices_list():
+    device_type = ['Sensor', 'Atuador']
+    all_devices = Device.get_sensors_with_topics()
+
+    if not all_devices:
+        flash('Sem registros no momento!')
+
+    return render_template("devicesList.html", devices=all_devices, type=device_type)

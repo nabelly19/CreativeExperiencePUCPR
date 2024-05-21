@@ -42,14 +42,11 @@
                                     <h4 class="card-title">Nome: {{ device.name }}</h4>
                                     <h5 class="card-text mb-2">Marca: {{ device.brand }}</h5>
                                     <h5 class="card-text mb-2">Tipo: {{ device.type.value }}</h5>
-
-                                    <!-- Iterar sobre tópicos do dispositivo -->
-                                    <ul>
-                                        {% for topic in device.topics %}
-                                        <h5 class="card-text mb-2">Tipo: {{ topic.name }}</h5>
-                                            <li>Tópico: {{ topic.name }}</li>
-                                        {% endfor %}
-                                    </ul>
+ 
+                                <!-- Iterar sobre tópicos do dispositivo -->
+                                {% for topic in device.topics %}
+                                    <h5 class="card-text mb-2">Tópico: {{ topic.name }}</h5>
+                                {% endfor %}
                 
                                     <div class="card_btn_area">
                                         <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
