@@ -16,3 +16,48 @@ header, .navbar {
 #logo {
     width: 70px;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.notification {
+    color: #260D33;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px #0000001a, 0 6px 20px #0000001a;
+    transition: transform 0.3s ease;
+}
+
+.notification:hover {
+    transform: scale(1.1);
+}
+
+.notification a {
+    font-weight: 500;
+    background-color: #004e8d;
+    color: #f5f5f5;
+    border: 1px solid #003f7d;
+    padding: 10px 20px;
+    border-radius: 5px;
+} .notification p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.notification a:hover {
+    color: #260D33;
+    border: 1px solid #260D33;
+    background-color: #f5f5f5;
+    box-shadow: 0 4px 8px #0000001a, 0 6px 10px #0000001a;
+}
+
+.content-notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}

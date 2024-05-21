@@ -6,7 +6,7 @@ read = Blueprint("read",__name__, template_folder="views")
 @read.route('/devices_list')
 def devices_list():
     device_type = ['Sensor', 'Atuador']
-    all_devices = Device.read_devices_with_topics()
+    all_devices = Device.get_sensors_with_topics()
 
     if not all_devices:
         flash('Sem registros no momento!')

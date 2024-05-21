@@ -34,6 +34,6 @@ class Device(db.Model):
         
         return create_with_integrity(new_device, Device.__tablename__)
     
-    def read_devices_with_topics():
-        devices = Device.query.options(joinedload(Device.topic)).all()
-        return devices
+    def get_sensors_with_topics():
+        sensors = db.session.query(Device).filter_by(type='Sensor').options(joinedload(Device.topic)).all()
+        return sensors
