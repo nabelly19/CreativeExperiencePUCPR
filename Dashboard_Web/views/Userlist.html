@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="/static/css/userList.css"> 
-    <script defer src="../static/js/search.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userList.css') }}"> 
+    <script defer src="{{ url_for('static', filename='js/search.js') }}"></script>
 {% endblock %}
 
 {% block content %}
