@@ -15,7 +15,11 @@
 <body>
     <div class="container">
         <div class="row">
+            {% if current_user.is_authenticated %}
+            <a class="dropdown-item" href="{{ url_for('main.dashboard') }}">
+            {% else %}
             <a class="dropdown-item" href="{{ url_for('auth.login') }}">
+            {% endif %}
                 <div class="button">
                     <button type="button" class="btn_login mt-5">INDICADORES</button>
                 </div>

@@ -19,6 +19,11 @@ body {
     margin-top: 40px;
 }
 
+.notification {
+    width: 25%;
+    padding: 50px 15px;
+}
+
 .lista-card-users {
     width: 100%;
     height: auto;

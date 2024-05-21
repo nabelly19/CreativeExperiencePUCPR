@@ -1,20 +1,39 @@
-from flask import Blueprint, request, render_template, redirect, url_for
+from flask import Blueprint, request, render_template, redirect, url_for, flash
 from models.iot.device import Device
-
-sensor_ = Blueprint("sensor_",__name__, template_folder="views")
-
-@sensor_.route('/register_sensor')
-def register_sensor():
-    return render_template("register_sensor.html")
+from models.iot.topic import Topic
 
 
-@sensor_.route('/add_sensor', methods=['POST'])
-def add_sensor():
-    name = request.form.get("name")
-    brand = request.form.get("brand")
-    model = request.form.get("type")
+devices = Blueprint("devices",__name__, template_folder="views")
+
+@devices.route('/add_device')
+def register_device():
+    return render_template("registerDevice.html")
+
+
+@devices.route('/add_device', methods=['POST'])
+def add_device():
+    name = request.form.get("device_name")
+    brand = request.form.get("device_brand")
+    type = request.form.get("device_type")
+    title = request.form.get("topic_title")
     is_active = True if request.form.get("is_active") == "on" else False
 
-    Device.add_sensor(name, brand, model, is_active)
+    new_device = Device.create_device(name, brand, type, is_active)
+    device_id = new_device["object"]
+    new_topic = Topic.create_topic(title, device_id.id)
 
-    return redirect(url_for('home.html'))
+    if not new_device["success"] or not new_topic["success"]:
+        #flash(", ".join(new_device["errors"]))
+        return redirect(url_for('devices.add_device'))
+
+    return redirect(url_for('devices.devices_list'))
+
+@devices.route('/devices_list')
+def devices_list():
+    device_type = ['Sensor', 'Atuador']
+    all_devices = Device.get_sensors_with_topics()
+
+    if not all_devices:
+        flash('Sem registros no momento!')
+
+    return render_template("devicesList.html", devices=all_devices, type=device_type)

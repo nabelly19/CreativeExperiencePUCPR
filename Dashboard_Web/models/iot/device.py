@@ -1,11 +1,13 @@
-from models.db import db
-from models.db import datetime
+from models.db import db, datetime
+from models.iot.topic import Topic
+from models.validate.integrity import *
+from sqlalchemy.orm import joinedload
 from enum import Enum
 
 # Definição de Enum para o tipo de dispositivo
 class DeviceType(Enum):
-    SENSOR = 'Sensor'
-    ATUADOR = 'Atuador'
+    Sensor = 'Sensor'
+    Atuador = 'Atuador'
 
 class Device(db.Model):
     __tablename__ = 'device'
@@ -21,13 +23,17 @@ class Device(db.Model):
     # Relationship
     admin_device = db.relationship('AdminDevice', back_populates='device', cascade='all, delete', lazy=True)
     log = db.relationship('Log', back_populates='device', cascade='all, delete', lazy=True)
+    topic = db.relationship('Topic', back_populates='device', lazy='joined')
 
 
-    def add_device(name, brand, type, is_active):
-        device = Device(name = name, 
+    def create_device(name, brand, type, is_active):
+        new_device = Device(name = name, 
                         brand = brand, 
                         type = type, 
                         is_active = is_active)
         
-        db.session.add(device)
-        db.session.commit()
+        return create_with_integrity(new_device, Device.__tablename__)
+    
+    def get_sensors_with_topics():
+        devices = Device.query.options(joinedload(Device.topic)).all()
+        return devices

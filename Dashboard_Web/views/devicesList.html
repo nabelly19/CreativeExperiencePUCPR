@@ -5,54 +5,93 @@
 {% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="/static/css/devicesList.css"> 
-    <script defer src="../static/js/Userlist.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/devicesList.css') }}">
+    <script defer src="{{ url_for('static', filename='js/search.js') }}"></script>
 {% endblock %}
 
 {% block content %}
     <div>
                 <div class="search_area">
-                    <p class="titulos-p">Lista de sensores e atuadores &nbsp;</p>
+                    <p class="titulos-p">Gerenciar dispositivos</p>
                     <form class="form-inline">
-                        <input class="input_search" type="search" placeholder="Pesquisar equipamento" aria-label="Search">
+                        <input id="searchInput" onkeyup="filterCards()" class="input_search" type="search" placeholder="Pesquisar equipamento" aria-label="Search">
                         <button class="btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
 
-        <section class="lista-card-users">
-            <!-- cards sensor -->
-                {% for key in sensors %}
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Nome: {{key}}</h4>
-                                <h5 class="card-text mb-2">Tipo: Sensor</h5>
-                                <div class="card_btn_area">
-                                    <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
-                                    data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
-                                        data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
+                {% block message %}
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class="content-notification">
+                        <div class="notification">
+                            <p>{{ messages[0] }}</p>
+                            <a href="{{ url_for('devices.add_device') }}">Cadastrar dispositivos</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                {% endblock %}
+
+                <section class="lista-card-users">
+                    <!-- Iterar sobre todos os dispositivos -->
+                    {% for device in devices %}
+                        <!-- Verificar se o tipo do dispositivo é "Sensor" -->
+                        {% if device.type.value == 'Sensor' %}
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Nome: {{ device.name }}</h4>
+                                    <h5 class="card-text mb-2">Marca: {{ device.brand }}</h5>
+                                    <h5 class="card-text mb-2">Tipo: {{ device.type.value }}</h5>
+
+                                    <!-- Iterar sobre os tópicos do dispositivo -->
+                                    {% for topic in device.topic %}
+                                        <h5 class="card-text mb-2">Tópico: {{ topic.title }}</h5>
+                                    {% endfor %}
+
+                                    <h5 class="card-text mb-2">Status: {{ device.is_active }}</h5>
+                                    
+                                    <div class="card_btn_area">
+                                        <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
+                                                data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
+                                                data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                
+                    <!-- Iterar sobre todos os dispositivos para Atuadores-->
+                    {% for device in devices %}
+                        <!-- Verificar se o tipo do dispositivo é um Atuador -->
+                        {% if device.type.value == 'Atuador' %}
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Nome: {{ device.name }}</h4>
+                                    <h5 class="card-text mb-2">Marca: {{ device.brand }}</h5>
+                                    <h5 class="card-text mb-2">Tipo: {{ device.type.value }}</h5>
 
-                <!-- cards atuators -->
-                {% for key in actuators %}
+                                    <!-- Iterar sobre os tópicos do dispositivo -->
+                                    {% for topic in device.topic %}
+                                        <h5 class="card-text mb-2">Tópico: {{ topic.title }}</h5>
+                                    {% endfor %}
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Nome: {{key}}</h4>
-                                <h5 class="card-text mb-2">Tipo: Atuador</h5>
-                                <div class="card_btn_area">
-                                    <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
-                                    data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
-                                        data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
+                                    <h5 class="card-text mb-2">Status: {{ device.is_active }}</h5>
+
+                                    
+                                    <div class="card_btn_area">
+                                        <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
+                                                data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
+                                                data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                {% endfor %}
-
+                        {% endif %}
+                    {% endfor %}
+                </section>
+                
+            
                 <!-- modal validação -->
                 <div id="JanelaModal" class="modal fade">
                     <div class="modal-dialog border-rounded">
@@ -70,7 +109,7 @@
                                 <button id="alertabutton">&times;</button>
                                 </div> -->
         
-                                <form action="http://localhost:8080/del_device" method="POST" id="login">
+                                <form action="/del_device" method="POST" id="login">
         
                                     <div class="col-6 mt-5 mx-auto">
                                         <label for="senha" class="form-label text-center">
@@ -81,8 +120,7 @@
                                         </div>
                                     </div>
                                     <div class="col-6 my-5 mx-auto">
-                                        <input type="submit" class="btn btn-danger mx-auto btn-lg" onclick="request()"
-                                            value="Apagar usuário" id="apagar">
+                                        <input type="submit" class="btn btn-danger mx-auto btn-lg">
                                     </div>
                                 </form>
         

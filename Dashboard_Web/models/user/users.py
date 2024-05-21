@@ -1,6 +1,6 @@
 from flask_login import UserMixin
-from models.db import db
-from models.db import datetime
+from models.db import db, datetime
+from models.validate.integrity import *
 
 class Users(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -13,10 +13,10 @@ class Users(UserMixin, db.Model):
     gender= db.Column(db.String(50), nullable= False)
     email= db.Column(db.String(50), nullable= False, unique=True)
     nickname= db.Column(db.String(20), nullable= False, unique=True)
-    password = db.Column(db.String(100), nullable= False)
-    #is_active= db.Column(db.Boolean, nullable= False, default= False)
+    password = db.Column(db.String(200), nullable= False)
+    is_active= db.Column(db.Boolean, nullable=False, default=True)
     
-    creation_date = db.Column(db.DateTime, nullable = False, default=datetime.now)
+    creation_date = db.Column(db.DateTime, nullable=False, default=datetime.now)
     update_date = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
 
     # Relationship (bidirecional)
@@ -35,4 +35,20 @@ class Users(UserMixin, db.Model):
             return True
         else:
             return False
-              
+    
+    def get_single_user(nickname):
+        user = Users.query.filter_by(nickname=nickname).first()
+        if user is not None : return user
+
+    def create_user(name, cpf, birth_date, gender, email, nickname, password):
+        new_user = Users(
+            name=name,
+            cpf=cpf,
+            birth_date=birth_date,
+            gender=gender,
+            email=email,
+            nickname=nickname,
+            password=password,
+        )
+        
+        return create_with_integrity(new_user, Users.__tablename__)
