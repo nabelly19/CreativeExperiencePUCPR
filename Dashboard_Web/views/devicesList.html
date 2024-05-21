@@ -6,7 +6,7 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/devicesList.css') }}">
-    <script defer src="{{ url_for('static', filename='js/Userlist.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/search.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
                 <div class="search_area">
                     <p class="titulos-p">Lista de sensores e atuadores &nbsp;</p>
                     <form class="form-inline">
-                        <input class="input_search" type="search" placeholder="Pesquisar equipamento" aria-label="Search">
+                        <input id="searchInput" onkeyup="filterCards()" class="input_search" type="search" placeholder="Pesquisar equipamento" aria-label="Search">
                         <button class="btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
