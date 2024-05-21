@@ -21,28 +21,12 @@
 
         <section class="lista-card-users">
             <!-- cards sensor -->
-                {% for key in sensors %}
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Nome: {{key}}</h4>
-                                <h5 class="card-text mb-2">Tipo: Sensor</h5>
-                                <div class="card_btn_area">
-                                    <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
-                                    data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
-                                        data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                {% endfor %}
-
-                <!-- cards atuators -->
                 {% for key in devices %}
-
+                    {% if key.type.value == type[1] %}
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Nome: {{key.name}}</h4>
-                                <h5 class="card-text mb-2">Tipo: {{key.type}}</h5>
+                                <h5 class="card-text mb-2">Tipo: {{key.type.value}}</h5>
                                 <div class="card_btn_area">
                                     <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
                                     data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
@@ -51,6 +35,23 @@
                                 </div>
                             </div>
                         </div>
+                    
+                        {% else %}
+
+                <!-- cards atuators -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Nome: {{key.name}}</h4>
+                                <h5 class="card-text mb-2">Tipo: {{key.type.value}}</h5>
+                                <div class="card_btn_area">
+                                    <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
+                                    data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
+                                        data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endfor %}
 
                 <!-- modal validação -->

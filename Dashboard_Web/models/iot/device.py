@@ -4,8 +4,8 @@ from enum import Enum
 
 # Definição de Enum para o tipo de dispositivo
 class DeviceType(Enum):
-    SENSOR = 'Sensor'
-    ATUADOR = 'Atuador'
+    Sensor = 'Sensor'
+    Atuador = 'Atuador'
 
 class Device(db.Model):
     __tablename__ = 'device'
