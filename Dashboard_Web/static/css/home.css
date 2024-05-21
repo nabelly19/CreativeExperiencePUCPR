@@ -54,3 +54,43 @@ html {
     margin: 2px;
     cursor: pointer;
 }
+
+@media (max-width: 930px){
+    .logo{
+        margin-top: 50%;
+    }
+}
+
+@media (max-width: 830px){
+    .logo{
+        margin-top: 50%;
+    }
+
+    .button{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 500px){
+    .logo{
+        margin-top: 70%;
+    }
+
+    .button{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 430px){
+    .logo{
+        margin-top: 60%;
+    
+    }
+
+    .button{
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -54,7 +54,7 @@ html {
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-top: 15% ;
+    margin-top: 15%;
     top: 0;
     right: 0;
     width: 60%;
@@ -84,9 +84,276 @@ html {
 }
 
 .form-check {
-    color: rgba(227, 227, 227, 0.50)  ;
+    color: rgba(227, 227, 227, 0.50);
 }
 
 .two {
     margin-left: 25%;
+}
+
+.title_hide {
+    display: none;
+}
+
+/* responsividade (media queries) */
+
+@media (max-width: 1090px) {
+    .welcome-container {
+        height: 100vh;
+    }
+
+    .title {
+        top: 26%;
+    }
+
+    .content {
+        top: 35%;
+    }
+
+    .content_form {
+        margin-top: 15%;
+    }
+
+    .content p {
+        font-size: small;
+        text-align: center;
+    }
+
+
+    .list-icons {
+        width: 200px;
+        margin-top: 45%;
+    }
+}
+
+@media (max-width: 930px) {
+    .welcome-container {
+        height: 100vh;
+    }
+
+    .title {
+        top: 26%;
+    }
+
+    .content {
+        top: 35%;
+    }
+
+    .content_form {
+        margin-top: 40%;
+    }
+
+    .content p {
+        font-size: small;
+        text-align: center;
+    }
+
+
+    .list-icons {
+        width: 200px;
+        margin-top: 45%;
+    }
+}
+
+@media (max-width: 830px) {
+    .welcome-container {
+        height: 100vh;
+    }
+
+    .content_form {
+        margin-top: 45%;
+    }
+
+    .content {
+        top: 40%;
+    }
+
+    .list-icons {
+        width: 200px;
+        margin-top: 60%;
+    }
+
+    .content p {
+        font-size: small;
+        text-align: center;
+    }
+}
+
+@media (max-width: 790px) {
+    .welcome-container {
+        height: 100vh;
+    }
+
+    .content_form {
+        margin-top: 45%;
+    }
+
+    .content {
+        top: 42%;
+    }
+
+    .content p {
+        font-size: small;
+        text-align: center;
+    }
+
+    .list-icons {
+        width: 200px;
+        margin-top: 60%;
+    }
+}
+
+@media (max-width: 770px) {
+    .welcome-container {
+        height: 100vh;
+    }
+
+    .content_form {
+        margin-top: 35%;
+    }
+
+    .content {
+        top: 42%;
+    }
+
+    .content p {
+        font-size: small;
+        text-align: center;
+    }
+
+    .list-icons {
+        width: 200px;
+        margin-top: 60%;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .title_hide {
+        display: block;     
+        text-align: center;     
+        font-size: 36px; 
+        margin-top: 20%;
+        color: #F5F5F5;
+    }
+
+    body {
+        background: url("../img/backgroundgeral.svg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+
+    .welcome-container {
+        display: none;
+    }
+
+    .content_form {
+        margin-top: 15%;
+        margin-bottom: 5%;
+        position: relative;
+        left: 0;
+        right: 0;
+        margin-left: 20%;
+
+    }
+
+    .login {
+        width: 250px;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .title_hide {
+        display: block;     
+        text-align: center;     
+        font-size: 36px; 
+        margin-top: 20%;
+        color: #F5F5F5;
+    }
+
+    .welcome-container {
+        display: none;
+    }
+
+    .logo {
+        margin-left: 22%;
+    }
+
+    .content_form {
+        margin-top: 25%;
+        margin-bottom: 5%;
+        position: relative;
+        left: 0;
+        right: 0;
+        margin-left: 20%;
+
+    }
+
+    .checkbox{
+        display: flex;
+        justify-content:flex-start;
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .form-check{
+        margin: 0%;
+        margin-top: 5%;
+    }
+
+    .login {
+        width: 250px;
+    }
+
+}
+
+@media (max-width: 380px) {
+
+    .title_hide {
+        display: block;     
+        text-align: center;     
+        font-size: 36px; 
+        margin-top: 20%;
+        color: #F5F5F5;
+    }
+
+    .welcome-container {
+        display: none;
+    }
+
+    .logo {
+        margin-left: 22%;
+    }
+
+    .content_form {
+        margin-top: 25%;
+        margin-bottom: 5%;
+        position: relative;
+        left: 0;
+        right: 0;
+        margin-left: 15%;
+
+    }
+
+    .checkbox{
+        display: flex;
+        justify-content:flex-start;
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .form-check{
+        margin: 0%;
+        margin-top: 5%;
+    }
+
+    .login {
+        width: 250px;
+    }
+
 }
