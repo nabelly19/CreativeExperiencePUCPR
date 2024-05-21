@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="/static/css/devicesList.css"> 
-    <script defer src="../static/js/Userlist.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/devicesList.css') }}">
+    <script defer src="{{ url_for('static', filename='js/Userlist.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -109,7 +109,7 @@
                                 <button id="alertabutton">&times;</button>
                                 </div> -->
         
-                                <form action="http://localhost:8080/del_device" method="POST" id="login">
+                                <form action="/del_device" method="POST" id="login">
         
                                     <div class="col-6 mt-5 mx-auto">
                                         <label for="senha" class="form-label text-center">
