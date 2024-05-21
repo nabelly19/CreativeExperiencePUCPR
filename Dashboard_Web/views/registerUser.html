@@ -1,6 +1,7 @@
 {% extends"base.html" %}
 {% block styles %}
-<link rel="stylesheet" href="../static/css/registerUser.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/registerUser.css') }}">
+<script defer src="{{ url_for('static', filename='js/addUser.js') }}"></script>
 {% endblock %}
 
 {% block title %}
@@ -56,5 +57,4 @@
         <input type = "submit" class="btn_geral" value = "Cadastrar" />
     </form>
 </div>
-<script src="../static/js/addUser.js"></script>
 {% endblock %}
