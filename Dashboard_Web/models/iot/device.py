@@ -1,5 +1,7 @@
 from models.db import db, datetime
+from models.iot.topic import Topic
 from models.validate.integrity import *
+from sqlalchemy.orm import joinedload
 from enum import Enum
 
 # Definição de Enum para o tipo de dispositivo
@@ -21,6 +23,7 @@ class Device(db.Model):
     # Relationship
     admin_device = db.relationship('AdminDevice', back_populates='device', cascade='all, delete', lazy=True)
     log = db.relationship('Log', back_populates='device', cascade='all, delete', lazy=True)
+    topic = db.relationship('Topic', back_populates='device', lazy=True)
 
 
     def create_device(name, brand, type, is_active):
@@ -31,6 +34,6 @@ class Device(db.Model):
         
         return create_with_integrity(new_device, Device.__tablename__)
     
-    def read_devices():
-        device = Device.query.all()
-        return device
+    def read_devices_with_topics():
+        device_topic = Device.query.options(joinedload(Device.topic)).all()
+        return device_topic

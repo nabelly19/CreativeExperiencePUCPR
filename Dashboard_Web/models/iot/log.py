@@ -6,6 +6,7 @@ class Log(db.Model):
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     
+    information = db.Column(db.String(200))
     creation_date = db.Column(db.DateTime, nullable = False, default=datetime.now)
 
     # Foreign Key

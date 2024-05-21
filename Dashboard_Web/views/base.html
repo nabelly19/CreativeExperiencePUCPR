@@ -73,7 +73,7 @@
 
     <!-- Inserir conteúdo da página-->
     <div id="content">
-		{% block content %} {% endblock %}
+		{% block content %} {% block message %}{% endblock %} {% endblock %}
 	</div>
 
 </body>

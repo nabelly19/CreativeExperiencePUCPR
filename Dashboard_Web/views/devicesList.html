@@ -19,6 +19,16 @@
                     </form>
                 </div>
 
+                {% block message %}
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="notification is-danger">
+                            {{ messages[0] }}. Go to <a href="{{ url_for('devices.add_device') }}">Cadastrar dispositivos</a>.
+                        </div>
+                    {% endif %}
+                    {% endwith %}
+                {% endblock %}
+
         <section class="lista-card-users">
             <!-- cards sensor -->
                 {% for key in devices %}
@@ -27,6 +37,11 @@
                             <div class="card-body">
                                 <h4 class="card-title">Nome: {{key.name}}</h4>
                                 <h5 class="card-text mb-2">Tipo: {{key.type.value}}</h5>
+                                {% for topic in devices.topic %}
+                                {% if key.id == topic.device_id %}
+                                <h5 class="card-text mb-2">Tipo: {{topic.title}}</h5>
+                                {% endif %}
+                                {% endfor %}
                                 <div class="card_btn_area">
                                     <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
                                     data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
@@ -35,14 +50,22 @@
                                 </div>
                             </div>
                         </div>
-                    
-                        {% else %}
+                        {% endif %}
+                    {% endfor %}
 
+                    {% for key in devices %}
+                        {% if key.type.value == type[2] %}
                 <!-- cards atuators -->
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Nome: {{key.name}}</h4>
                                 <h5 class="card-text mb-2">Tipo: {{key.type.value}}</h5>
+                                <h5 class="card-text mb-2">Tipo: {{key.id}}</h5>
+                                {% for topic in devices.topic %}
+                                {% if key.id == topic.device_id %}
+                                    <h5 class="card-text mb-2">Tipo: {{topic.title}}</h5>
+                                {% endif %}
+                                {% endfor %}
                                 <div class="card_btn_area">
                                     <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
                                     data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
