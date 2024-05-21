@@ -35,5 +35,5 @@ class Device(db.Model):
         return create_with_integrity(new_device, Device.__tablename__)
     
     def read_devices_with_topics():
-        device_topic = Device.query.options(joinedload(Device.topic)).all()
-        return device_topic
+        devices = Device.query.options(joinedload(Device.topic)).all()
+        return devices

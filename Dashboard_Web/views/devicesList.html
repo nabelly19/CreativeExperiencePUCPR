@@ -29,54 +29,65 @@
                     {% endwith %}
                 {% endblock %}
 
-        <section class="lista-card-users">
-            <!-- cards sensor -->
-                {% for key in devices %}
-                    {% if key.type.value == type[1] %}
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Nome: {{key.name}}</h4>
-                                <h5 class="card-text mb-2">Tipo: {{key.type.value}}</h5>
-                                {% for topic in devices.topic %}
-                                {% if key.id == topic.device_id %}
-                                <h5 class="card-text mb-2">Tipo: {{topic.title}}</h5>
-                                {% endif %}
-                                {% endfor %}
-                                <div class="card_btn_area">
-                                    <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
-                                    data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
-                                        data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
+                <section class="lista-card-users">
+                    <!-- Iterar sobre todos os dispositivos -->
+                    {% for device in devices %}
+                        <!-- Verificar se o tipo do dispositivo é "Sensor" -->
+                        {% if device.type.value == 'Sensor' %}
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Nome: {{ device.name }}</h4>
+                                    <h5 class="card-text mb-2">Marca: {{ device.brand }}</h5>
+                                    <h5 class="card-text mb-2">Tipo: {{ device.type.value }}</h5>
+
+                                    <!-- Iterar sobre tópicos do dispositivo -->
+                                    <ul>
+                                        {% for topic in device.topics %}
+                                        <h5 class="card-text mb-2">Tipo: {{ topic.name }}</h5>
+                                            <li>Tópico: {{ topic.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                
+                                    <div class="card_btn_area">
+                                        <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
+                                                data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
+                                                data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         {% endif %}
                     {% endfor %}
-
-                    {% for key in devices %}
-                        {% if key.type.value == type[2] %}
-                <!-- cards atuators -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Nome: {{key.name}}</h4>
-                                <h5 class="card-text mb-2">Tipo: {{key.type.value}}</h5>
-                                <h5 class="card-text mb-2">Tipo: {{key.id}}</h5>
-                                {% for topic in devices.topic %}
-                                {% if key.id == topic.device_id %}
-                                    <h5 class="card-text mb-2">Tipo: {{topic.title}}</h5>
-                                {% endif %}
-                                {% endfor %}
-                                <div class="card_btn_area">
-                                    <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
-                                    data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
-                                        data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
+                
+                    <!-- Iterar sobre todos os dispositivos novamente para Atuators -->
+                    {% for device in devices %}
+                        <!-- Verificar se o tipo do dispositivo é "Atuador" -->
+                        {% if device.type.value == 'Atuador' %}
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Nome: {{ device.name }}</h4>
+                                    <h5 class="card-text mb-2">Tipo: {{ device.type.value }}</h5>
+                                    
+                                    <!-- Iterar sobre tópicos do dispositivo -->
+                                    <ul>
+                                        {% for topic in device.topics %}
+                                            <li>Tópico: {{ topic.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                
+                                    <div class="card_btn_area">
+                                        <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
+                                                data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
+                                                data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-
+                        {% endif %}
+                    {% endfor %}
+                </section>
+                
+            
                 <!-- modal validação -->
                 <div id="JanelaModal" class="modal fade">
                     <div class="modal-dialog border-rounded">

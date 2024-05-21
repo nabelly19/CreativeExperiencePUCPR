@@ -8,7 +8,7 @@ def devices_list():
     device_type = ['Sensor', 'Atuador']
     all_devices = Device.read_devices_with_topics()
 
-    if all_devices == None:
+    if not all_devices:
         flash('Sem registros no momento!')
 
     return render_template("devicesList.html", devices=all_devices, type=device_type)
