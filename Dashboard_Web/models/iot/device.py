@@ -38,6 +38,8 @@ class Device(db.Model):
         devices = Device.query.options(joinedload(Device.topic)).all()
         return devices
     
-    def delete_device():
-        
-        return
+    def delete_device(device_id):
+        device = Device.query.get(Device.id == device_id).first()
+        db.session.delete(device)
+        db.session.commit()
+        return Device.get_sensors()
