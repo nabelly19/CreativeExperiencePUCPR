@@ -12,7 +12,7 @@ class Topic(db.Model):
     update_date = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
 
     # Foreign keys
-    device_id = db.Column(db.Integer, db.ForeignKey('device.id'), nullable=False)
+    device_id = db.Column(db.Integer, db.ForeignKey('device.id', ondelete='SET NULL'), nullable=True)
 
     # Relationship
     log = db.relationship('Log', back_populates='topic', cascade='all, delete', lazy=True)

@@ -10,7 +10,7 @@ class Log(db.Model):
     creation_date = db.Column(db.DateTime, nullable = False, default=datetime.now)
 
     # Foreign Key
-    topic_id= db.Column(db.Integer, db.ForeignKey('topic.id',  ondelete='SET NULL'), nullable=True)
+    topic_id= db.Column(db.Integer, db.ForeignKey('topic.id', ondelete='SET NULL'), nullable=True)
     device_id = db.Column(db.Integer, db.ForeignKey('device.id', ondelete='SET NULL'), nullable=True)
 
     # Relationships

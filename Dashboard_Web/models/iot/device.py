@@ -23,7 +23,7 @@ class Device(db.Model):
     # Relationship
     admin_device = db.relationship('AdminDevice', back_populates='device', cascade='all, delete', lazy=True)
     log = db.relationship('Log', back_populates='device', cascade='all, delete', lazy=True)
-    topic = db.relationship('Topic', back_populates='device', lazy=True)
+    topic = db.relationship('Topic', back_populates='device', cascade='all, delete', lazy=True)
 
 
     def create_device(name, brand, type, is_active):
