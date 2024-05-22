@@ -38,6 +38,6 @@ def devices_list():
 
     return render_template("devicesList.html", devices=all_devices, type=device_type)
 
-    @devices.route('/devices_list')
-    def devices_list():
-        return
+@devices.route('/del_device')
+def devices_list():
+    return
