@@ -39,5 +39,7 @@ def devices_list():
     return render_template("devicesList.html", devices=all_devices, type=device_type)
 
 @devices.route('/del_device')
-def devices_list():
-    return
+def del_device():
+    id = request.args.get('id', None)
+    sensors = Device.delete_sensor(id)
+    return redirect(url_for('devices.devices_list'))

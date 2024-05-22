@@ -122,9 +122,13 @@
                                         </div>
                                     </div>
                                     {% endfor %}
-                
-                                    <h5 class="card-text mb-2">Status: {{ device.is_active }}</h5>
-                                    
+
+                                    {% if device.is_active == true %}
+                                    <h5 class="card-text mb-2">Status: Ativado</h5>
+                                    {% else %}
+                                    <h5 class="card-text mb-2">Status: Desativado</h5>
+                                    {% endif %}   
+
                                     <div class="card_btn_area">
                                         <button type="button" class="card-btn editar" data-bs-toggle="modal"
                                                 data-bs-target="#ModalEditSensor{{ device.id }}">Editar <i class="fa-solid fa-pen-to-square"></i>
@@ -228,8 +232,11 @@
                                     </div>
                                     {% endfor %}
 
-                                    <h5 class="card-text mb-2">Status: {{ device.is_active }}</h5>
-
+                                    {% if device.is_active == true %}
+                                    <h5 class="card-text mb-2">Status: Ativado</h5>
+                                    {% else %}
+                                    <h5 class="card-text mb-2">Status: Desativado</h5>
+                                    {% endif %}  
                                     
                                     <div class="card_btn_area">
                                         <button type="button" class="card-btn editar" data-bs-toggle="modal"
