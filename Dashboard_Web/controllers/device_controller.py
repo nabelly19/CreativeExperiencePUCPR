@@ -37,3 +37,7 @@ def devices_list():
         flash('Sem registros no momento!')
 
     return render_template("devicesList.html", devices=all_devices, type=device_type)
+
+    @devices.route('/devices_list')
+    def devices_list():
+        return

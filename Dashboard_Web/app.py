@@ -4,7 +4,7 @@ from utils.create_db import create_db
 if __name__ == "__main__":
     app = create_app()
     print("Criando o Banco de Dados!")
-    create_db(app)
+    #create_db(app)
     app.run(host='0.0.0.0', port=8080, debug=True)
 
 

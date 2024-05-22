@@ -20,7 +20,7 @@
 </div>
 
 <div class="content_form">
-    <form class="form mt-1" action="http://localhost:8080/add_device" method="POST">
+    <form class="form mt-1" action="/add_device" method="POST">
         <input class="nome-hardware mb-2" placeholder="Nome" name="device_name">
         <input class="nome-hardware mb-2" placeholder="Marca" name="device_brand">
         <input class="nome-hardware mb-2" placeholder="Tópico" name="topic_title">
@@ -43,7 +43,7 @@
                 <label for="is_active">Ativo?</label>
             </div>
         </div>
-        <button type="submit" class=" btn_geral">Cadastrar</button>
+        <button type="submit" class="btn_geral">Cadastrar</button>
     </form>
 </div>
 {% endblock %}

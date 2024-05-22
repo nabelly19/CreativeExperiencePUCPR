@@ -1,0 +1,95 @@
+{% block sensorList %}
+    <!-- Iterar sobre todos os dispositivos -->
+    {% for device in devices %}
+        <!-- Verificar se o tipo do dispositivo é "Sensor" -->
+        {% if device.type.value == type[0] %}
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Nome: {{ device.name }}</h4>
+                    <h5 class="card-text mb-2">Marca: {{ device.brand }}</h5>
+                    <h5 class="card-text mb-2">Tipo: {{ device.type.value }}</h5>
+
+                    <!-- Iterar sobre os tópicos do dispositivo -->
+                    {% for topic in device.topic %}
+                        <h5 class="card-text mb-2">Tópico: {{ topic.title }}</h5>
+                    {% endfor %}
+
+                    <h5 class="card-text mb-2">Status: {{ device.is_active }}</h5>
+                    
+                    <div class="card_btn_area">
+                        <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
+                                data-bs-target={{ "#ModalEditSensor" + device.id }}>Editar <i class="fa-solid fa-pen-to-square"></i></button>
+                        <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
+                                data-bs-target={{ "#ModalDeleteSensor" + device.id }}>Deletar <i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- modal validação excluir -->
+            <div id={{ "ModalDeleteSensor" + device.id }} class="modal fade">
+                <div class="modal-dialog border-rounded">
+                    <div class="modal-content strongbg">
+                        <div class="modal-header border-0">
+                            <button type="button" class="btn btn-close " style="background-color:#b9b9b9;" data-bs-dismiss="modal">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <h3 class="text-center mx-auto">Confirme a remoção deste device</h3>
+
+                            <form action="/del_device" method="POST" id="delete_form_{{ device.id }}">
+
+                                <div class="col-6 mt-5 mx-auto">
+                                    <label for="senha" class="form-label text-center">
+                                        <h5>Confirmar a exclusão do device: </h5>
+                                        <h5 class="card-text mb-2">Sensor: {{ device.name }}</h5>
+                                    </label>
+                                    <div class="validation_position">
+                                        <input class="form-control mx-auto" type="text" id="validation" name="validation">
+                                    </div>
+                                </div>
+                                <div class="col-6 my-5 mx-auto">
+                                    <button type="submit" class="btn btn-danger mx-auto btn-lg">Confirmar</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- modal editar usuário -->
+            <div id={{ "ModalEditSensor" + device.id }} class="modal fade">
+                <div class="modal-dialog border-rounded">
+                    <div class="modal-content strongbg">
+                        <div class="modal-header border-0">
+                            <button type="button" class="btn btn-close " style="background-color:#b9b9b9;"
+                                data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <h3 class="text-center mx-auto">Edição de device</h3>
+
+                            <form action="/" method="post" id="edit_form_{{ device.id }}">
+
+                                <div class="col-6 mt-5 mx-auto">
+                                    <label for="senha" class="form-label text-center">
+                                        <h5>Digite "APAGAR":</h5>
+                                    </label>
+                                    <div class="validation_position">
+                                        <input class="form-control mx-auto" type="text" id="validation" name="validation">
+                                    </div>
+                                </div>
+                                <div class="col-6 my-5 mx-auto">
+                                    <input type="button" class="btn btn-danger mx-auto btn-lg"
+                                        value="Apagar usuário" id="apagar">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
