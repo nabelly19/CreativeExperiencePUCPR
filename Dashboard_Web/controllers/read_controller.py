@@ -31,5 +31,6 @@ def logs():
     return render_template("logs.html", logs=all_logs)
 
 @read.route('/register_log')
+#@login_required
 def register_log(data, topic):
     return
