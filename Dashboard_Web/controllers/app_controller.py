@@ -3,6 +3,7 @@ from flask_login import LoginManager
 from models.db import db, instance
 from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
+from models.validate.integrity import *
 
 # Importação dos BLUEPRINTS
 from controllers.auth_controller import auth
@@ -101,42 +102,42 @@ def create_app():
     # Callback, escuta as informações vindas dos tópicos do broker
     @mqtt_client.on_message()
     def handle_mqtt_message(client, userdata, message):
-        from models.iot.log import Log
-        print(message.payload.decode())
+        #print(message.payload.decode())
 
         if(message.topic==myTopicTemperatura):
             global temperature
             temperature = message.payload.decode()
-            Log.save_log(myTopicTemperatura, temperature)
+            save_with_integrity(app, myTopicTemperatura, temperature)
 
         if(message.topic==myTopicUmidade):
             global humidity
             humidity = message.payload.decode()
-            Log.save_log(myTopicUmidade, humidity)
+            save_with_integrity(app, myTopicUmidade, humidity)
 
         if(message.topic==myTopicMensagem):
             global mensagem_de_alerta
             mensagem_de_alerta = message.payload.decode()
-            Log.save_log(myTopicMensagem, mensagem_de_alerta)
+            save_with_integrity(app, myTopicMensagem, mensagem_de_alerta)
 
         if(message.topic==myTopicAction):
             global alerta_value
             alerta_value = message.payload.decode()
             if alerta_value == '0':
                 alerta_value = "Desligado"
-                Log.save_log(myTopicAction, alerta_value)
+                save_with_integrity(app, myTopicAction, alerta_value)
             elif alerta_value == "1":
                 alerta_value = "Ligado"
-                Log.save_log(myTopicAction, alerta_value)
+                save_with_integrity(app, myTopicAction, alerta_value)
 
         # EXCLUIR ELE 
         if(message.topic==myTopicButton):
             global botao_value
             botao_value = message.payload.decode()
+            save_with_integrity(app, myTopicButton, botao_value)
 
         if(message.topic==myTopicWaterLevel):
             global mensagem_nivel_da_agua
             mensagem_nivel_da_agua = message.payload.decode()
-            Log.save_log(myTopicWaterLevel, mensagem_nivel_da_agua)
+            save_with_integrity(app, myTopicWaterLevel, mensagem_nivel_da_agua)
 
     return app

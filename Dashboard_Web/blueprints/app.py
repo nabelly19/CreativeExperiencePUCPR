@@ -9,7 +9,7 @@ from devices import devices
 from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
 import json
-
+from time import sleep
 #https://wokwi.com/projects/394918938756685825
 
 temperature = 0
@@ -100,7 +100,6 @@ def handle_disconnect(client, userdata, rc):
 # Callback, escuta as informações vindas dos tópicos do broker
 @mqtt_client.on_message()
 def handle_mqtt_message(client, userdata, message):
-    print(message.payload.decode())
     if(message.topic==myTopicTemperatura):
         global temperature
         temperature = message.payload.decode()
