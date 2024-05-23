@@ -20,8 +20,8 @@ def dashboard():
     values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
     return render_template("dashboard.html", values=values)
 
-
 @read.route('/logs')
+#@login_required
 def logs():
     all_logs = Log.get_logs_with_data()
 

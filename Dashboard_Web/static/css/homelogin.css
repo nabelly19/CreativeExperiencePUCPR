@@ -147,6 +147,22 @@ input:focus, input:hover {
     border-radius: 50%;
 }
 
+.notification {
+    color: #F5F5F5;
+    padding-top: 15px;
+}
+
+.notification p {
+    font-size: 1.2rem;
+}
+
+.content-notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ae1d1d;
+}
+
 /* responsividade (media queries) */
 
 @media (max-width: 1090px) {

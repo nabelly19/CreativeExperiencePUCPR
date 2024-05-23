@@ -18,7 +18,7 @@ def login_post():
     user = Users.get_single_user(nickname)
 
     if not user or not check_password_hash(user.password, password): 
-        flash('Please check your login details and try again.')
+        flash('Credenciais inválidas, verifique seu usuário ou senha!')
         return redirect(url_for('auth.login'))
 
     login_user(user, remember=remember)
