@@ -23,6 +23,12 @@ html {
     background: linear-gradient(180deg, rgba(0, 216, 255, 0.50) 0%, rgba(16, 107, 135, 0.50) 50%, rgba(0, 63, 105, 0.50) 100%);
 }
 
+.isactive{
+    margin-left: 200px;
+}
+
+
+
 .title {
     width: 80%;
     color: #f5f5f5;

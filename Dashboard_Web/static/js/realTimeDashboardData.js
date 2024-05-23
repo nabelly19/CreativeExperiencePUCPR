@@ -1,8 +1,3 @@
-var elemento = document.getElementById("temperatura");
-
-// Define o conteúdo do elemento usando innerHTML
-elemento.textContent = "12";
-
 var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 
 var intervalID = setInterval(update_values,5000);

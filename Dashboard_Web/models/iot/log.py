@@ -27,10 +27,8 @@ class Log(db.Model):
     def save_log(topic_name, information):
         from models.iot.topic import Topic
         topic_result = Topic.get_single_topic(topic_name)
-
         from models.iot.device import Device
         device_result = Device.get_single_device(topic_result.device_id)
-        
         if (topic_result is not None) and (device_result.is_active == True):
             new_log = Log(information = information, topic_id = topic_result.id, device_id = device_result.id)
             return create_with_integrity(new_log, Log.__tablename__)

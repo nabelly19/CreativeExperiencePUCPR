@@ -35,7 +35,7 @@ class Device(db.Model):
         return create_with_integrity(new_device, Device.__tablename__)
     
     def get_single_device(id):
-        device = Device.query.filter(Device.device_id == id).first()
+        device = Device.query.filter(Device.id == id).first()
         if device is not None:
             return device    
     
