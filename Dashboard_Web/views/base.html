@@ -49,7 +49,7 @@
                         {% else %}
 
                         <li class="nav-item">            
-                            <a id="dashboard-nav" class="nav-link" href="{{ url_for('main.dashboard') }}">Painel de eventos</a>
+                            <a id="dashboard-nav" class="nav-link" href="{{ url_for('read.dashboard') }}">Painel de eventos</a>
                         </li>
                             {% if current_user.exists_admin() %}
                         <li class="nav-item dropdown">
