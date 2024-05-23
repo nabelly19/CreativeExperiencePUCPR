@@ -26,6 +26,15 @@
 </head>
 
 <body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="content-notification">
+        <div class="notification">
+            <p>{{ messages[0] }}</p>
+        </div>
+    </div>
+    {% endif %}
+    {% endwith %}
     <div class="welcome-container">
         <div class="title">
             <p>Bem-Vindo(a)!</p>
@@ -53,7 +62,7 @@
             </div>
             <div class="field">
                 <label class="checkbox mt-5" style="color: aliceblue;">
-                    <input type="checkbox">
+                    <input type="checkbox" name="remember">
                     Remember me
                 </label>
             </div>

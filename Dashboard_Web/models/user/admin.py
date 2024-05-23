@@ -16,5 +16,3 @@ class Admin(db.Model):
     user = db.relationship('Users', back_populates='admin', lazy=True)
     role = db.relationship('Role', back_populates='admin', lazy=True, uselist=False)
     admin_device = db.relationship('AdminDevice', back_populates='admin', cascade='all, delete', lazy=True)
-
-

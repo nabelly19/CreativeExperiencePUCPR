@@ -8,6 +8,7 @@ from flask_socketio import SocketIO
 from controllers.auth_controller import auth
 from controllers.device_controller import devices
 from controllers.read_controller import read
+from controllers.user_controller import users
 
 #https://wokwi.com/projects/394918938756685825
 
@@ -45,6 +46,7 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(devices, url_prefix='/')
     app.register_blueprint(read, url_prefix='/')
+    app.register_blueprint(users, url_prefix='/')
 
     @app.route('/')
     def index():

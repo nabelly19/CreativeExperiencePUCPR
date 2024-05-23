@@ -18,8 +18,8 @@ def login_post():
     user = Users.get_single_user(nickname)
 
     if not user or not check_password_hash(user.password, password): 
-        flash('Please check your login details and try again.')
-        #return redirect(url_for('auth.login'))
+        flash('Credenciais inválidas, verifique seu usuário ou senha!')
+        return redirect(url_for('auth.login'))
 
     login_user(user, remember=remember)
 
@@ -64,4 +64,4 @@ def signup_post():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('app.index'))

@@ -10,6 +10,7 @@ function updateDateTime() {
   // Atualizar o conteúdo das divs com a data e hora formatadas
   document.getElementById('data').textContent = formattedDate;
   document.getElementById('hora').textContent = formattedTime;
+
 }
 
 // Atualizar a hora a cada segundo

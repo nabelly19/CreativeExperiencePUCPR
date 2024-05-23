@@ -60,7 +60,7 @@ def tratarSens():
 def callback(client, userdata, message):
     global myTopicTemperatura, myTopicUmidade, myTopicDistancia, temperature, humidity, distance, botao
 
-    #print("Tópico: ", str(message.topic))
+    print("Tópico: ", str(message.topic))
     if (message.topic == myTopicTemperatura):
                temperature = int(str(message.payload.decode("utf-8")))
     if (message.topic == myTopicUmidade):
@@ -94,7 +94,7 @@ while True:
     tratarSens()
 
     # Indica o assunto de cada tópico
-    #print("Temperatura: ", temperature)
-    #print("Umidade: ", humidity)
+    print("Temperatura: ", temperature)
+    print("Umidade: ", humidity)
 
-    time.sleep(10)
+    #time.sleep(10)
