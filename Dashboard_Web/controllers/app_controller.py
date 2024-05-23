@@ -13,6 +13,8 @@ from controllers.user_controller import users
 
 #https://wokwi.com/projects/394918938756685825
 
+#Para você VEEEER!
+
 
 temperature = 0
 humidity = 0
