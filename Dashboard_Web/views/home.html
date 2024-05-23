@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             {% if current_user.is_authenticated %}
-            <a class="dropdown-item" href="{{ url_for('main.dashboard') }}">
+            <a class="dropdown-item" href="{{ url_for('read.dashboard') }}">
             {% else %}
             <a class="dropdown-item" href="{{ url_for('auth.login') }}">
             {% endif %}
