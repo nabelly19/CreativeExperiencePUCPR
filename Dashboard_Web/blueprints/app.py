@@ -59,10 +59,13 @@ def home():
 
 @app.route('/dashboard') 
 def dashboard():
-    global temperature, humidity, mensagem_de_alerta, mensagem_nivel_da_agua, alerta_value
-    values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
-    return render_template("dashboard.html", values=values)
+    return render_template("dashboard.html")
 
+@app.route('/realTimeData', methods= ['GET'])
+def any():
+    values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
+    values_json = json.dumps(values, ensure_ascii=False)
+    return jsonify(result = values_json)
 
 ### FALTA TRANSFERIR - 18/05 -> COLOCAR NO ARQUIVO DO ACTUATOR_CONTROLLER
 '''@app.route('/action_alert', methods=['POST'])
