@@ -1,16 +1,23 @@
-from flask import Flask, redirect
+from flask import Flask, redirect, render_template
 from flask_login import LoginManager
 from models.db import db, instance
 from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
 
 # Importação dos BLUEPRINTS
-from controllers.main_controller import main
 from controllers.auth_controller import auth
 from controllers.device_controller import devices
 from controllers.read_controller import read
 
 #https://wokwi.com/projects/394918938756685825
+
+
+temperature = 0
+humidity = 0
+mensagem_de_alerta = ""
+alerta_value = 0
+botao_value = 0
+mensagem_nivel_da_agua = ""
 
 
 def create_app():
@@ -35,10 +42,13 @@ def create_app():
         return Users.query.get(int(user_id))
 
     # Blueprints --------------------------------------------------------------------------------------
-    app.register_blueprint(main, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(devices, url_prefix='/')
     app.register_blueprint(read, url_prefix='/')
+
+    @app.route('/')
+    def index():
+        return render_template("home.html")
 
     @app.route('/action_alert', methods=['POST'])
     def action_alert():
@@ -89,29 +99,42 @@ def create_app():
     # Callback, escuta as informações vindas dos tópicos do broker
     @mqtt_client.on_message()
     def handle_mqtt_message(client, userdata, message):
+        from models.iot.log import Log
         print(message.payload.decode())
+
         if(message.topic==myTopicTemperatura):
             global temperature
             temperature = message.payload.decode()
+            Log.save_log(myTopicTemperatura, temperature)
+
         if(message.topic==myTopicUmidade):
             global humidity
             humidity = message.payload.decode()
+            Log.save_log(myTopicUmidade, humidity)
+
         if(message.topic==myTopicMensagem):
             global mensagem_de_alerta
             mensagem_de_alerta = message.payload.decode()
+            Log.save_log(myTopicMensagem, mensagem_de_alerta)
+
         if(message.topic==myTopicAction):
             global alerta_value
             alerta_value = message.payload.decode()
             if alerta_value == '0':
                 alerta_value = "Desligado"
+                Log.save_log(myTopicAction, alerta_value)
             elif alerta_value == "1":
                 alerta_value = "Ligado"
+                Log.save_log(myTopicAction, alerta_value)
+
+        # EXCLUIR ELE 
         if(message.topic==myTopicButton):
             global botao_value
             botao_value = message.payload.decode()
+
         if(message.topic==myTopicWaterLevel):
             global mensagem_nivel_da_agua
             mensagem_nivel_da_agua = message.payload.decode()
-
+            Log.save_log(myTopicWaterLevel, mensagem_nivel_da_agua)
 
     return app

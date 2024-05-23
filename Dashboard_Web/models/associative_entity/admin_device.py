@@ -17,4 +17,6 @@ class AdminDevice(db.Model):
     # Relationship
     admin = db.relationship('Admin', back_populates='admin_device', lazy=True)
     device = db.relationship('Device', back_populates='admin_device', lazy=True)
+
+    
     

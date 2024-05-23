@@ -22,3 +22,8 @@ class Topic(db.Model):
         new_topic = Topic(title = title, device_id = device_id)
         return create_with_integrity(new_topic, Topic.__tablename__)
     
+    def get_single_topic(name):
+        topic = Topic.query.filter(Topic.title == name).first()
+        if topic is not None:
+            return topic 
+    

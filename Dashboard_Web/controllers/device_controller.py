@@ -41,5 +41,5 @@ def devices_list():
 @devices.route('/del_device')
 def del_device():
     id = request.args.get('id', None)
-    sensors = Device.delete_device(id)
+    Device.delete_device(id)
     return redirect(url_for('devices.devices_list'))
