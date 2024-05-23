@@ -11,6 +11,3 @@ def create_with_integrity(object, tablename):
         db.session.rollback()
         return {"success": False, 
                 "errors": [str(e), f"Erro ao cadastrar {tablename} no banco de dados!"]}
-
-'''def is_null():
-    return'''

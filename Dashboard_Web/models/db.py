@@ -3,11 +3,6 @@ from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-# db= SQLAlchemy()
-
-# bd_name = "FloodPrevention"
-# password = "1234" # Gerar hash dessa senha
-
 load_dotenv()  # Carrega as variáveis do arquivo .env
 
 db = SQLAlchemy()

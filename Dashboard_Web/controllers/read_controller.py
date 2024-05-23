@@ -1,14 +1,27 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
-from models.iot.device import Device
+from flask_login import login_required
+from models.iot.log import Log
 
 read = Blueprint("read",__name__, template_folder="views")
 
-'''@read.route('')
-def list():
-    device_type = ['Sensor', 'Atuador']
-    all_devices = Device.get_sensors_with_topics()
 
-    if not all_devices:
+@read.route('/dashboard')
+@login_required
+def dashboard():
+    global temperature, humidity, mensagem_de_alerta, mensagem_nivel_da_agua, alerta_value
+    values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
+    return render_template("dashboard.html", values=values)
+
+
+@read.route('/logs')
+def logs():
+    all_logs = Log.get_logs_with_data()
+
+    if not all_logs:
         flash('Sem registros no momento!')
 
-    return render_template("devicesList.html", devices=all_devices, type=device_type)'''
+    return render_template("logs.html", logs=all_logs)
+
+@read.route('/register_log')
+def register_log(data, topic):
+    return

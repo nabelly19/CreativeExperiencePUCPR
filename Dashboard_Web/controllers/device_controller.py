@@ -37,3 +37,9 @@ def devices_list():
         flash('Sem registros no momento!')
 
     return render_template("devicesList.html", devices=all_devices, type=device_type)
+
+@devices.route('/del_device')
+def del_device():
+    id = request.args.get('id', None)
+    Device.delete_device(id)
+    return redirect(url_for('devices.devices_list'))

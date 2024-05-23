@@ -113,6 +113,34 @@ body {
     right: 20px;
 }
 
+.nome-hardware {
+    background-color: rgba(227, 227, 227, 0.50);
+    border-style: none;
+    border-radius: 30px;
+    height: 50px;
+    padding: 0px 20px;
+    width: auto;
+    height: 45px;
+    color: #f5f5f5;
+}
+
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-right: 20%;
+    color: #f5f5f5;
+    position: relative;
+}
+
+.remove-label input:hover, .remove-label input:focus {
+    outline: none;
+    border: none;
+} .remove-label input {
+    text-align: center;
+    cursor: default;
+}
+
 .editar{
     background-color: #003F69;
 }
@@ -131,12 +159,48 @@ body {
     background-color: #6f0a0a;
 }
 
+.button-modal-confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-modal-confirm button{
+    background-color: #ae1d1d;
+    border-color: #ae1d1d;
+}
+
+.button-edit button {
+    background-color: #079f51;
+    border-color: #079f51;
+} .button-edit button:hover {
+    background-color: #07783e;
+    border-color: #07783e;
+}
+
+.desc-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    margin-top: 10%;
+}
+
+.modal-content {
+    background-color: transparent;
+    border: none;
+}
+
 .modal-body{
-    background-color: #260D33;
+    background-color: #003F69;
     color: #f5f5f5;
+    border-radius: 0px 0px 10px 10px;
 }
 
 .modal-header{
-    background-color: #260D33;
+    background-color: #003F69;
     color: #f5f5f5;
+    border-radius: 10px 10px 0px 0px;
 }

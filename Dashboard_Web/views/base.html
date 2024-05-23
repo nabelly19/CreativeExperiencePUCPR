@@ -75,6 +75,12 @@
     <div id="content">
 		{% block content %} 
             {% block message %}{% endblock %}
+            {% if sensorList %}
+                {% block sensorList %}{% endblock %}
+            {% endif %}
+            {% if actuatorList %}
+                {% block actuatorList %}{% endblock %}
+            {% endif %}
         {% endblock %}
 	</div>
 

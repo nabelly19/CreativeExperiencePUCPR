@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Histórico | Flood Prevention</title>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/devicesList.css') }}">
+    <script defer src="{{ url_for('static', filename='js/search.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+                <div class="search_area">
+                    <p class="titulos-p">Histórico de dados</p>
+                    <form class="form-inline">
+                        <input id="searchInput" onkeyup="filterCards()" class="input_search" type="search" placeholder="Pesquisar" aria-label="Search">
+                        <button class="btn-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+
+                {% block message %}
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class="content-notification">
+                        <div class="notification">
+                            <p>{{ messages[0] }}</p>
+                            <a href="{{ url_for('devices.add_device') }}">Cadastrar dispositivos</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                {% endblock %}
+{% endblock %}

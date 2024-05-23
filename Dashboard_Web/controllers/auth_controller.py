@@ -23,7 +23,7 @@ def login_post():
 
     login_user(user, remember=remember)
 
-    return redirect(url_for('main.dashboard'))
+    return redirect(url_for('read.dashboard'))
 
 @auth.route('/signup')
 def signup():

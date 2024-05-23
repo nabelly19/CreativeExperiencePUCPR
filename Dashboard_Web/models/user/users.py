@@ -42,13 +42,13 @@ class Users(UserMixin, db.Model):
 
     def create_user(name, cpf, birth_date, gender, email, nickname, password):
         new_user = Users(
-            name=name,
-            cpf=cpf,
-            birth_date=birth_date,
-            gender=gender,
-            email=email,
-            nickname=nickname,
-            password=password,
+            name = name,
+            cpf = cpf,
+            birth_date = birth_date,
+            gender = gender,
+            email = email,
+            nickname = nickname,
+            password = password,
         )
         
         return create_with_integrity(new_user, Users.__tablename__)

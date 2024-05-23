@@ -10,12 +10,11 @@
 {% endblock %}
 
 {% block content %}
-    <div>
                 <div class="search_area">
                     <p class="titulos-p">Gerenciar dispositivos</p>
                     <form class="form-inline">
                         <input id="searchInput" onkeyup="filterCards()" class="input_search" type="search" placeholder="Pesquisar equipamento" aria-label="Search">
-                        <button class="btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button class="btn-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
 
@@ -33,38 +32,123 @@
                 {% endblock %}
 
                 <section class="lista-card-users">
+
+                    {% block sensorList %}
                     <!-- Iterar sobre todos os dispositivos -->
                     {% for device in devices %}
                         <!-- Verificar se o tipo do dispositivo é "Sensor" -->
-                        {% if device.type.value == 'Sensor' %}
+                        {% if device.type.value == type[0] %}
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Nome: {{ device.name }}</h4>
                                     <h5 class="card-text mb-2">Marca: {{ device.brand }}</h5>
                                     <h5 class="card-text mb-2">Tipo: {{ device.type.value }}</h5>
-
+                
                                     <!-- Iterar sobre os tópicos do dispositivo -->
                                     {% for topic in device.topic %}
                                         <h5 class="card-text mb-2">Tópico: {{ topic.title }}</h5>
+
+                                    <!-- Modal de exclusão específico para cada dispositivo -->
+                                    <div id="ModalDelSensor{{ device.id }}" class="modal fade">
+                                        <div class="modal-dialog border-rounded">
+                                            <div class="modal-content strongbg">
+                                                <div class="modal-header border-0">
+                                                    <button type="button" class="btn btn-close" style="background-color:#b9b9b9;" data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h3 class="text-center mx-auto">Remover um {{ device.type.value }}</h3>
+                                                    <form>
+                                                        <div class="col-6 mt-5 mx-auto desc-modal">
+                                                            <label for="senha" class="form-label text-center remove-label">
+                                                                <input type = "text" class="nome-hardware mb-2" name="device_name" value= "Nome: {{device.name}}" readonly>
+                                                                <input type = "text" class="nome-hardware mb-2" name="device_brand" value= "Marca: {{device.brand}}" readonly>
+                                                                <input type = "text" class="nome-hardware mb-2" name="topic_title" value= "Tópico: {{ topic.title }}" readonly>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-6 my-5 mx-auto button-modal-confirm">
+                                                            <button class="btn btn-danger mx-auto btn-lg">
+                                                                <a href="/del_device?id={{device.id}}">Confirmar</a>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal de edição específico para cada dispositivo -->
+                                    <div id="ModalEditSensor{{ device.id }}" class="modal fade">
+                                        <div class="modal-dialog border-rounded">
+                                            <div class="modal-content strongbg">
+                                                <div class="modal-header border-0">
+                                                    <button type="button" class="btn btn-close" style="background-color:#b9b9b9;" data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h3 class="text-center mx-auto">Editar um {{ device.type.value }}</h3>
+                                                    <form action="/" method="post">
+                                                        <div class="col-6 mt-5 mx-auto">
+                                                            <label for="senha" class="form-label text-center">
+                                                                <p>Nome</p>
+                                                                <input type = "text" class="nome-hardware mb-2" name="device_name" value= "{{device.name}}" required>
+                                                                <p>Marca</p>
+                                                                <input type = "text" class="nome-hardware mb-2" name="device_brand" value= "{{device.brand}}" required>
+                                                                <p>Tópico</p>
+                                                                <input type = "text" class="nome-hardware mb-2" name="topic_title" value= "{{topic.title}}" required>
+                                                                <div class="checkbox mt-4 mb-5">
+                                                                    <div class="form-check one">
+                                                                        <input class="form-check-input" type="radio" name="device_type" value="Sensor" id="flexCheckDefault">
+                                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                                            SENSOR
+                                                                        </label>
+                                                                    </div>
+                                                        
+                                                                    <div class="form-check two">
+                                                                        <input class="form-check-input" type="radio" name="device_type" value="Atuador" id="flexCheckDefault">
+                                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                                            ATUADOR
+                                                                        </label>
+                                                                    </div>
+                                                                    <div>
+                                                                        <input type="checkbox" id="is_active" name="is_active" checked />
+                                                                        <label for="is_active">Ativo?</label>
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-6 my-5 mx-auto button-modal-confirm button-edit">
+                                                            <button type="submit" class="btn btn-danger mx-auto btn-lg">Confirmar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     {% endfor %}
 
-                                    <h5 class="card-text mb-2">Status: {{ device.is_active }}</h5>
-                                    
+                                    {% if device.is_active == true %}
+                                    <h5 class="card-text mb-2">Status: Ativado</h5>
+                                    {% else %}
+                                    <h5 class="card-text mb-2">Status: Desativado</h5>
+                                    {% endif %}   
+
                                     <div class="card_btn_area">
-                                        <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
-                                                data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
-                                                data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
+                                        <button type="button" class="card-btn editar" data-bs-toggle="modal"
+                                                data-bs-target="#ModalEditSensor{{ device.id }}">Editar <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        <button type="button" class="card-btn apagar" data-bs-toggle="modal"
+                                                data-bs-target="#ModalDelSensor{{ device.id }}">Deletar <i class="fa-solid fa-trash-can"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         {% endif %}
                     {% endfor %}
-                
-                    <!-- Iterar sobre todos os dispositivos para Atuadores-->
+                {% endblock %}
+
+                {% block actuatorList %}
                     {% for device in devices %}
                         <!-- Verificar se o tipo do dispositivo é um Atuador -->
-                        {% if device.type.value == 'Atuador' %}
+                        {% if device.type.value == type[1] %}
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Nome: {{ device.name }}</h4>
@@ -74,101 +158,100 @@
                                     <!-- Iterar sobre os tópicos do dispositivo -->
                                     {% for topic in device.topic %}
                                         <h5 class="card-text mb-2">Tópico: {{ topic.title }}</h5>
+
+                                    <!-- Modal de exclusão específico para cada dispositivo -->
+                                    <div id="ModalDelActuator{{ device.id }}" class="modal fade">
+                                        <div class="modal-dialog border-rounded">
+                                            <div class="modal-content strongbg">
+                                                <div class="modal-header border-0">
+                                                    <button type="button" class="btn btn-close" style="background-color:#b9b9b9;" data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h3 class="text-center mx-auto">Remover um {{ device.type.value }}</h3>
+                                                    <form action="/del_device" method="POST">
+                                                        <div class="col-6 mt-5 mx-auto desc-modal">
+                                                            <label for="senha" class="form-label text-center remove-label">
+                                                                <input type = "text" class="nome-hardware mb-2" name="device_name" value= "Nome: {{device.name}}" readonly>
+                                                                <input type = "text" class="nome-hardware mb-2" name="device_brand" value= "Marca: {{device.brand}}" readonly>
+                                                                <input type = "text" class="nome-hardware mb-2" name="topic_title" value= "Tópico: {{ topic.title }}" readonly>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-6 my-5 mx-auto button-modal-confirm">
+                                                            <button type="submit" class="btn btn-danger mx-auto btn-lg">Confirmar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal de edição específico para cada dispositivo -->
+                                    <div id="ModalEditActuator{{ device.id }}" class="modal fade">
+                                        <div class="modal-dialog border-rounded">
+                                            <div class="modal-content strongbg">
+                                                <div class="modal-header border-0">
+                                                    <button type="button" class="btn btn-close" style="background-color:#b9b9b9;" data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h3 class="text-center mx-auto">Editar um {{ device.type.value }}</h3>
+                                                    <form action="/" method="post">
+                                                        <div class="col-6 mt-5 mx-auto">
+                                                            <label for="senha" class="form-label text-center">
+                                                                <p>Nome</p>
+                                                                <input type = "text" class="nome-hardware mb-2" name="device_name" value= "{{device.name}}" required>
+                                                                <p>Marca</p>
+                                                                <input type = "text" class="nome-hardware mb-2" name="device_brand" value= "{{device.brand}}" required>
+                                                                <p>Tópico</p>
+                                                                <input type = "text" class="nome-hardware mb-2" name="topic_title" value= "{{topic.title}}" required>
+                                                                <div class="checkbox mt-4 mb-5">
+                                                                    <div class="form-check one">
+                                                                        <input class="form-check-input" type="radio" name="device_type" value="Sensor" id="flexCheckDefault">
+                                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                                            SENSOR
+                                                                        </label>
+                                                                    </div>
+                                                        
+                                                                    <div class="form-check two">
+                                                                        <input class="form-check-input" type="radio" name="device_type" value="Atuador" id="flexCheckDefault">
+                                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                                            ATUADOR
+                                                                        </label>
+                                                                    </div>
+                                                                    <div>
+                                                                        <input type="checkbox" id="is_active" name="is_active" checked />
+                                                                        <label for="is_active">Ativo?</label>
+                                                                    </div>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-6 my-5 mx-auto button-modal-confirm button-edit">
+                                                            <button type="submit" class="btn btn-danger mx-auto btn-lg">Confirmar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     {% endfor %}
 
-                                    <h5 class="card-text mb-2">Status: {{ device.is_active }}</h5>
-
+                                    {% if device.is_active == true %}
+                                    <h5 class="card-text mb-2">Status: Ativado</h5>
+                                    {% else %}
+                                    <h5 class="card-text mb-2">Status: Desativado</h5>
+                                    {% endif %}  
                                     
                                     <div class="card_btn_area">
-                                        <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
-                                                data-bs-target="#ModalEdit">Editar <i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
-                                                data-bs-target="#JanelaModal">Deletar <i class="fa-solid fa-trash-can"></i></button>
+                                        <button type="button" class="card-btn editar" data-bs-toggle="modal"
+                                                data-bs-target="#ModalEditActuator{{ device.id }}">Editar <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        <button type="button" class="card-btn apagar" data-bs-toggle="modal"
+                                                data-bs-target="#ModalDelActuator{{ device.id }}">Deletar <i class="fa-solid fa-trash-can"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         {% endif %}
                     {% endfor %}
+                {% endblock %}                
                 </section>
-                
-            
-                <!-- modal validação -->
-                <div id="JanelaModal" class="modal fade">
-                    <div class="modal-dialog border-rounded">
-                        <div class="modal-content strongbg">
-                            <div class="modal-header border-0">
-                                <button type="button" class="btn btn-close " style="background-color:#b9b9b9;" data-bs-dismiss="modal">
-                                </button>
-                            </div>
-                            <div class="modal-body">
-        
-                                <h3 class="text-center mx-auto">Confirme a remoção deste device</h3>
-        
-                                <!-- <div class="hide alerta" id="error">
-                                <span>Validação não realizada, revise e tente novamente</span>
-                                <button id="alertabutton">&times;</button>
-                                </div> -->
-        
-                                <form action="/del_device" method="POST" id="login">
-        
-                                    <div class="col-6 mt-5 mx-auto">
-                                        <label for="senha" class="form-label text-center">
-                                            <h5>Digite o nome do device que deseja deletar:</h5>
-                                        </label>
-                                        <div class="validation_position">
-                                            <input class="form-control mx-auto" type="text" id="validation" name="validation">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 my-5 mx-auto">
-                                        <input type="submit" class="btn btn-danger mx-auto btn-lg">
-                                    </div>
-                                </form>
-        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- modal editar usuário -->
-                <div id="ModalEdit" class="modal fade">
-                    <div class="modal-dialog border-rounded">
-                        <div class="modal-content strongbg">
-                            <div class="modal-header border-0">
-                                <button type="button" class="btn btn-close " style="background-color:#b9b9b9;"
-                                    data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body">
-        
-                                <h3 class="text-center mx-auto">Edição de device</h3>
-        
-                                <!-- <div class="hide alerta" id="error">
-                                <span>Validação não realizada, revise e tente novamente</span>
-                                <button id="alertabutton">&times;</button>
-                            </div> -->
-        
-                                <form action="/" method="post" id="login">
-        
-                                    <div class="col-6 mt-5 mx-auto">
-                                        <label for="senha" class="form-label text-center">
-                                            <h5>Digite "APAGAR":</h5>
-                                        </label>
-                                        <div class="validation_position">
-                                            <input class="form-control mx-auto" type="text" id="validation" name="validation">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 my-5 mx-auto">
-                                        <input type="button" class="btn btn-danger mx-auto btn-lg"
-                                            value="Apagar usuário" id="apagar">
-                                    </div>
-                                </form>
-        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-        </section>   
-
-
-    </div>
 {% endblock %}
