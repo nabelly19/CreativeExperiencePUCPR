@@ -1,4 +1,4 @@
-var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+var $SCRIPT_ROOT = {{ request.script_root|tojson|safe };
 var intervalID = setInterval(update_values,5000);
 
   function update_values() {
