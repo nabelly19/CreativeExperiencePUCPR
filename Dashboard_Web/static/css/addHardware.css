@@ -51,7 +51,7 @@ html {
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-top: 19.5%;
+    transform: translateY(100%);
     top: 0;
     right: 0;
     width: 60%;
@@ -99,13 +99,20 @@ html {
 
 /* responsividade (media queries) */
 
+
+@media (max-width: 1440px) {
+    .content_form{
+        transform: translateY(40vh);
+    }
+}
+
 @media (max-width: 1090px) {
     .welcome-container {
         height: 100vh;
     }
 
     .title {
-        top: 26%;
+        top: 15%;
     }
 
     .content {
@@ -113,7 +120,7 @@ html {
     }
 
     .content_form {
-        margin-top: 15%;
+        transform: translateY(40vh);
     }
 
     .content p {
@@ -133,16 +140,8 @@ html {
         height: 100vh;
     }
 
-    .title {
-        top: 26%;
-    }
-
-    .content {
-        top: 35%;
-    }
-
     .content_form {
-        margin-top: 40%;
+        transform: translateY(40vh);
     }
 
     .content p {
@@ -163,7 +162,7 @@ html {
     }
 
     .content_form {
-        margin-top: 45%;
+        transform: translateY(40vh);
     }
 
     .content {
