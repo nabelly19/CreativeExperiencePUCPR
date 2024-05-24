@@ -23,7 +23,7 @@ def add_device():
     new_topic = Topic.create_topic(title, device_id.id)
 
     if not new_device["success"] or not new_topic["success"]:
-        #flash(", ".join(new_device["errors"]))
+        flash(", ".join(new_device["errors"]))
         return redirect(url_for('devices.add_device'))
 
     return redirect(url_for('devices.devices_list'))
@@ -43,3 +43,19 @@ def del_device():
     id = request.args.get('id', None)
     Device.delete_device(id)
     return redirect(url_for('devices.devices_list'))
+
+@devices.route('/renovate_device', methods=['POST'])
+def renovate_device():
+    id = request.args.get('id', None)
+    name = request.form.get("device_name")
+    brand = request.form.get("device_brand")
+    type = request.form.get("device_type")
+    new_title = request.form.get("topic_title")
+    old_title = request.form.get("topic_name")
+    is_active = True if request.form.get("is_active") == "on" else False
+    
+    Device.update_device(name, brand, type, is_active, id)
+    Topic.update_topic(new_title, old_title)
+    
+    return redirect(url_for('devices.devices_list'))
+    

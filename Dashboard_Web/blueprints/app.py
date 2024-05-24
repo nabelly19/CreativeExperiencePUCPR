@@ -19,7 +19,8 @@ alerta_value = 0
 botao_value = 0
 mensagem_nivel_da_agua = ""
 
-app= Flask(__name__)
+app = Flask(__name__)        
+
 ## __name__ is the application name
 SocketIO = SocketIO(app)
 
@@ -57,15 +58,14 @@ def logoff():
 def home():
     return render_template("home.html")
 
-@app.route('/dashboard') 
+@app.route('/dashboard')
 def dashboard():
     return render_template("dashboard.html")
 
 @app.route('/realTimeData', methods= ['GET'])
 def any():
     values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
-    values_json = json.dumps(values, ensure_ascii=False)
-    return jsonify(result = values_json)
+    return jsonify(values)
 
 ### FALTA TRANSFERIR - 18/05 -> COLOCAR NO ARQUIVO DO ACTUATOR_CONTROLLER
 '''@app.route('/action_alert', methods=['POST'])

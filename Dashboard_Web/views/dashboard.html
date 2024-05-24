@@ -24,14 +24,14 @@
                 <div class="humidity">
                     <p class="title_sensor">UMIDADE</p>
                     <ul>
-                        <p class="information" id="umidade"><!--{{ values["Umidade"] }}-->%</p>
+                        <p class="information" id="umidade">{{ values["Umidade"] }}%</p>
                     </ul>   
                     <i class="fa-solid fa-droplet icon-custom"></i>
                 </div>
                 <div class="water_level">
                     <p class="title_sensor">NÍVEL DE ÁGUA</p>
                     <ul>
-                        <p class="information" style="font-size: 40px;" id="nivelDaAgua"><!--{{ values["Nível da água"] }}--></p>
+                        <p class="information" style="font-size: 40px;" id="nivelDaAgua">{{ values["Nível da água"] }}</p>
                     </ul>
                     <i class="fa-solid fa-water icon-custom"></i>
                 </div>
@@ -40,14 +40,14 @@
                 <div class="alert_message">
                     <p class="title_sensor_white">MENSAGEM DO ALERTA</p>
                     <ul>
-                        <p class="information_white" id="mensagemDeAlerta"><!--{{ values["Mensagem de alerta"] }}--></p>  
+                        <p class="information_white" id="mensagemDeAlerta">{{ values["Mensagem de alerta"]}} </p>  
                     </ul>
                 </div>
                 <div class="alert_status">
                     <div class="data_status">
                         <p class="information_white", style="font-size: 15px; font-style: none; padding-top: 15px; padding-left: 20px;">STATUS DO ALERTA</p>
                         <ul>
-                            <p class="information_white", style="font-size: 30px;" id="statusDoAlarme"><!--{{ values["Status do alarme"] }}--></p>
+                            <p class="information_white", style="font-size: 30px;" id="statusDoAlarme">{{ values["Status do alarme"] }}</p>
                         </ul>
                         <i class="fa-solid fa-triangle-exclamation icon-custom"></i>
                         <div class="action_button">

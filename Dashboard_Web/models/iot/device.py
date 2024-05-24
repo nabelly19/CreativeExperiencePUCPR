@@ -35,7 +35,7 @@ class Device(db.Model):
         return create_with_integrity(new_device, Device.__tablename__)
     
     def get_single_device(id):
-        device = Device.query.filter(Device.id == id).first()
+        device = Device.query.get(id)
         if device is not None:
             return device    
     
@@ -49,3 +49,14 @@ class Device(db.Model):
             db.session.delete(device)
             db.session.commit()
         return Device.get_devices_with_topics()
+
+    def update_device(name, brand, type, is_active, device_id):
+        device = Device.get_single_device(device_id)
+        
+        if device is not None:
+            device.name = name
+            device.brand = brand
+            device.type = type
+            device.is_active = is_active
+            
+            return update_with_integrity(device, Device.__tablename__)

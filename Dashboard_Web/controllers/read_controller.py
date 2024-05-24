@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash
+from flask import Blueprint, request, render_template, redirect, url_for, flash, jsonify
 from flask_login import login_required
 from models.iot.log import Log
 
@@ -29,6 +29,12 @@ def logs():
         flash('Sem registros no momento!')
 
     return render_template("logs.html", logs=all_logs)
+
+
+@read.route('/realTimeData', methods= ['GET'])
+def any():
+    values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
+    return jsonify(values)
 
 @read.route('/register_log')
 #@login_required
