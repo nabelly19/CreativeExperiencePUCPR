@@ -13,10 +13,10 @@ html {
 
 .welcome-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap :wrap;
     align-items: flex-start;
     position: absolute;
-    height: 93.1vh;
+    height: 140vh;
     width: 35%;
     right: 0;
     background: rgb(0, 216, 255);
@@ -54,7 +54,7 @@ html {
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-top: 15%;
+    transform: translateY(30vh);
     top: 0;
     right: 0;
     width: 60%;
@@ -111,7 +111,7 @@ html {
     }
 
     .content_form {
-        margin-top: 15%;
+        transform: translateY(25vh);
     }
 
     .content p {
@@ -140,7 +140,7 @@ html {
     }
 
     .content_form {
-        margin-top: 40%;
+        transform: translateY(25vh);
     }
 
     .content p {
@@ -161,7 +161,7 @@ html {
     }
 
     .content_form {
-        margin-top: 45%;
+        transform: translateY(25vh);
     }
 
     .content {
@@ -185,7 +185,7 @@ html {
     }
 
     .content_form {
-        margin-top: 45%;
+        transform: translateY(25vh);
     }
 
     .content {
@@ -209,7 +209,7 @@ html {
     }
 
     .content_form {
-        margin-top: 35%;
+        transform: translateY(25vh);
     }
 
     .content {
@@ -251,7 +251,7 @@ html {
     }
 
     .content_form {
-        margin-top: 15%;
+        transform: translateY(10vh);
         margin-bottom: 5%;
         position: relative;
         left: 0;
@@ -285,7 +285,7 @@ html {
     }
 
     .content_form {
-        margin-top: 25%;
+        transform: translateY(10vh);
         margin-bottom: 5%;
         position: relative;
         left: 0;
@@ -331,7 +331,7 @@ html {
     }
 
     .content_form {
-        margin-top: 25%;
+        transform: translateY(10vh);
         margin-bottom: 5%;
         position: relative;
         left: 0;
@@ -354,6 +354,29 @@ html {
 
     .login {
         width: 250px;
+    }
+
+}
+
+@media (max-width: 310px) {
+    .login{
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 310px) {
+
+    .content_form{
+        width: 50%;
+    }
+
+    .login{
+        width: 60%;
+    }
+
+    #btn_cad{
+        width: 50%;
     }
 
 }

@@ -249,3 +249,30 @@ button:hover {
     border: 0.5px solid #260D33;
     color: #260D33;
 }
+
+@media (max-width: 1440px){
+    .home{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+
+    .orientacao-cards{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 1024px){
+    .alert_message{
+        width: 90%;
+    }
+
+    .null_rectangle{
+        width: 90%;
+    }
+}

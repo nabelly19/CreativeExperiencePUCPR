@@ -10,7 +10,7 @@ html {
 
 .logo {
     position: absolute;
-    margin-top: 16%;
+    transform: translateY(30vh);
     top: 50%;
     left: 0;
     right: 0;
@@ -57,13 +57,13 @@ html {
 
 @media (max-width: 930px){
     .logo{
-        margin-top: 50%;
+        transform: translateY(30vh);
     }
 }
 
 @media (max-width: 830px){
     .logo{
-        margin-top: 50%;
+        transform: translateY(30vh);
     }
 
     .button{
@@ -74,7 +74,7 @@ html {
 
 @media (max-width: 500px){
     .logo{
-        margin-top: 70%;
+        transform: translateY(30vh);
     }
 
     .button{
@@ -85,7 +85,7 @@ html {
 
 @media (max-width: 430px){
     .logo{
-        margin-top: 60%;
+        transform: translateY(30vh);
     
     }
 
