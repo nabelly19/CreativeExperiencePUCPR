@@ -31,7 +31,7 @@ class Device(db.Model):
                         brand = brand, 
                         type = type, 
                         is_active = is_active,
-                        creation_date = datetime.now)
+                        creation_date = datetime.now())
         
         return create_with_integrity(new_device, Device.__tablename__)
     

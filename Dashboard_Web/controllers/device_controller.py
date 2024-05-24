@@ -23,7 +23,7 @@ def add_device():
     new_topic = Topic.create_topic(title, device_id.id)
 
     if not new_device["success"] or not new_topic["success"]:
-        flash(", ".join(new_device["errors"]))
+        flash((new_topic["errors"]))
         return redirect(url_for('devices.add_device'))
 
     return redirect(url_for('devices.devices_list'))

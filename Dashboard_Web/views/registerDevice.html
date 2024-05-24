@@ -20,6 +20,18 @@
 </div>
 
 <div class="content_form">
+    {% block message %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="content-notification">
+        <div class="notification">
+            <p>{{ messages[0] }}</p>
+            <a href="{{ url_for('devices.add_device') }}">Cadastrar dispositivos</a>
+        </div>
+    </div>
+    {% endif %}
+    {% endwith %}
+    {% endblock %}
     <form class="form mt-1" action="/add_device" method="POST">
         <input class="nome-hardware mb-2" placeholder="Nome" name="device_name">
         <input class="nome-hardware mb-2" placeholder="Marca" name="device_brand">

@@ -49,7 +49,7 @@ class Users(UserMixin, db.Model):
             email = email,
             nickname = nickname,
             password = password,
-            creation_date = datetime.now
+            creation_date = datetime.now()
         )
         
         return create_with_integrity(new_user, Users.__tablename__)
