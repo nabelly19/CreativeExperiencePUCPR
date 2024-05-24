@@ -18,7 +18,7 @@ class Device(db.Model):
     brand = db.Column(db.String(100), nullable=False)
     type = db.Column(db.Enum(DeviceType), nullable=False)
     is_active = db.Column(db.Boolean, nullable=False, default=False)
-    creation_date = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    creation_date = db.Column(db.DateTime, nullable=False)
 
     # Relationship
     admin_device = db.relationship('AdminDevice', back_populates='device', cascade='all, delete', lazy=True)
@@ -30,7 +30,8 @@ class Device(db.Model):
         new_device = Device(name = name, 
                         brand = brand, 
                         type = type, 
-                        is_active = is_active)
+                        is_active = is_active,
+                        creation_date = datetime.now)
         
         return create_with_integrity(new_device, Device.__tablename__)
     

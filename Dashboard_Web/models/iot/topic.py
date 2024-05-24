@@ -8,8 +8,8 @@ class Topic(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
 
     title = db.Column(db.String(100), nullable=False)
-    creation_date = db.Column(db.DateTime, nullable = False, default=datetime.now)
-    update_date = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    creation_date = db.Column(db.DateTime, nullable = False)
+    update_date = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
 
     # Foreign keys
     device_id = db.Column(db.Integer, db.ForeignKey('device.id', ondelete='SET NULL'), nullable=True)
@@ -19,7 +19,9 @@ class Topic(db.Model):
     device = db.relationship('Device', back_populates='topic', lazy=True)
 
     def create_topic(title, device_id):
-        new_topic = Topic(title = title, device_id = device_id)
+        new_topic = Topic(title = title,
+                          creation_date = datetime.now, 
+                          device_id = device_id)
         return create_with_integrity(new_topic, Topic.__tablename__)
     
     def get_single_topic(name):
@@ -32,5 +34,5 @@ class Topic(db.Model):
         
         if topic is not None:
             topic.title = new_title
-            
+
             return update_with_integrity(topic, Topic.__tablename__)

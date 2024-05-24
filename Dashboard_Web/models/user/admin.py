@@ -6,7 +6,7 @@ class Admin(db.Model):
 
     id= db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     
-    creation_date = db.Column(db.DateTime, nullable = False, default=datetime.now)
+    creation_date = db.Column(db.DateTime, nullable = False)
     update_date = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
 
     # Foreign Key

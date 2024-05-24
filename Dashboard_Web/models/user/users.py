@@ -16,7 +16,7 @@ class Users(UserMixin, db.Model):
     password = db.Column(db.String(200), nullable= False)
     is_active= db.Column(db.Boolean, nullable=False, default=True)
     
-    creation_date = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    creation_date = db.Column(db.DateTime, nullable=False)
     update_date = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
 
     # Relationship (bidirecional)
@@ -49,6 +49,7 @@ class Users(UserMixin, db.Model):
             email = email,
             nickname = nickname,
             password = password,
+            creation_date = datetime.now
         )
         
         return create_with_integrity(new_user, Users.__tablename__)
