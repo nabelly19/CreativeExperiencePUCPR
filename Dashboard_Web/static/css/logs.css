@@ -41,9 +41,9 @@ button i {
 
 .content-search {
     border: 1px solid #F5F5F5;
-    margin: 0px 100px;
     border-radius: 10px;
     padding: 5px;
+    margin: 25px 100px;
 }
 
 form {
