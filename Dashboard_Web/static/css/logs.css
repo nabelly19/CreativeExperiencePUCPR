@@ -25,8 +25,9 @@ body {
     border-radius: 5px;
     background-color: #260D33;
     color: #F5F5F5;
-    margin: 5px 2.5px;
-    padding: 0px 25px;
+    margin: 5px;
+    padding: 10px 25px;
+    width: 50%;
 }
 
 .btn-search:hover, .btn-clear:hover{
@@ -55,8 +56,13 @@ select, form input{
     background: #F5F5F5;
     color: #260D33;
     border: none;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
     margin: 5px;
+    width: 100%;
+}
+
+input:hover {
+    border: none;
 }
 
