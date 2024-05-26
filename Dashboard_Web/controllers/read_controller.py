@@ -25,8 +25,8 @@ def dashboard():
 def logs():
     all_logs = Log.get_logs_with_data()
 
-    if not all_logs:
-        flash('Sem registros no momento!')
+    #if not all_logs:
+        #flash('Sem registros no momento!')
 
     return render_template("logs.html", logs=all_logs)
 
@@ -36,7 +36,7 @@ def any():
     values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
     return jsonify(values)
 
-@read.route('/register_log')
+'''@read.route('/register_log')
 #@login_required
 def register_log(data, topic):
-    return
+    return'''

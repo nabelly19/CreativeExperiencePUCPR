@@ -1,0 +1,62 @@
+body {
+    background: url("/static/img/backgroundgeral.svg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#config-nav {
+    color: #F5F5F5;
+}
+
+.titulo_area{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #f5f5f5;
+    margin-top: 50px;
+    padding: 0px 100px;
+}
+
+.btn-search, .btn-clear{
+    border-style: none;
+    border-radius: 5px;
+    background-color: #260D33;
+    color: #F5F5F5;
+    margin: 5px 2.5px;
+    padding: 0px 25px;
+}
+
+.btn-search:hover, .btn-clear:hover{
+    background-color: #F5F5F5;
+    color: #260D33;
+}
+
+button i {
+    margin-left: 10px;
+}
+
+.content-search {
+    border: 1px solid #F5F5F5;
+    margin: 0px 100px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+}
+
+select, form input{
+    outline: 0;
+    background: #F5F5F5;
+    color: #260D33;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+

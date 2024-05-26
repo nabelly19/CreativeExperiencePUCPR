@@ -5,17 +5,13 @@
 {% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/devicesList.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logs.css') }}">
     <script defer src="{{ url_for('static', filename='js/search.js') }}"></script>
 {% endblock %}
 
 {% block content %}
-                <div class="search_area">
+                <div class="titulo_area">
                     <p class="titulos-p">Histórico de dados</p>
-                    <form class="form-inline">
-                        <input id="searchInput" onkeyup="filterCards()" class="input_search" type="search" placeholder="Pesquisar" aria-label="Search">
-                        <button class="btn-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
                 </div>
 
                 {% block message %}
@@ -24,10 +20,46 @@
                     <div class="content-notification">
                         <div class="notification">
                             <p>{{ messages[0] }}</p>
-                            <a href="{{ url_for('devices.add_device') }}">Cadastrar dispositivos</a>
                         </div>
                     </div>
                     {% endif %}
                     {% endwith %}
                 {% endblock %}
+
+                <div class="content-search">
+                    <form action="/add_device" method="POST">
+                        <select class="" id="inputGroupSelect01">
+                            <option selected>Escolher dispositivo</option>
+                            <option value="1">Um</option>
+                            <option value="2">Dois</option>
+                            <option value="3">Três</option>
+                        </select>
+
+                        <select class="" id="inputGroupSelect01">
+                            <option selected>Escolher tópico</option>
+                            <option value="1">Um</option>
+                            <option value="2">Dois</option>
+                            <option value="3">Três</option>
+                        </select>
+                        <input type="datetime-local" class="" name="device_name">
+                        <input type="datetime-local" class="" name="device_name">
+                        <button class="btn-search" type="submit">Buscar <i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button class="btn-clear" type="submit">Limpar <i class="fa-solid fa-trash-can"></i></button>
+                    </form>
+                </div>
+
+                <div class="content-logs">
+                    <div class="title-log">
+                        <h6>Dispositivo</h6>
+                        <h6>Tópico</h6>
+                        <h6>Data</h6>
+                        <h6>Informação</h6>
+                    </div>
+                    <div class="card-log">
+                        <p>Nome</p>
+                        <p>Dispositivo</p>
+                        <p>2024/13/11 00:00:00</p>
+                        <p>Dado coletado</p>
+                    </div>
+                </div>
 {% endblock %}
