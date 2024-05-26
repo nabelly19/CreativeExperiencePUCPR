@@ -75,6 +75,14 @@ input:hover {
     display: flex;
 }
 
+.title-device, .title-datetime, .title-topic {
+    width: 31%;
+    text-align: center;
+} .title-data {
+    width: 100%;
+    text-align: center;
+}
+
 .card-log {
     background-color: #F5F5F5;
     border-radius: 10px;
@@ -95,9 +103,11 @@ p {
     width: 30%;
     border-right: #260D33 1px solid;
     text-align: center;
+    padding: 0px 10px;
 }
 
 .log-data {
     width: 100%;
     text-align: center;
+    padding: 0px 10px;
 }
