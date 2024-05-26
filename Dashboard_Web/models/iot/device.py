@@ -39,6 +39,10 @@ class Device(db.Model):
         device = Device.query.get(id)
         if device is not None:
             return device    
+        
+    def get_all_devices():
+        all_devices = Device.query.all()
+        return all_devices
     
     def get_devices_with_topics():
         devices = Device.query.options(joinedload(Device.topic)).all()

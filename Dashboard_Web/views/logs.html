@@ -27,22 +27,23 @@
                 {% endblock %}
 
                 <div class="content-search">
-                    <form action="/add_device" method="POST">
-                        <select id="inputGroupSelect01">
+                    <form action="/logs_search" method="POST">
+                        <select id="inputGroupSelect01" required>
                             <option selected>Escolher dispositivo</option>
                             <option value="todos">Todos</option>
                             <option value="2">Dois</option>
                             <option value="3">Três</option>
                         </select>
 
-                        <select id="inputGroupSelect01">
+                        <select id="inputGroupSelect01" required>
                             <option selected>Escolher tópico</option>
                             <option value="todos">Todos</option>
-                            <option value="2">Dois</option>
-                            <option value="3">Três</option>
+                            {% for topic in topics %}
+                            <option value="{{ topic.id }}">{{ topic.title }}</option>
+                            {% endfor %}
                         </select>
-                        <input type="datetime-local" class="" name="device_name">
-                        <input type="datetime-local" class="" name="device_name">
+                        <input type="datetime-local" class="" name="device_name" required>
+                        <input type="datetime-local" class="" name="device_name" required>
                         <button class="btn-search" type="submit">Buscar <i class="fa-solid fa-magnifying-glass"></i></button>
                         <button class="btn-clear" type="submit">Limpar <i class="fa-solid fa-trash-can"></i></button>
                     </form>

@@ -1,6 +1,8 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash, jsonify
 from flask_login import login_required
 from models.iot.log import Log
+from models.iot.topic import Topic
+from models.iot.device import Device
 
 read = Blueprint("read",__name__, template_folder="views")
 
@@ -23,12 +25,13 @@ def dashboard():
 @read.route('/logs')
 #@login_required
 def logs():
-    all_logs = Log.get_logs_with_data()
+    all_topics = Topic.get_all_topics()
+    all_devices = Device.get_all_devices()
 
     #if not all_logs:
         #flash('Sem registros no momento!')
 
-    return render_template("logs.html", logs=all_logs)
+    return render_template("logs.html", topics=all_topics, devices=all_devices)
 
 
 @read.route('/realTimeData', methods= ['GET'])

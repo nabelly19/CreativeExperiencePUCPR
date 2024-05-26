@@ -28,6 +28,10 @@ class Topic(db.Model):
         topic = Topic.query.filter(Topic.title == name).first()
         if topic is not None:
             return topic
+        
+    def get_all_topics():
+        all_topics = Topic.query.all()
+        return all_topics
 
     def update_topic(new_title, old_title):
         topic = Topic.get_single_topic(old_title)
