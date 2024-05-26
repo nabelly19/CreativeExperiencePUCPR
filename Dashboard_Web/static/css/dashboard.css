@@ -136,6 +136,8 @@ body {
 .data_status {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 280px;
     height: 135px;
     background-color: #F5F5F5;
@@ -255,24 +257,185 @@ button:hover {
         display: flex;
         justify-content: center;
         flex-direction: column;
+        align-items: center;
+    }
 
+    .temperature{
+        width: 100%;
+    }
+
+    .humidity{
+        width: 100%;
+    }
+
+    .water_level{
+        width: 100%;
+    }
+
+    .null_rectangle{
+        width: 100%;
     }
 
     .orientacao-cards{
         display: flex;
         justify-content: center;
+        align-content: center;
         align-items: center;
         flex-direction: column;
         flex-wrap: wrap;
     }
+
+    .data_status{
+        width: 100%;
+    }
+
+    .date_time{
+        width: 100%;
+    }
+
+    
 }
 
 @media (max-width: 1024px){
     .alert_message{
-        width: 90%;
+        width: 100%;
     }
 
     .null_rectangle{
         width: 90%;
     }
+
+    .water_level{
+        width: 100%;
+    }
+
+    .data_status{
+        width: 100%;
+    }
+
 }
+
+@media (max-width: 450px){
+    .alert_message{
+        width: 100%;
+    }
+
+    .null_rectangle{
+        width: 100%;
+    }
+
+    .temperature{
+        width: 100%;
+    }
+
+    .humidity{
+        width: 100%; 
+    }
+
+    .water_level{
+        width: 100%;
+    }
+
+    .data_status{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .data_status #control.button{
+        width: 100%;
+        margin: 0%;
+    }
+
+    .data_status #statusDoAlarme.information_white {
+        padding: none;
+    }
+
+    .orientacao-cards{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .fa-solid {
+        display: none;
+    }
+}
+
+@media (max-width: 320px){
+    .alert_message{
+        width: 50%;
+    }
+
+    .alert_status{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .null_rectangle{
+        width: 50%;
+    }
+
+    .temperature{
+        width: 50%;
+    }
+
+    .humidity{
+        width: 50%; 
+    }
+
+    .water_level{
+        width: 50%;
+    }
+
+    .data_status{
+        width: 50%;
+        padding-top: 30%;
+        padding-bottom: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .data #statusDoAlarme.information_white {
+        padding: none;
+    }
+
+    .data_status #control.button{
+        width: 100%;
+        margin: 0%;
+    }
+
+    .data_status .information_white{
+        font-size: medium;
+    }
+
+    .orientacao-cards{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .fa-solid {
+        display: none;
+    }
+
+    .date_time{
+        width: 50%;
+    }
+
+    #hora{
+        font-size: 30px;
+    }
+}
+
+
