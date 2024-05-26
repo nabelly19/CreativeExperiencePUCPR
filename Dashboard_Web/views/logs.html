@@ -28,14 +28,14 @@
 
                 <div class="content-search">
                     <form action="/add_device" method="POST">
-                        <select class="" id="inputGroupSelect01">
+                        <select id="inputGroupSelect01">
                             <option selected>Escolher dispositivo</option>
                             <option value="todos">Todos</option>
                             <option value="2">Dois</option>
                             <option value="3">Três</option>
                         </select>
 
-                        <select class="" id="inputGroupSelect01">
+                        <select id="inputGroupSelect01">
                             <option selected>Escolher tópico</option>
                             <option value="todos">Todos</option>
                             <option value="2">Dois</option>
@@ -50,16 +50,16 @@
 
                 <div class="content-logs">
                     <div class="title-log">
-                        <h6>Dispositivo</h6>
-                        <h6>Tópico</h6>
-                        <h6>Data</h6>
-                        <h6>Informação</h6>
+                        <h6 class="title-device">Dispositivo</h6>
+                        <h6 class="title-topic">Tópico</h6>
+                        <h6 class="title-datetime">Data | Horário</h6>
+                        <h6 class="title-data">Informação</h6>
                     </div>
                     <div class="card-log">
-                        <p>Nome</p>
-                        <p>Dispositivo</p>
-                        <p>2024/13/11 00:00:00</p>
-                        <p>Dado coletado</p>
+                        <p class="log-device">Dispositivo</p>
+                        <p class="log-topic">Nome tópico</p>
+                        <p class="log-datetime">2024/13/11 00:00:00</p>
+                        <p class="log-data">Dado coletado</p>
                     </div>
                 </div>
 {% endblock %}

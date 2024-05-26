@@ -43,7 +43,7 @@ button i {
     border: 1px solid #F5F5F5;
     border-radius: 10px;
     padding: 5px;
-    margin: 25px 100px;
+    margin: 50px 100px;
 }
 
 form {
@@ -66,3 +66,49 @@ input:hover {
     border: none;
 }
 
+.content-logs {
+    margin: 50px 100px;
+}
+
+.title-log {
+    color: #F5F5F5;
+    display: flex;
+    margin: 20px 0px;
+}
+
+.title-device, .title-datetime, .title-topic {
+    width: 31%;
+    text-align: center;
+} .title-data {
+    width: 100%;
+    text-align: center;
+}
+
+.card-log {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    margin: 20px 0px 10px 0px;
+    display: flex;
+    color: #260D33;
+}
+
+p {
+    margin: 0;
+}
+
+.card-log p {
+    padding: 15px;
+}
+
+.log-topic, .log-device, .log-datetime {
+    width: 30%;
+    border-right: #260D33 1px solid;
+    text-align: center;
+    padding: 0px 10px;
+}
+
+.log-data {
+    width: 100%;
+    text-align: center;
+    padding: 0px 10px;
+}
