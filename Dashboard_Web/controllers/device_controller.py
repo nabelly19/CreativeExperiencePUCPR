@@ -17,7 +17,7 @@ def add_device():
     type = request.form.get("device_type")
     title = request.form.get("topic_title")
     is_active = True if request.form.get("is_active") == "on" else False
-
+ 
     new_device = Device.create_device(name, brand, type, is_active)
     device_id = new_device["object"]
     new_topic = Topic.create_topic(title, device_id.id)

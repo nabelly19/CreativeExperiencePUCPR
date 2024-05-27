@@ -1,6 +1,6 @@
 from models.db import db, datetime
 from models.iot.topic import Topic
-from models.validate.integrity import *
+from models.validate.integrity import create_with_integrity, update_with_integrity
 from sqlalchemy.orm import joinedload
 from enum import Enum
 
@@ -38,10 +38,10 @@ class Device(db.Model):
     def get_single_device(id):
         device = Device.query.get(id)
         if device is not None:
-            return device    
+            return device
         
-    def get_all_devices():
-        all_devices = Device.query.all()
+    def get_all_devices_distinct():
+        all_devices = db.session.query(Device.name).distinct().all()
         return all_devices
     
     def get_devices_with_topics():

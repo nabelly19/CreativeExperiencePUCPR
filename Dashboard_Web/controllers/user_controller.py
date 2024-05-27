@@ -4,3 +4,4 @@ from models.user.client import Client
 from models.user.admin import Admin
 
 users = Blueprint("users",__name__, template_folder="views")
+

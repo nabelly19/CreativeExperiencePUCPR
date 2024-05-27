@@ -1,6 +1,6 @@
 from flask_login import UserMixin
 from models.db import db, datetime
-from models.validate.integrity import *
+from models.validate.integrity import create_with_integrity
 
 class Users(UserMixin, db.Model):
     __tablename__ = 'users'

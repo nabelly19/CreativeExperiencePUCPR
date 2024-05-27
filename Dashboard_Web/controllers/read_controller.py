@@ -3,6 +3,8 @@ from flask_login import login_required
 from models.iot.log import Log
 from models.iot.topic import Topic
 from models.iot.device import Device
+from models.db import datetime
+
 
 read = Blueprint("read",__name__, template_folder="views")
 
@@ -26,20 +28,32 @@ def dashboard():
 #@login_required
 def logs():
     all_topics = Topic.get_all_topics()
-    all_devices = Device.get_all_devices()
+    all_devices = Device.get_all_devices_distinct()
 
     #if not all_logs:
         #flash('Sem registros no momento!')
 
     return render_template("logs.html", topics=all_topics, devices=all_devices)
 
-
 @read.route('/realTimeData', methods= ['GET'])
 def any():
     values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
     return jsonify(values)
 
-'''@read.route('/register_log')
-#@login_required
-def register_log(data, topic):
-    return'''
+@read.route('/logs_search', methods=['POST'])
+def logs_search():
+    topic_id = request.form.get('topic')
+    start_date = request.form.get('datetime_inicial')
+    end_date = request.form.get('datetime_final')
+
+    # Converte as datas para datetime, se necessário
+    if start_date:
+        start_date = datetime.strptime(start_date, '%Y-%m-%dT%H:%M')
+    if end_date:
+        end_date = datetime.strptime(end_date, '%Y-%m-%dT%H:%M')
+
+    # Filtrar por device.name se especificado
+    if topic_id and topic_id != 'todos':
+        logs = Log.get_logs_for_topic(topic_id, start_date, end_date)
+
+    return render_template('logs.html', logs=logs)

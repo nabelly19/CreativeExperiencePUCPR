@@ -1,0 +1,62 @@
+{% extends"base.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/registerUser.css') }}">
+<script defer src="{{ url_for('static', filename='js/addUser.js') }}"></script>
+{% endblock %}
+
+{% block title %}
+    <title>Cadastrar administrador | Flood Prevention</title>
+{% endblock %}
+
+{% block content%}
+<div class="welcome-container">
+    <div class="title">
+        <h1>Cadastrar administrador</h1>
+    </div>
+
+    <div class="content">
+        <p>Uma ferramenta poderosa nas mãos da comunidade para enfrentar as inundações.</p>
+    </div>
+</div>
+
+<div class="title_hide">Cadastrar administrador</div>
+
+<div class="content_form">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="notification is-danger">
+            {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+        </div>
+    {% endif %}
+    {% endwith %}
+    <form class="form mt-1" action="/signup" method="POST" >
+        <input class="login mb-4" placeholder="Nome" name="name">
+        <input class="login mb-4" placeholder="CPF" name="cpf">
+        <input type="date" class="login mb-4" placeholder="Data de nascimento" name="birth_date">
+        <input class="login mb-4" placeholder="Gênero" name="gender">
+        <input class="login mb-4" placeholder="E-mail" name="email">
+        <input class="login mb-4" placeholder="Usuário" name="nickname">
+
+        <input type="password" class="login mb-4" placeholder="Senha" name="password" id="senha">
+
+        <input type="password" class="login mb-2" placeholder="Confirme a senha" name="confirm_password" id="senhaC">
+    
+        <div class="checkbox mt-5 mb-5">
+            <div class="form-check">
+                <input class="form-check-input" name="user_type" type="radio" value="adm" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    ADMINISTRADOR
+                </label>
+            </div>
+
+            <div class="form-check two">
+                <input class="form-check-input" name="user_type" type="radio" value="user" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    COMUNIDADE
+                </label>
+            </div>
+        </div>
+        <input type = "submit" class="btn_geral mb-5" id="btn_cad" value = "Cadastrar" />
+    </form>
+</div>
+{% endblock %}

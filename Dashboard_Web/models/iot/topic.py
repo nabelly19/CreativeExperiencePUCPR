@@ -1,13 +1,13 @@
 from models import db
 from models.db import datetime
-from models.validate.integrity import *
+from models.validate.integrity import create_with_integrity, update_with_integrity
 
 class Topic(db.Model):
     __tablename__ = 'topic'
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
 
-    title = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(100), nullable=False, unique=True)
     creation_date = db.Column(db.DateTime, nullable = False)
     update_date = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
 

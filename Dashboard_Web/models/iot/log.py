@@ -1,5 +1,7 @@
 from models import db
 from models.db import datetime
+from models.iot.device import Device
+from models.iot.topic import Topic
 from sqlalchemy.orm import joinedload
 from models.validate.integrity import *
 
@@ -25,9 +27,7 @@ class Log(db.Model):
         return all_logs
 
     def save_log(topic_name, information):
-        from models.iot.topic import Topic
         topic_result = Topic.get_single_topic(topic_name)
-        from models.iot.device import Device
         device_result = Device.get_single_device(topic_result.device_id)
         if (topic_result is not None) and (device_result.is_active == True):
             new_log = Log(information = information, 
@@ -35,3 +35,13 @@ class Log(db.Model):
                           device_id = device_result.id)
             
             return create_with_integrity(new_log, Log.__tablename__)
+
+    def get_logs_for_topic(topic_id, start_date, end_date):
+        logs = (Log.query.join(Topic)
+                .filter(Topic.id == topic_id)
+                .filter(Log.creation_date >= start_date)
+                .filter(Log.creation_date <= end_date)
+                .options(joinedload(Log.topic))
+                .all())
+        
+        return logs

@@ -10,4 +10,4 @@ setInterval(function() {
           document.getElementById('statusDoAlarme').textContent = data["Status do alarme"];
       }
   );
-}, 5000);
+}, 15000);

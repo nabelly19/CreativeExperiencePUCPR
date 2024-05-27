@@ -112,3 +112,15 @@ p {
     text-align: center;
     padding: 0px 10px;
 }
+
+/* Estilo para o campo de seleção desabilitado */
+.disabled-select {
+    background-color: #f0f0f0;
+    color: #aaa;
+    cursor: not-allowed; /* Cursor padrão para desabilitado */
+}
+
+/* Estilo para o ponteiro do mouse */
+.blocked-pointer {
+    cursor: url('/Dashboard_Web/static/img/ban-solid.svg'); /* Substitua pelo caminho do seu ícone de bloqueio */
+}
