@@ -45,3 +45,13 @@ class Log(db.Model):
                 .all())
         
         return logs
+
+    def get_logs_for_device(device_name, start_date, end_date):
+        logs = (Log.query.join(Device)
+                .filter(Device.name == device_name)
+                .filter(Log.creation_date >= start_date)
+                .filter(Log.creation_date <= end_date)
+                .options(joinedload(Log.device))
+                .all())
+        
+        return logs

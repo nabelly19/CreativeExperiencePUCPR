@@ -43,6 +43,7 @@ def any():
 @read.route('/logs_search', methods=['POST'])
 def logs_search():
     topic_id = request.form.get('topic')
+    device_name = request.form.get('device')
     start_date = request.form.get('datetime_inicial')
     end_date = request.form.get('datetime_final')
 
@@ -52,8 +53,12 @@ def logs_search():
     if end_date:
         end_date = datetime.strptime(end_date, '%Y-%m-%dT%H:%M')
 
-    # Filtrar por device.name se especificado
+    # Filtrar por log.id
     if topic_id and topic_id != 'todos':
         logs = Log.get_logs_for_topic(topic_id, start_date, end_date)
+
+    # Filtrar por device.name
+    if device_name and device_name != 'todos':
+        logs = Log.get_logs_for_device(device_name, start_date, end_date)
 
     return render_template('logs.html', logs=logs)
