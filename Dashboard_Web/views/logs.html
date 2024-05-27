@@ -14,20 +14,8 @@
                     <p class="titulos-p">Histórico de dados</p>
                 </div>
 
-                {% block message %}
-                    {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                    <div class="content-notification">
-                        <div class="notification">
-                            <p>{{ messages[0] }}</p>
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% endwith %}
-                {% endblock %}
-
                 <div class="content-search">
-                    <form action="/logs_search" method="POST">
+                    <form action="/logs" method="POST">
                         <select id="deviceSelect" name="device" required>
                             <option selected>Escolher dispositivo</option>
                             <option value="todos">Todos</option>
@@ -48,6 +36,16 @@
                         <button class="btn-search" type="submit">Buscar <i class="fa-solid fa-magnifying-glass"></i></button>
                         <button class="btn-clear" type="reset">Limpar <i class="fa-solid fa-trash-can"></i></button>
                     </form>
+                    {% block message %}
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class="alert content-notification alert-dismissible" role="alert">
+                        <div>{{ messages[0] }}</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                    {% endblock %}
                 </div>
 
                 <div class="content-logs">
@@ -57,7 +55,9 @@
                         <h6 class="title-datetime">Data | Horário</h6>
                         <h6 class="title-data">Informação</h6>
                     </div>
-                    {% for log in logs %}
+
+                    {% if logs_topics %}
+                    {% for log in logs_topics %}
                     <div class="card-log">
                         <p class="log-device">{{ log.device.name }}</p>
                         <p class="log-topic">{{ log.topic.title }}</p>
@@ -65,5 +65,17 @@
                         <p class="log-data">{{ log.information }}</p>
                     </div>
                     {% endfor %}
+                    {% endif %}
+                    {% if logs_devices %}
+                    {% for log in logs_devices %}
+                    <div class="card-log">
+                        <p class="log-device">{{ log.device.name }}</p>
+                        <p class="log-topic">{{ log.topic.title }}</p>
+                        <p class="log-datetime">{{ log.creation_date }}</p>
+                        <p class="log-data">{{ log.information }}</p>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
                 </div>
+                
 {% endblock %}

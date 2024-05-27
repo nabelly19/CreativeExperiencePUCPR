@@ -3,7 +3,7 @@ from models.db import datetime
 from models.iot.device import Device
 from models.iot.topic import Topic
 from sqlalchemy.orm import joinedload
-from models.validate.integrity import *
+from models.validate.integrity import create_with_integrity
 
 
 class Log(db.Model):

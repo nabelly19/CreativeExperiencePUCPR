@@ -124,3 +124,15 @@ p {
 .blocked-pointer {
     cursor: url('/Dashboard_Web/static/img/ban-solid.svg'); /* Substitua pelo caminho do seu ícone de bloqueio */
 }
+
+.content-notification {
+    color: #F5F5F5;
+    background-color: #260D33;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px #0000001a, 0 6px 20px #0000001a;
+    transition: transform 0.3s ease;
+    margin: 0;
+}
+

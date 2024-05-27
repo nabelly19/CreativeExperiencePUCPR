@@ -3,7 +3,7 @@ from flask_login import LoginManager
 from models.db import db, instance
 from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
-from models.validate.integrity import *
+from models.validate.integrity import save_with_integrity
 
 # Importação dos BLUEPRINTS
 from controllers.auth_controller import auth
@@ -128,11 +128,11 @@ def create_app():
                 alerta_value = "Ligado"
                 save_with_integrity(app, myTopicAction, alerta_value)
 
-        # EXCLUIR ELE 
         if(message.topic==myTopicButton):
             global botao_value
             botao_value = message.payload.decode()
-            save_with_integrity(app, myTopicButton, botao_value)
+            # No momento não está em utilização, será verificado no RA 4
+            # save_with_integrity(app, myTopicButton, botao_value)
 
         if(message.topic==myTopicWaterLevel):
             global mensagem_nivel_da_agua

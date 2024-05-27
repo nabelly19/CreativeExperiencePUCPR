@@ -17,11 +17,10 @@ def save_with_integrity(app, myTopic, value):
     try:
         with app.app_context():
             result = Log.save_log(myTopic, value)
-            return print(result)
+            #return print(result)
     except:
         pass
 
-# O Mateus que escreveu isso...
 def update_with_integrity(object, tablename):
     tablename = str(tablename).upper()
     try:
@@ -31,14 +30,3 @@ def update_with_integrity(object, tablename):
         db.session.rollback()
         return {"success": False, 
                 "errors": [str(e), f"Erro ao cadastrar {tablename} no banco de dados!"]}
-'''
-    def create_device(name, brand, type, is_active):
-        new_device = Device(name = name, 
-                        brand = brand, 
-                        type = type, 
-                        is_active = is_active)
-        
-        return create_with_integrity(new_device, Device.__tablename__)
-
-
-'''
