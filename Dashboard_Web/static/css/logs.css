@@ -13,7 +13,7 @@ body {
 .titulo_area{
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     color: #f5f5f5;
     margin-top: 50px;
@@ -138,4 +138,11 @@ p {
     box-shadow: 0 4px 8px #0000001a, 0 6px 20px #0000001a;
     transition: transform 0.3s ease;
     margin: 0;
+}
+
+.input_search {
+    color: #260D33;
+    background-color: #f5f5f58c;
+    border-radius: 40px;
+    padding-left: 20px;
 }

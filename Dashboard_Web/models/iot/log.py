@@ -22,8 +22,14 @@ class Log(db.Model):
     topic = db.relationship('Topic', foreign_keys=[topic_id], back_populates='log', lazy=True, uselist=False)
     device = db.relationship('Device', foreign_keys=[device_id], back_populates='log', lazy=True, uselist=False)
 
-    def get_logs_with_data():
-        all_logs = Log.query.options(joinedload(Log.topic), joinedload(Log.device)).all()
+    def get_logs_with_data(start_date, end_date):
+        all_logs = (Log.query
+                    .filter(Log.creation_date >= start_date)
+                    .filter(Log.creation_date <= end_date)
+                    .options(joinedload(Log.topic),
+                    joinedload(Log.device))
+                    .all())
+        
         return all_logs
 
     def save_log(topic_name, information):

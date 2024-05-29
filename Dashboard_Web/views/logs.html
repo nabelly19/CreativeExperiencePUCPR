@@ -7,11 +7,15 @@
 {% block styles %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/logs.css') }}">
     <script defer src="{{ url_for('static', filename='js/logs.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/search.js') }}"></script>
 {% endblock %}
 
 {% block content %}
                 <div class="titulo_area">
                     <p class="titulos-p">Histórico de dados</p>
+                    <form class="form-inline form-search">
+                        <input id="searchInput" onkeyup="filterCards()" class="input_search" type="search" placeholder="Palavra-chave" aria-label="Search">
+                    </form>
                 </div>
 
                 <div class="content-search">
@@ -34,7 +38,11 @@
                         <input type="datetime-local" class="" name="datetime_inicial" required>
                         <input type="datetime-local" class="" name="datetime_final" required>
                         <button class="btn-search" type="submit">Buscar <i class="fa-solid fa-magnifying-glass"></i></button>
-                        <button class="btn-clear" type="reset">Limpar <i class="fa-solid fa-trash-can"></i></button>
+                        <button class="btn-clear" type="reset">
+                            <a class="dropdown-item" href="{{ url_for('read.logs') }}">
+                                Limpar <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </button>
                     </form>
                     {% block message %}
                     {% with messages = get_flashed_messages() %}

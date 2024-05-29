@@ -1,7 +1,7 @@
 function filterCards() {
     const input = document.getElementById('searchInput');
     const filter = input.value.toLowerCase();
-    const cards = document.getElementsByClassName('card');
+    const cards = document.getElementsByClassName('card-log');
 
     for (let i = 0; i < cards.length; i++) {
         const card = cards[i];

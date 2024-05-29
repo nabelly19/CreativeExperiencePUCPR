@@ -48,18 +48,22 @@ def logs():
             return render_template("logs.html", topics=all_topics, devices=all_devices, logs_topics=logs)
 
         # Filtrar por device.name
-        if device_name and device_name != 'todos':
+        elif device_name and device_name != 'todos':
             logs = Log.get_logs_for_device(device_name, start_date, end_date)
             return render_template("logs.html", topics=all_topics, devices=all_devices, logs_devices=logs)
 
+        elif device_name == 'todos' or topic_id == 'todos':
+            logs = Log.get_logs_with_data(start_date, end_date)
+            return render_template("logs.html", topics=all_topics, devices=all_devices, logs_devices=logs)
+        
+        else:
+            flash('Selecione os parâmetros de pesquisa!')
+
     except:
-        flash('Sem parâmetros de pesquisa!')
+        flash('Sem registros no momento!')
         
     return render_template("logs.html", topics=all_topics, devices=all_devices)
 
-
-    #if not all_logs:
-        #flash('Sem registros no momento!')
 
 
 
