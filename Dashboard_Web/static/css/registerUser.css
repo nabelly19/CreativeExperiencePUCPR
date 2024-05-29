@@ -95,6 +95,17 @@ html {
     display: none;
 }
 
+select{
+    outline: 0;
+    background: #F5F5F5;
+    color: #260D33;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 5px;
+    width: 100%;
+}
+
 /* responsividade (media queries) */
 
 @media (max-width: 1090px) {

@@ -41,14 +41,12 @@
 
         <input type="password" class="login mb-2" placeholder="Confirme a senha" name="confirm_password" id="senhaC">
     
-        <div class="checkbox mt-5 mb-5">
-            <div class="form-check">
-                <input class="form-check-input" name="user_type" type="radio" value="adm" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    ADMINISTRADOR
-                </label>
-            </div>
-        </div>
+        <select id="deviceSelect" name="device" required>
+            <option selected>Definir cargo</option>
+            {% for role in roles %}
+            <option value="{{ role.id }}">{{ role.name }}</option>
+            {% endfor %}
+        </select>
         <input type = "submit" class="btn_geral mb-5" id="btn_cad" value = "Cadastrar" />
     </form>
 </div>
