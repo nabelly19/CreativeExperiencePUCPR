@@ -21,7 +21,7 @@ distance = 0
 mqttBroker ="mqtt-dashboard.com"
 
 client = mqtt.Client("Publica")
-client.connect(mqttBroker) 
+client.connect(mqttBroker)
 
 def tratarSens():
     

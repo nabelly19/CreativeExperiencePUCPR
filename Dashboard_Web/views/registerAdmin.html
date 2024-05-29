@@ -29,7 +29,7 @@
         </div>
     {% endif %}
     {% endwith %}
-    <form class="form mt-1" action="/signup" method="POST" >
+    <form class="form mt-1" action="/signup_admin" method="POST" >
         <input class="login mb-4" placeholder="Nome" name="name">
         <input class="login mb-4" placeholder="CPF" name="cpf">
         <input type="date" class="login mb-4" placeholder="Data de nascimento" name="birth_date">
@@ -46,13 +46,6 @@
                 <input class="form-check-input" name="user_type" type="radio" value="adm" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                     ADMINISTRADOR
-                </label>
-            </div>
-
-            <div class="form-check two">
-                <input class="form-check-input" name="user_type" type="radio" value="user" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    COMUNIDADE
                 </label>
             </div>
         </div>

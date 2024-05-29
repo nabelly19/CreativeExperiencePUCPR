@@ -14,27 +14,27 @@ class Role(db.Model):
     # Relationship
     admin = db.relationship('Admin', back_populates='role', lazy=True)
 
-def create_role(name):
-    new_role = Role(
-        name=name,
-        creation_date=datetime.now()
-    )
-    return create_with_integrity(new_role, Role.__tablename__)
+    def create_role(name):
+        new_role = Role(
+            name=name,
+            creation_date=datetime.now()
+        )
+        return create_with_integrity(new_role, Role.__tablename__)
 
-def get_single_role(role_id):
-    role = Role.query.filter(Role.id == role_id).first()
-    return role
+    def get_single_role(role_id):
+        role = Role.query.filter(Role.id == role_id).first()
+        return role
 
-def get_all_roles():
-    all_roles = Role.query.all()
-    return all_roles
+    def get_all_roles():
+        all_roles = Role.query.all()
+        return all_roles
 
-def update_role(role_id, new_name=None):
-    role = get_single_role(role_id)
-    
-    if role is not None:
-        if new_name is not None:
-            role.name = new_name
+    def update_role(role_id, new_name=None):
+        role = Role.get_single_role(role_id)
 
-    return update_with_integrity(role, Role.__tablename__)
+        if role is not None:
+            if new_name is not None:
+                role.name = new_name
+
+        return update_with_integrity(role, Role.__tablename__)
 

@@ -14,7 +14,7 @@ class Client(db.Model):
 
 #function to create a new client
 def create_client(user_id):
-    new_client = Client(id=user_id,
+    new_client = Client(id = user_id,
                         creation_date = datetime.now()    
                         )
     
@@ -39,4 +39,3 @@ def update_client(user_id, new_creation_date=None):
             client.update_date = datetime.now()
     
     return update_with_integrity()
-

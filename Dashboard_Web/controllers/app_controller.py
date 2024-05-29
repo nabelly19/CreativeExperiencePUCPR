@@ -74,7 +74,7 @@ def create_app():
 
     # Variáveis com os tópicos utilizados
     myTopicTemperatura = "/Temperatura"
-    myTopicUmidade = "/Umidade" 
+    myTopicUmidade = "/Umidade"
     myTopicMensagem = "/Mensagem/alerta"
     myTopicAction = "/Action/alerta"
     myTopicButton = "/Botao/alerta"

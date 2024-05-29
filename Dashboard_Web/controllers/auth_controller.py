@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
+
 from models.user.users import Users
 from models.user.admin import Admin
 from models.user.role import Role
@@ -41,7 +42,7 @@ def signup_post():
     email = request.form.get('email')
     nickname = request.form.get('nickname')
     password = request.form.get('password')
-
+    
     user = Users.query.filter_by(email=email).first()
     
     if user:
@@ -93,8 +94,12 @@ def signup_post_admin():
         nickname=nickname, 
         password=generate_password_hash(password, method='pbkdf2:sha256'))
     
+    print(new_user)
+    user_id = new_user[object].id
     new_role = Role.create_role("operador")
-    new_admin = Admin.create_admin(new_user.id, new_role.id)
+    role_id = new_role["object"].id
+
+    new_admin = Admin.create_admin(user_id, role_id)
     
     if not new_user["success"]:
         flash(", ".join(new_user["errors"]))
