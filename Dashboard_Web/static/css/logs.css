@@ -105,12 +105,14 @@ p {
     border-right: #260D33 1px solid;
     text-align: center;
     padding: 0px 10px;
+    font-weight: 400;
 }
 
 .log-data {
     width: 100%;
     text-align: center;
     padding: 0px 10px;
+    font-weight: 400;
 }
 
 /* Estilo para o campo de seleção desabilitado */
