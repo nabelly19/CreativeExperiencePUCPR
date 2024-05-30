@@ -41,7 +41,6 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
 
                         {% if not current_user.is_authenticated %}
-
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Página inicial</a>
                         </li>
@@ -57,15 +56,19 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ url_for('devices.add_device') }}">Cadastrar dispositivos</a></li>
                                 <li><a class="dropdown-item" href="{{ url_for('devices.devices_list') }}">Gerenciar dispositivos</a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('auth.signup') }}">Cadastrar usuário</a></li>
                                 <li><a class="dropdown-item" href="/list_users">Gerenciar usuários</a></li>
                             </ul>
                         </li>
                             {% endif %}
-
                         {% endif %}
-
                     </ul>
+                    {% if current_user.is_authenticated %}
+                    <div class="logout_button">
+                        <a href="{{ url_for('auth.logout') }}" class="logout">
+                            Sair
+                        </a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </nav>

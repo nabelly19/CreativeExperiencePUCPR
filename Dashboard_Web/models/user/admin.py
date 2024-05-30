@@ -1,8 +1,9 @@
 from models import db
 from models.db import datetime
+from sqlalchemy.orm import joinedload
 from models.validate.integrity import create_with_integrity, update_with_integrity
 
-
+#our admin class and methods
 class Admin(db.Model):
     __tablename__ = 'admin'
 
@@ -42,7 +43,12 @@ class Admin(db.Model):
     def update_admin(user_id, new_role_id):
         admin = Admin.get_single_admin(user_id)
         if admin is not None:
-            if new_role_id is not None:
-                admin.role_id = new_role_id
-                admin.update_date = datetime.now()
+            admin.role_id = new_role_id
+            admin.update_date = datetime.now()
         return update_with_integrity(admin, Admin.__tablename__)
+
+    def get_admins_with_users():
+        admins = Admin.query.options(joinedload(Admin.user), joinedload(Admin.role)).all()
+        return admins
+
+    #delete admin is not necessary since the backpopulates atribute wont't allow the "son" tables to keep the data

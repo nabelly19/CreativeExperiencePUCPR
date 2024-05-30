@@ -5,13 +5,13 @@
 {% endblock %}
 
 {% block title %}
-    <title>Cadastrar usuário | Flood Prevention</title>
+    <title>Cadastrar Cliente | Flood Prevention</title>
 {% endblock %}
 
 {% block content%}
 <div class="welcome-container">
     <div class="title">
-        <h1>Cadastrar usuário</h1>
+        <h1>Cadastrar Cliente</h1>
     </div>
 
     <div class="content">
@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<div class="title_hide">Cadastrar usuário</div>
+<div class="title_hide">Cadastrar Cliente</div>
 
 <div class="content_form">
     {% with messages = get_flashed_messages() %}
@@ -40,6 +40,8 @@
         <input type="password" class="login mb-4" placeholder="Senha" name="password" id="senha">
 
         <input type="password" class="login mb-2" placeholder="Confirme a senha" name="confirm_password" id="senhaC">
+
+        <input type="hidden" name="user_type" value="client">
     
         <input type = "submit" class="btn_geral mb-5" id="btn_cad" value = "Cadastrar" />
     </form>

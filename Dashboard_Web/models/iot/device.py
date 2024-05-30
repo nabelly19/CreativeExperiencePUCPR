@@ -4,11 +4,12 @@ from models.validate.integrity import create_with_integrity, update_with_integri
 from sqlalchemy.orm import joinedload
 from enum import Enum
 
-# Definição de Enum para o tipo de dispositivo
+#Defintion of an Enum to select the device type
 class DeviceType(Enum):
     Sensor = 'Sensor'
     Atuador = 'Atuador'
 
+#Device class, atributes and methods. The "db" from our models.py is being imported in order to create the data base especifications
 class Device(db.Model):
     __tablename__ = 'device'
 

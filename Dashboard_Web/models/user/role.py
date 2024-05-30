@@ -2,7 +2,7 @@ from models import db
 from models.db import datetime
 from models.validate.integrity import create_with_integrity, update_with_integrity
 
-
+#Role class, atributes and methods. The "db" from our models.py is being imported in order to create the data base especifications
 class Role(db.Model):
     __tablename__ = 'role'
 

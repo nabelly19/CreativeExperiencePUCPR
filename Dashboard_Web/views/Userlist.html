@@ -19,117 +19,112 @@
                     </form>
                 </div>
 
+                {% block message %}
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="content-notification">
+                    <div class="notification">
+                        <p>{{ messages[0] }}</p>
+                        <a href="{{ url_for('users.signup_client') }}">Cadastrar clientes</a>
+                        <a href="{{ url_for('users.signup_admin') }}">Cadastrar administradores</a>
+                    </div>
+                </div>
+                {% endif %}
+                {% endwith %}
+                {% endblock %}
+
         <section class="lista-card-users">
-            <!-- cards user -->
-                {% for key, value in users.items() %}
+
+            <!-- card client -->
+            {% for user in users %}
                         <div class="card" style="width: 18rem; border-radius: 30px;">
                             <div class="card-body">
-                                <h4 class="card-title">Usuário: {{key}}</h4>
-                                <h5 class="card-text mb-2">Tipo: Comunidade</h5>
+                                <h4 class="card-title">Nome: {{user.name}}</h4>
+                                <h6 class="card-text mb-2">Usuário: {{ user.nickname }}</h6>
+                                <h6 class="card-text mb-2">CPF: {{ user.cpf }}</h6>
+                                {% if user.client.id %}
+                                <h6 class="card-text mb-2">Categoria: Cliente</h6>
+                                {% endif %}
+                                {% if user.admin.id %}
+                                <h6 class="card-text mb-2">Categoria: Administrador</h6>
+                                {% endif %}
                                 <div class="card_btn_area mt-4">
                                     <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
-                                    data-bs-target="#ModalEdit">Editar</button>
+                                    data-bs-target="#ModalEditUser{{ user.id }}">Editar</button>
                                     <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
-                                        data-bs-target="#JanelaModal">Deletar</button>
+                                        data-bs-target="#ModalDelUser{{ user.id }}">Deletar</button>
                                 </div>
                             </div>
                         </div>
-                {% endfor %}
 
-                <!-- cards adm -->
-                {% for key, value in adm.items() %}
-
-                        <div class="card" style="width: 18rem; border-radius: 30px;">
-                            <div class="card-body">
-                                <h4 class="card-title">Usuário: {{key}}</h4>
-                                <h5 class="card-text mb-2">Tipo: Administrador</h5>
-                                <div class="card_btn_area mt-4">
-                                    <button type="button" href="#" class="card-btn editar" data-bs-toggle="modal"
-                                    data-bs-target="#ModalEdit">Editar</button>
-                                    <button type="button" href="#" class="card-btn apagar" data-bs-toggle="modal"
-                                        data-bs-target="#JanelaModal">Deletar</button>
+                         <!-- Modal exclusão de usuário  -->
+                        <div id="ModalDelUser{{ user.id }}" class="modal fade">
+                            <div class="modal-dialog border-rounded">
+                                <div class="modal-content strongbg">
+                                    <div class="modal-header border-0">
+                                        <button type="button" class="btn btn-close" style="background-color:#b9b9b9;" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 class="text-center mx-auto">Remover um usuário</h3>
+                                        <form action="/del_user" method="POST">
+                                            <div class="col-6 mt-5 mx-auto desc-modal">
+                                                <label for="senha" class="form-label text-center remove-label">
+                                                    <input type = "text" class="nome-hardware mb-2" name="user_name" value= "Nome: {{user.name}}" readonly>
+                                                    <input type = "text" class="nome-hardware mb-2" name="user_nickname" value= "Usuário: {{user.nickname}}" readonly>
+                                                    <input type = "email" class="nome-hardware mb-2" name="user_email" value= "Email: {{ user.email }}" readonly>
+                                                    <input type = "text" class="nome-hardware mb-2" name="user_gender" value= "Gênero: {{ user.gender }}" readonly>
+                                                    <input type = "text" class="nome-hardware mb-2" name="user_cpf" value= "CPF: {{ user.cpf }}" readonly>
+                                                    <input type="date" class="nome-hardware mb-2" name="user_birth_date" value="{{ user.birth_date }}" readonly>
+                                                </label>
+                                            </div>
+                                            <div class="col-6 my-5 mx-auto button-modal-confirm">
+                                                <button class="btn btn-danger mx-auto btn-lg">
+                                                    <a href="/del_user?id={{user.id}}">Confirmar</a>
+                                                </button>                                                        
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                {% endfor %}
 
-                <!-- modal validação -->
-                <div id="JanelaModal" class="modal fade">
-                    <div class="modal-dialog border-rounded">
-                        <div class="modal-content strongbg">
-                            <div class="modal-header border-0">
-                                <button type="button" class="btn btn-close " style="background-color:#b9b9b9;" data-bs-dismiss="modal">
-                                </button>
-                            </div>
-                            <div class="modal-body">
-        
-                                <h3 class="text-center mx-auto">Confirme a remoção deste usuário</h3>
-        
-                                <!-- <div class="hide alerta" id="error">
-                                <span>Validação não realizada, revise e tente novamente</span>
-                                <button id="alertabutton">&times;</button>
-                                </div> -->
-        
-                                <form action="/" method="post" id="login">
-        
-                                    <div class="col-6 mt-5 mx-auto">
-                                        <label for="senha" class="form-label text-center">
-                                            <h5>Digite "APAGAR":</h5>
-                                        </label>
-                                        <div class="validation_position">
-                                            <input class="form-control mx-auto" type="text" id="validation" name="validation">
-                                        </div>
+                       <!-- Modal de edição específico para cada tipo de usuário -->
+                        <div id="ModalEditUser{{ user.id }}" class="modal fade">
+                            <div class="modal-dialog border-rounded">
+                                <div class="modal-content strongbg">
+                                    <div class="modal-header border-0">
+                                        <button type="button" class="btn btn-close" style="background-color:#b9b9b9;" data-bs-dismiss="modal"></button>
                                     </div>
-                                    <div class="col-6 my-5 mx-auto">
-                                        <input type="button" class="btn btn-danger mx-auto btn-lg">
+                                    <div class="modal-body">
+                                        <h3 class="text-center mx-auto">Editar um usuário</h3>
+                                        <form action="/renovate_user" method="post">
+                                            <div class="col-6 mt-5 mx-auto">
+                                                    <p>Nome</p>
+                                                    <input type = "text" class="nome-hardware mb-2" name="user_name" value= "{{user.name}}" required>
+                                                    <p>Usuário</p>
+                                                    <input type = "text" class="nome-hardware mb-2" name="user_nickname" value= "{{user.nickname}}" required>
+                                                    <p>Email</p>
+                                                    <input type = "email" class="nome-hardware mb-2" name="user_email" value= "{{user.email}}" required>
+                                                    <p>Gênero</p>
+                                                    <input type = "text" class="nome-hardware mb-2" name="user_gender" value= "{{user.gender}}" required>
+                                                    <p>CPF</p>
+                                                    <input type = "text" class="nome-hardware mb-2" name="user_cpf" value= "{{user.cpf}}" required>
+                                                    <p>Data de Nascimento</p>
+                                                    <input type = "text" class="nome-hardware mb-2" name="user_birth_date" value= "{{user.birth_date}}" required>
+                                                        <div>
+                                                            <input type="checkbox" id="is_active" name="is_active" checked />
+                                                            <label for="is_active">Ativo?</label>
+                                                        </div>
+                                            </div>
+                                            <div class="col-6 my-5 mx-auto button-modal-confirm button-edit">
+                                                <button type="submit" class="btn btn-danger mx-auto btn-lg">Confirmar</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
-        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- modal editar usuário -->
-                <div id="ModalEdit" class="modal fade">
-                    <div class="modal-dialog border-rounded">
-                        <div class="modal-content strongbg">
-                            <div class="modal-header border-0">
-                                <button type="button" class="btn btn-close " style="background-color:#b9b9b9;"
-                                    data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body">
-        
-                                <h3 class="text-center mx-auto">Edição de usuário</h3>
-        
-                                <!-- <div class="hide alerta" id="error">
-                                <span>Validação não realizada, revise e tente novamente</span>
-                                <button id="alertabutton">&times;</button>
-                            </div> -->
-        
-                                <form action="/" method="post" id="login">
-        
-                                    <div class="col-6 mt-5 mx-auto">
-                                        <label for="senha" class="form-label text-center">
-                                            <h5>Digite "APAGAR":</h5>
-                                        </label>
-                                        <div class="validation_position">
-                                            <input class="form-control mx-auto" type="text" id="validation" name="validation">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 my-5 mx-auto">
-                                        <input type="button" class="btn btn-danger mx-auto btn-lg"
-                                            value="Apagar usuário" id="apagar">
-                                    </div>
-                                </form>
-        
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-        </section>   
-
-
+            {% endfor %}
+        </section>
     </div>
 {% endblock %}

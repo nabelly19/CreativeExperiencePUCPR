@@ -33,4 +33,4 @@ def login_post():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('app.index'))
+    return redirect(url_for('index'))

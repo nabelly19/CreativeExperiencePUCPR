@@ -5,7 +5,7 @@ from models.iot.topic import Topic
 from sqlalchemy.orm import joinedload
 from models.validate.integrity import create_with_integrity
 
-
+#Log class, atributes and methods. The "db" from our models.py is being imported in order to create the data base especifications
 class Log(db.Model):
     __tablename__ = 'log'
 

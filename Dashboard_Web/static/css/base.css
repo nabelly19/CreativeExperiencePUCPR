@@ -61,3 +61,48 @@ a {
     align-items: center;
     margin-top: 10%;
 }
+
+/* logout button */
+.logout_button {
+    display: flex; 
+    justify-content: end;
+    padding: 0.5rem;
+    background-color: red;
+    border-radius: 8px;
+    width: 78px;
+    height: 39px;    
+    transition: background-color 0.2s ease;
+    padding: 0px;
+    border: none;
+}
+
+
+.logout_button a{
+    border: none;
+}
+
+.logout_button:hover {
+    background-color: white; 
+    border: 0.5px solid #260D33;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid red;
+    font-weight: bold;
+    border: none;
+}
+
+.logout {
+    width: 100%;
+    height: 100%;
+    color: white;
+    transition: background-color 0.2s ease;
+    padding-left: 23px;
+    padding-top: 8px;
+    font-weight: 700;
+}
+
+
+
+.logout:hover{
+    color: red;
+    padding-left: 23px;
+} 

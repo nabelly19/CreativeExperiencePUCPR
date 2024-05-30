@@ -1,11 +1,12 @@
+#file to manipulate the creation and manipulation of the data base.
 import os
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-load_dotenv()  # Carrega as variáveis do arquivo .env
+load_dotenv()  #Load the .env file variables
 
-db = SQLAlchemy()
+db = SQLAlchemy() #incialize the data base variable, will be used on all the db files
 
 db_name = os.getenv("DB_NAME")
 db_password = os.getenv("DB_PASSWORD")

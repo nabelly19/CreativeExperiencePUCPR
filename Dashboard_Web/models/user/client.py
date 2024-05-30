@@ -1,7 +1,9 @@
 from models import db
 from models.db import datetime
+from sqlalchemy.orm import joinedload
 from models.validate.integrity import create_with_integrity, update_with_integrity
 
+#client class, atributes and methods. The "db" from our models.py is being imported in order to create the data base especifications
 class Client(db.Model):
     __tablename__ = 'client'
 
@@ -12,30 +14,35 @@ class Client(db.Model):
     # Relationship
     user = db.relationship('Users', back_populates='client', lazy=True)
 
-#function to create a new client
-def create_client(user_id):
-    new_client = Client(id = user_id,
-                        creation_date = datetime.now()    
-                        )
-    
-    return create_with_integrity(new_client, Client.__tablename__)
+    #function to create a new client
+    def create_client(user_id):
+        new_client = Client(id = user_id,
+                            creation_date = datetime.now()    
+                            )
 
-#function to get a specif client
-def get_single_client(user_id):
-    client = Client.filter(Client.id == user_id).first()
-    return client
+        return create_with_integrity(new_client, Client.__tablename__)
 
-#returning all clients method
-def get_all_clients():
-    all_clients = Client.query.all()
-    return all_clients
+    #function to get a specif client
+    def get_single_client(user_id):
+        client = Client.filter(Client.id == user_id).first()
+        return client
 
-def update_client(user_id, new_creation_date=None):
-    client = get_single_client(user_id)
+    #returning all clients method
+    def get_all_clients():
+        all_clients = Client.query.all()
+        return all_clients
+
+    def update_client(user_id, new_creation_date=None):
+        client = Client.get_single_client(user_id)
     
-    if client is not None:
-        if new_creation_date is not None:
-            client.creation_date = new_creation_date
-            client.update_date = datetime.now()
+        if client is not None:
+            if new_creation_date is not None:
+                client.creation_date = new_creation_date
+                client.update_date = datetime.now()
+
+        return update_with_integrity(client, Client.__tablename__)
+
+    def get_clients_with_users():
+        clients = Client.query.options(joinedload(Client.user)).all()
+        return clients
     
-    return update_with_integrity()

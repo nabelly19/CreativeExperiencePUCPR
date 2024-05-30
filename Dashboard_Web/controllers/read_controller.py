@@ -18,7 +18,7 @@ mensagem_nivel_da_agua = ""
 #-----------------------------------------------------------
 
 @read.route('/dashboard')
-#@login_required
+@login_required
 def dashboard():
     global temperature, humidity, mensagem_de_alerta, mensagem_nivel_da_agua, alerta_value
     values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}

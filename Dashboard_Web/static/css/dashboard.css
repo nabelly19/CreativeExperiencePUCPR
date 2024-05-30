@@ -252,7 +252,7 @@ button:hover {
     color: #260D33;
 }
 
-@media (max-width: 1440px){
+@media (max-width: 1150px){
     .home{
         display: flex;
         justify-content: center;

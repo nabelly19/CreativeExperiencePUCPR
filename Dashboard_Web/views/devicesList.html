@@ -199,7 +199,6 @@
                                                     <h3 class="text-center mx-auto">Editar um {{ device.type.value }}</h3>
                                                     <form action="/renovate_device?id={{device.id}}" method="post">
                                                         <div class="col-6 mt-5 mx-auto">
-                                                            <label for="senha" class="form-label text-center">
                                                                 <p>Nome</p>
                                                                 <input type = "text" class="nome-hardware mb-2" name="device_name" value= "{{device.name}}" required>
                                                                 <p>Marca</p>
@@ -226,7 +225,6 @@
                                                                         <label for="is_active">Ativo?</label>
                                                                     </div>
                                                                 </div>
-                                                            </label>
                                                         </div>
                                                         <div class="col-6 my-5 mx-auto button-modal-confirm button-edit">
                                                             <button type="submit" class="btn btn-danger mx-auto btn-lg">Confirmar</button>
