@@ -29,7 +29,7 @@
         </div>
     {% endif %}
     {% endwith %}
-    <form class="form mt-1" action="/signup_admin" method="POST" >
+    <form class="form mt-1" action="/signup" method="POST" >
         <input class="login mb-4" placeholder="Nome" name="name">
         <input class="login mb-4" placeholder="CPF" name="cpf">
         <input type="date" class="login mb-4" placeholder="Data de nascimento" name="birth_date">
@@ -40,8 +40,10 @@
         <input type="password" class="login mb-4" placeholder="Senha" name="password" id="senha">
 
         <input type="password" class="login mb-2" placeholder="Confirme a senha" name="confirm_password" id="senhaC">
-    
-        <select id="deviceSelect" name="device" required>
+        
+        <input type="hidden" name="user_type" value="admin">
+
+        <select id="deviceSelect" name="role" required>
             <option selected>Definir cargo</option>
             {% for role in roles %}
             <option value="{{ role.id }}">{{ role.name }}</option>
