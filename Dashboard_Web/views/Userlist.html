@@ -72,7 +72,6 @@
                                                     <input type = "text" class="nome-hardware mb-2" name="user_name" value= "Nome: {{user.name}}" readonly>
                                                     <input type = "text" class="nome-hardware mb-2" name="user_nickname" value= "Usuário: {{user.nickname}}" readonly>
                                                     <input type = "email" class="nome-hardware mb-2" name="user_email" value= "Email: {{ user.email }}" readonly>
-                                                    <input type = "text" class="nome-hardware mb-2" name="user_gender" value= "Gênero: {{ user.gender }}" readonly>
                                                     <input type = "text" class="nome-hardware mb-2" name="user_cpf" value= "CPF: {{ user.cpf }}" readonly>
                                                     <input type="date" class="nome-hardware mb-2" name="user_birth_date" value="{{ user.birth_date }}" readonly>
                                                 </label>
@@ -97,26 +96,39 @@
                                     </div>
                                     <div class="modal-body">
                                         <h3 class="text-center mx-auto">Editar um usuário</h3>
-                                        <form action="/renovate_user" method="post">
-                                            <div class="col-6 mt-5 mx-auto">
+                                        <form action="/renovate_user?id={{user.id}}" method="post">
+                                            <div class="form-edit">
                                                     <p>Nome</p>
                                                     <input type = "text" class="nome-hardware mb-2" name="user_name" value= "{{user.name}}" required>
+                                                    <div class="input-lado">
+                                                        <div>
+                                                            <p>CPF</p>
+                                                            <input type = "text" class="nome-hardware mb-2 input-left" name="user_cpf" value= "{{user.cpf}}" required>
+                                                        </div>
+                                                        
+                                                        <div>
+                                                            <p>Data de nascimento</p>
+                                                            <input type = "date" class="nome-hardware mb-2 input-right" name="user_birth_date" value= "{{user.birth_date}}" required>
+                                                        </div>
+                                                    </div>
                                                     <p>Usuário</p>
                                                     <input type = "text" class="nome-hardware mb-2" name="user_nickname" value= "{{user.nickname}}" required>
                                                     <p>Email</p>
                                                     <input type = "email" class="nome-hardware mb-2" name="user_email" value= "{{user.email}}" required>
-                                                    <p>Gênero</p>
-                                                    <input type = "text" class="nome-hardware mb-2" name="user_gender" value= "{{user.gender}}" required>
-                                                    <p>CPF</p>
-                                                    <input type = "text" class="nome-hardware mb-2" name="user_cpf" value= "{{user.cpf}}" required>
-                                                    <p>Data de Nascimento</p>
-                                                    <input type = "text" class="nome-hardware mb-2" name="user_birth_date" value= "{{user.birth_date}}" required>
-                                                        <div>
-                                                            <input type="checkbox" id="is_active" name="is_active" checked />
-                                                            <label for="is_active">Ativo?</label>
-                                                        </div>
+                                                    
+                                                    {% if user.is_active == true %}
+                                                    <div>
+                                                        <input type="checkbox" id="is_active" name="is_active" checked />
+                                                        <label for="is_active">Status: Ativado</label>
+                                                    </div>
+                                                    {% else %}
+                                                    <div>
+                                                        <input type="checkbox" id="is_active" name="is_active" />
+                                                        <label for="is_active">Status: Desativado</label>
+                                                    </div>
+                                                    {% endif %}
                                             </div>
-                                            <div class="col-6 my-5 mx-auto button-modal-confirm button-edit">
+                                            <div class="mx-auto button-modal-confirm button-edit">
                                                 <button type="submit" class="btn btn-danger mx-auto btn-lg">Confirmar</button>
                                             </div>
                                         </form>

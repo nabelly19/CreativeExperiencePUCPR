@@ -2,6 +2,9 @@ from flask_login import UserMixin
 from models.db import db, datetime
 from sqlalchemy.orm import joinedload
 from models.validate.integrity import create_with_integrity, update_with_integrity, delete_with_integrity
+from models.user.admin import Admin 
+from models.user.role import Role
+
 
 #Users class, atributes and methods. The "db" from our models.py is being imported in order to create the data base especifications
 class Users(UserMixin, db.Model):
@@ -12,9 +15,8 @@ class Users(UserMixin, db.Model):
     name= db.Column(db.String(255), nullable= False)
     cpf= db.Column(db.String(11), nullable= False, unique=True)
     birth_date = db.Column(db.Date, nullable = False)
-    gender= db.Column(db.String(50), nullable= False)
-    email= db.Column(db.String(50), nullable= False, unique=True)
-    nickname= db.Column(db.String(20), nullable= False, unique=True)
+    email = db.Column(db.String(50), nullable= False, unique=True)
+    nickname= db.Column(db.String(50), nullable= False, unique=True)
     password = db.Column(db.String(200), nullable= False)
     is_active= db.Column(db.Boolean, nullable=False, default=True)
     
@@ -37,17 +39,37 @@ class Users(UserMixin, db.Model):
             return True
         else:
             return False
-    
+
+    def check_role(self, target_role):
+        user_id = self.id
+        admin = Admin.query.filter_by(id=user_id).first()
+        role_id = admin.role_id
+        role = Role.query.filter_by(id=role_id).first()
+
+        return role.name == target_role
+
+    def is_operator(self):
+        return Users.check_role(self, "Operador")
+
+    def is_statistical(self):
+        return Users.check_role(self, "Estatístico")
+
+    def is_root(self):
+        return Users.check_role(self, "Root")
+
     def get_single_user(nickname):
         user = Users.query.filter_by(nickname=nickname).first()
         if user is not None : return user
 
-    def create_user(name, cpf, birth_date, gender, email, nickname, password):
+    def get_single_user_id(user_id):
+        user = Users.query.get(user_id)
+        if user is not None : return user
+
+    def create_user(name, cpf, birth_date, email, nickname, password):
         new_user = Users(
             name = name,
             cpf = cpf,
             birth_date = birth_date,
-            gender = gender,
             email = email,
             nickname = nickname,
             password = password,
@@ -56,19 +78,18 @@ class Users(UserMixin, db.Model):
         
         return create_with_integrity(new_user, Users.__tablename__)
     
-        #mthod to update the user's information
-    def update_user(name, email, nickname, is_active, gender, cpf, birth_date):
-        user = Users.get_single_user(nickname)
+        #method to update the user's information
+    def update_user(id, name, email, nickname, is_active, cpf, birth_date):
+        user = Users.get_single_user_id(id)
 
         if user is not None:
             user.name = name
             user.email = email
             user.nickname = nickname
             user.is_active = is_active
-            user.gender = gender
             user.cpf = cpf
             user.birth_date = birth_date
-            # user.password = password
+            #user.password = password
 
         return update_with_integrity(user, Users.__tablename__)
 

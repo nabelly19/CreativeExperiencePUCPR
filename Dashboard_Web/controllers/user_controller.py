@@ -19,7 +19,6 @@ def signup_post_user():
     name = request.form.get('name')
     cpf = request.form.get('cpf')
     birth_date = request.form.get('birth_date')
-    gender = request.form.get('gender')
     email = request.form.get('email')
     nickname = request.form.get('nickname')
     password = request.form.get('password')
@@ -40,7 +39,6 @@ def signup_post_user():
         name=name, 
         cpf=cpf, 
         birth_date=birth_date,
-        gender=gender, 
         email=email, 
         nickname=nickname, 
         password=generate_password_hash(password, method='pbkdf2:sha256'))
@@ -65,6 +63,8 @@ def signup_post_user():
         return flash("Ops! Something went wrong.")
 
 @users.route('/signup_client')
+#@login_required
+#@roles_required('Root')
 def signup_client():
     return render_template("registerClient.html")
 
@@ -98,17 +98,17 @@ def add_admin(user_id, role_id):
         flash(", ".join(new_adm["errors"]))
         return redirect(url_for('users.signup'))
 
-    return render_template("login.html")
+    return redirect(url_for('auth.login'))
 
 #route to list the users after creating one
 @users.route('/users/list')
-def users_list():    
+def users_list():
     #clients = Client.get_clients_with_users()
     users = Users.get_users_with_admin_client()
     admins = Admin.get_all_admins()
 
     if not users:
-        flash('Sem regitros no momentos!')
+        flash('Sem registros no momentos!')
 
     return render_template("userList.html", admins=admins, users=users)
 
@@ -116,17 +116,16 @@ def users_list():
 #the Update part of the user
 @users.route('/renovate_user', methods=['POST'])
 def renovate_user():
-    #id = request.args.get('id', None)
+    id = request.args.get('id', None)
     name = request.form.get("user_name")
     nickname = request.form.get("user_nickname")
     email = request.form.get("user_email")
-    gender = request.form.get("user_gender")
     cpf = request.form.get("user_cpf")
     birth_date = request.form.get("user_birth_date")
     is_active = True if request.form.get("is_active") == "on" else False
     # password = request.form.get("topic_title")
-    
-    update_user = Users.update_user(name, email, nickname, is_active, gender, cpf, birth_date)
+
+    update_user = Users.update_user(id, name, email, nickname, is_active, cpf, birth_date)
 
     if not update_user["success"]:
         flash(", ".join(update_user["errors"]))

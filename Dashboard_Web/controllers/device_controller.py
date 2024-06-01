@@ -1,16 +1,21 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from models.iot.device import Device
 from models.iot.topic import Topic
-
+from flask_login import login_required
+from controllers.auth_controller import roles_required
 
 devices = Blueprint("devices",__name__, template_folder="views")
 
+
 @devices.route('/add_device')
+#@login_required
+#@roles_required('Root')
 def register_device():
     return render_template("registerDevice.html")
 
-
 @devices.route('/add_device', methods=['POST'])
+@login_required
+@roles_required('Root')
 def add_device():
     name = request.form.get("device_name")
     brand = request.form.get("device_brand")
@@ -29,6 +34,8 @@ def add_device():
     return redirect(url_for('devices.devices_list'))
 
 @devices.route('/devices_list')
+#@login_required
+#@roles_required('Root')
 def devices_list():
     device_type = ['Sensor', 'Atuador']
     all_devices = Device.get_devices_with_topics()
@@ -39,12 +46,16 @@ def devices_list():
     return render_template("devicesList.html", devices=all_devices, type=device_type)
 
 @devices.route('/del_device')
+#@login_required
+#@roles_required('Root')
 def del_device():
     id = request.args.get('id', None)
     Device.delete_device(id)
     return redirect(url_for('devices.devices_list'))
 
 @devices.route('/renovate_device', methods=['POST'])
+#@login_required
+#@roles_required('Root')
 def renovate_device():
     id = request.args.get('id', None)
     name = request.form.get("device_name")

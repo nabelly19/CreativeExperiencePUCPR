@@ -56,7 +56,9 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ url_for('devices.add_device') }}">Cadastrar dispositivos</a></li>
                                 <li><a class="dropdown-item" href="{{ url_for('devices.devices_list') }}">Gerenciar dispositivos</a></li>
-                                <li><a class="dropdown-item" href="/list_users">Gerenciar usuários</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('users.signup_client') }}">Cadastrar clientes</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('users.signup_admin') }}">Cadastrar admins</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('users.users_list') }}">Gerenciar usuários</a></li>
                             </ul>
                         </li>
                             {% endif %}

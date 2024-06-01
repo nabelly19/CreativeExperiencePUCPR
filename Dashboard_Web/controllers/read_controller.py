@@ -26,6 +26,7 @@ def dashboard():
 
 @read.route('/logs', methods=['GET', 'POST'])
 #@login_required
+#@roles_required('Static')
 def logs():
     all_topics = Topic.get_all_topics()
     all_devices = Device.get_all_devices_distinct()
@@ -63,10 +64,6 @@ def logs():
         flash('Sem registros no momento!')
         
     return render_template("logs.html", topics=all_topics, devices=all_devices)
-
-
-
-
 
 
 @read.route('/realTimeData', methods= ['GET'])

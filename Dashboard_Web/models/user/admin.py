@@ -52,3 +52,4 @@ class Admin(db.Model):
         return admins
 
     #delete admin is not necessary since the backpopulates atribute wont't allow the "son" tables to keep the data
+    

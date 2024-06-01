@@ -104,6 +104,29 @@ body {
     background-color: #6f0a0a;
 }
 
+.button-modal-confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-modal-confirm button{
+    background-color: #ae1d1d;
+    border-color: #ae1d1d;
+}
+
+.button-edit {
+    margin: 20px 0px;
+}
+
+.button-edit button {
+    background-color: #079f51;
+    border-color: #079f51;
+} .button-edit button:hover {
+    background-color: #07783e;
+    border-color: #07783e;
+}
+
 .desc-modal {
     display: flex;
     align-items: center;
@@ -111,7 +134,7 @@ body {
 }
 
 .modal {
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .modal-content {
@@ -123,12 +146,17 @@ body {
     background-color: #003F69;
     color: #f5f5f5;
     border-radius: 0px 0px 10px 10px;
+    width: 600px !important;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .modal-header{
     background-color: #003F69;
     color: #f5f5f5;
     border-radius: 10px 10px 0px 0px;
+    width: 600px !important;
 }
 
 .nome-hardware {
@@ -137,7 +165,25 @@ body {
     border-radius: 30px;
     height: 50px;
     padding: 0px 20px;
-    width: auto;
-    height: 45px;
+    width: 405px;
     color: #f5f5f5;
+}
+
+.input-lado {
+    display: flex;
+} .input-lado input {
+    width: 200px;
+}
+
+.input-left {
+    border-radius: 30px 0px 0px 30px;
+    margin-right: 5px;
+}
+
+.input-right {
+    border-radius: 0px 30px 30px 0px;
+}
+
+.form-edit {
+    margin-top: 20px;
 }

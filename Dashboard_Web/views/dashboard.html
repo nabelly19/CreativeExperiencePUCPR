@@ -5,6 +5,7 @@
     <script defer src="{{ url_for('static', filename='js/hora.js') }}" type="text/javascript" defer></script>
     <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <body onload="autoRefresh()">
 {% endblock %}
 
 {% block title %}
@@ -17,7 +18,7 @@
                 <div class="temperature">
                     <p class="title_sensor">TEMPERATURA</p>
                     <ul>
-                        <p class="information" id="temperatura"><!--{{ values["Temperatura"] }}-->ºC</p>
+                        <p class="information" id="temperatura">{{ values["Temperatura"] }}ºC</p>
                     </ul>
                     <i class="fa-solid fa-temperature-half icon-custom"></i>
                 </div>
@@ -50,11 +51,13 @@
                             <p class="information_white", style="font-size: 30px;" id="statusDoAlarme">{{ values["Status do alarme"] }}</p>
                         </ul>
                         <i class="fa-solid fa-triangle-exclamation icon-custom"></i>
+                        {% if current_user.is_operator() or current_user.is_root() %}
                         <div class="action_button">
                             <form action="{{ url_for('action_alert') }}" method="POST">
                                 <button type="submit" id="control" class="button">Acionar</button>
                             </form>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -69,8 +72,5 @@
                     </p>
                 </div>
             </div>
-        <!--________________________________________________________________________________________________-->
     </div>
-
-    
 {% endblock %}
