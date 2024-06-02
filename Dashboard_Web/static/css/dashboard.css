@@ -102,9 +102,10 @@ body {
 
 .null_rectangle {
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     width: 855px;
-    height: 200px;
+    height: auto;
     background-color: #260D33;
     border-radius: 20px;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
@@ -248,6 +249,36 @@ button:hover {
     background-color: #F5F5F5;
     border: 0.5px solid #260D33;
     color: #260D33;
+}
+
+.media_area {
+    background-color: #311a3c;
+    width: 180px;
+    height: auto;
+    margin: 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    color: #F5F5F5;
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+.media_area i {
+    font-size: 3.5rem;
+}
+
+.media_area p {
+    margin: 0;
+}
+
+.date_rectangle{
+    font-size: 1.2rem;
+}
+
+.temp_rectangle {
+    font-size: 1.2rem;
 }
 
 @media (max-width: 1150px){
