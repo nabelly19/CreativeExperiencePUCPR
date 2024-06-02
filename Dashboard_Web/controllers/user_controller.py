@@ -2,7 +2,8 @@
 
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from werkzeug.security import generate_password_hash
-from models.db import datetime
+from controllers.auth_controller import roles_required
+from flask_login import login_required
 from models.user.users import Users
 from models.user.role import Role
 from models.user.client import Client
@@ -12,9 +13,11 @@ from models.user.admin import Admin
 #setting up the blueprint
 users = Blueprint("users",__name__, template_folder="views")
 
-    #Create part of the user
+#Create part of the user
 #general route to create an user, later on, we'll be creating either an admin or a client
 @users.route('/signup', methods=['POST'])
+@login_required
+@roles_required('Root')
 def signup_post_user():
     name = request.form.get('name')
     cpf = request.form.get('cpf')
@@ -26,13 +29,17 @@ def signup_post_user():
 
     type = ['admin', 'client']
 
-    user = Users.query.filter_by(email=email).first()
+    exists_email = Users.query.filter_by(email=email).first()
+    exists_cpf = Users.query.filter_by(cpf=cpf).first()
+    exists_nickname = Users.query.filter_by(nickname=nickname).first()
 
-    if user:
-        flash('Email address already exists')
+    if exists_email or exists_cpf or exists_nickname:
+        # flash('Email address already exists')
+        flash('Esse usuário já está cadastrado!')
+        
         if user_type == type[0]: # Caso seja cadastro de adm
             return redirect(url_for('users.signup_admin'))
-        if user_type == type[0]: # Caso seja cadastro de client
+        if user_type == type[1]: # Caso seja cadastro de client
             return redirect(url_for('users.signup_client'))
 
     new_user = Users.create_user(
@@ -63,13 +70,15 @@ def signup_post_user():
         return flash("Ops! Something went wrong.")
 
 @users.route('/signup_client')
-#@login_required
-#@roles_required('Root')
+@login_required
+@roles_required('Root')
 def signup_client():
     return render_template("registerClient.html")
 
 #route to create the new client
 @users.route('/add_client/<int:user_id>')
+@login_required
+@roles_required('Root')
 def add_client(user_id):
     # creating the client
     new_client = Client.create_client(user_id)
@@ -84,12 +93,16 @@ def add_client(user_id):
     
     #routes to create an admin
 @users.route('/signup_admin')
+@login_required
+@roles_required('Root')
 def signup_admin():
     roles = Role.get_all_roles()
     return render_template("registerAdmin.html", roles = roles)
 
 #note that we're using two routes two create an admin, while creating a client, only one. The need on using two resids in the necessity to get the roles displayed in the screen.
 @users.route('/add_admin/<int:user_id>/<string:role_id>')
+@login_required
+@roles_required('Root')
 def add_admin(user_id, role_id):
 
     new_adm = Admin.create_admin(user_id, role_id)
@@ -102,6 +115,8 @@ def add_admin(user_id, role_id):
 
 #route to list the users after creating one
 @users.route('/users/list')
+@login_required
+@roles_required('Root')
 def users_list():
     #clients = Client.get_clients_with_users()
     users = Users.get_users_with_admin_client()
@@ -115,6 +130,8 @@ def users_list():
 
 #the Update part of the user
 @users.route('/renovate_user', methods=['POST'])
+@login_required
+@roles_required('Root')
 def renovate_user():
     id = request.args.get('id', None)
     name = request.form.get("user_name")
@@ -134,6 +151,8 @@ def renovate_user():
 
 #the Delete part of the user
 @users.route('/del_user')
+@login_required
+@roles_required('Root')
 def del_user():
     id = request.args.get('id', None)
     Users.delete_user(id)

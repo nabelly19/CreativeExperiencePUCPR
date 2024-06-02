@@ -50,7 +50,7 @@
                         <li class="nav-item">            
                             <a id="dashboard-nav" class="nav-link" href="{{ url_for('read.dashboard') }}">Painel de eventos</a>
                         </li>
-                            {% if current_user.exists_admin() %}
+                            {% if current_user.is_root() %}
                         <li class="nav-item dropdown">
                             <a id="config-nav" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configurações</a>
                             <ul class="dropdown-menu">
@@ -62,8 +62,21 @@
                             </ul>
                         </li>
                             {% endif %}
+                            {% if current_user.exists_admin() %}
+                        <li class="nav-item">
+                            <a id="dashboard-nav" class="nav-link" href="{{ url_for('read.logs') }}">Dados históricos</a>
+                        </li>
+                            {% endif %}
                         {% endif %}
                     </ul>
+                    
+                    {% if current_user.exists_admin() %}
+                    <div class="admin-type">
+                        <i class="fa-solid fa-user"></i>
+                        <p>{{current_user.admin.role.name}}</p>
+                    </div>
+                    {% endif %}
+                    
                     {% if current_user.is_authenticated %}
                     <div class="logout_button">
                         <a href="{{ url_for('auth.logout') }}" class="logout">

@@ -26,7 +26,6 @@ class Users(UserMixin, db.Model):
     # Relationship (bidirecional)
     admin = db.relationship('Admin', back_populates='user',  cascade='all, delete-orphan', uselist=False, lazy=True)
     client = db.relationship('Client', back_populates='user', cascade='all, delete-orphan', uselist=False, lazy=True)
-    #contact = db.relationship('Contact', back_populates='user', cascade='all, delete-orphan', lazy=True)
 
     def exists_admin(self):
         if self.admin:
@@ -49,14 +48,23 @@ class Users(UserMixin, db.Model):
         return role.name == target_role
 
     def is_operator(self):
-        return Users.check_role(self, "Operador")
-
+        try:
+            return Users.check_role(self, "Operador")
+        except:
+            return False
+        
     def is_statistical(self):
-        return Users.check_role(self, "Estatístico")
-
+        try:
+            return Users.check_role(self, "Estatístico")
+        except:
+            return False   
+         
     def is_root(self):
-        return Users.check_role(self, "Root")
-
+        try:
+            return Users.check_role(self, "Root")
+        except:
+            return False
+         
     def get_single_user(nickname):
         user = Users.query.filter_by(nickname=nickname).first()
         if user is not None : return user

@@ -8,8 +8,8 @@ devices = Blueprint("devices",__name__, template_folder="views")
 
 
 @devices.route('/add_device')
-#@login_required
-#@roles_required('Root')
+@login_required
+@roles_required('Root')
 def register_device():
     return render_template("registerDevice.html")
 
@@ -34,8 +34,8 @@ def add_device():
     return redirect(url_for('devices.devices_list'))
 
 @devices.route('/devices_list')
-#@login_required
-#@roles_required('Root')
+@login_required
+@roles_required('Root')
 def devices_list():
     device_type = ['Sensor', 'Atuador']
     all_devices = Device.get_devices_with_topics()
@@ -46,16 +46,16 @@ def devices_list():
     return render_template("devicesList.html", devices=all_devices, type=device_type)
 
 @devices.route('/del_device')
-#@login_required
-#@roles_required('Root')
+@login_required
+@roles_required('Root')
 def del_device():
     id = request.args.get('id', None)
     Device.delete_device(id)
     return redirect(url_for('devices.devices_list'))
 
 @devices.route('/renovate_device', methods=['POST'])
-#@login_required
-#@roles_required('Root')
+@login_required
+@roles_required('Root')
 def renovate_device():
     id = request.args.get('id', None)
     name = request.form.get("device_name")

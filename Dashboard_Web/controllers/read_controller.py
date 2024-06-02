@@ -4,18 +4,19 @@ from models.iot.log import Log
 from models.iot.topic import Topic
 from models.iot.device import Device
 from models.db import datetime
+from controllers.auth_controller import roles_required
 
 
 read = Blueprint("read",__name__, template_folder="views")
 
-# APAGAR DEPOIS -------------------------------------------
+# ----------------------------------------------------------
 temperature = 0
 humidity = 0
 mensagem_de_alerta = ""
 alerta_value = 0
 botao_value = 0
 mensagem_nivel_da_agua = ""
-#-----------------------------------------------------------
+# ----------------------------------------------------------
 
 @read.route('/dashboard')
 @login_required
@@ -25,8 +26,10 @@ def dashboard():
     return render_template("dashboard.html", values=values)
 
 @read.route('/logs', methods=['GET', 'POST'])
-#@login_required
-#@roles_required('Static')
+@login_required
+@roles_required('Estatístico', 'Root', 'Operador')
+#@roles_required('Root')
+#@roles_required('Operador')
 def logs():
     all_topics = Topic.get_all_topics()
     all_devices = Device.get_all_devices_distinct()
@@ -67,6 +70,7 @@ def logs():
 
 
 @read.route('/realTimeData', methods= ['GET'])
+@login_required
 def any():
     values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
     return jsonify(values)
