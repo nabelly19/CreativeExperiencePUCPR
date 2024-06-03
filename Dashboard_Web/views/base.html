@@ -48,7 +48,7 @@
                         {% else %}
 
                         <li class="nav-item">            
-                            <a id="dashboard-nav" class="nav-link" href="{{ url_for('read.dashboard') }}">Painel de eventos</a>
+                            <a id="dashboard-nav" class="nav-link" href="{{ url_for('dashboard') }}">Painel de eventos</a>
                         </li>
                             {% if current_user.is_root() %}
                         <li class="nav-item dropdown">
@@ -64,7 +64,7 @@
                             {% endif %}
                             {% if current_user.exists_admin() %}
                         <li class="nav-item">
-                            <a id="dashboard-nav" class="nav-link" href="{{ url_for('read.logs') }}">Dados históricos</a>
+                            <a id="data-nav" class="nav-link" href="{{ url_for('read.logs') }}">Dados históricos</a>
                         </li>
                             {% endif %}
                         {% endif %}

@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template
-from flask_login import LoginManager
+from flask_login import LoginManager, login_required
 from models.db import db, instance
 from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
@@ -55,7 +55,7 @@ def create_app():
     @app.route('/action_alert', methods=['POST'])
     def action_alert():
         global alerta_value
-
+        
         if alerta_value == 'Ligado': # Caso o botão esteja ligado, então publicar para que ele desligue
             mqtt_client.publish(myTopicButton, '0')
         elif alerta_value == 'Desligado': # Caso o botão esteja desligado, então publicar para que ele ligue
@@ -79,6 +79,13 @@ def create_app():
     myTopicAction = "/Action/alerta"
     myTopicButton = "/Botao/alerta"
     myTopicWaterLevel = "/mensagem/nivelDaAgua"
+
+    @app.route('/dashboard')
+    @login_required
+    def dashboard():
+        global temperature, humidity, mensagem_de_alerta, mensagem_nivel_da_agua, alerta_value
+        values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
+        return render_template("dashboard.html", values=values)
 
     # Configuração da conexão com o broker (tópicos)
     @mqtt_client.on_connect()
@@ -140,3 +147,4 @@ def create_app():
             save_with_integrity(app, myTopicWaterLevel, mensagem_nivel_da_agua)
 
     return app
+

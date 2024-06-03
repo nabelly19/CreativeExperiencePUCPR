@@ -27,7 +27,7 @@ def login_post():
 
     login_user(user, remember=remember)
 
-    return redirect(url_for('read.dashboard'))
+    return redirect(url_for('dashboard'))
 
 @auth.route('/logout')
 @login_required
