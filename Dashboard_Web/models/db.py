@@ -2,7 +2,7 @@
 import os
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, timedelta
 
 load_dotenv()  #Load the .env file variables
 

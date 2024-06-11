@@ -83,9 +83,13 @@ def create_app():
     @app.route('/dashboard')
     @login_required
     def dashboard():
+
+        from models.iot.log import Log
+        medias = Log.get_logs_media()
+
         global temperature, humidity, mensagem_de_alerta, mensagem_nivel_da_agua, alerta_value
         values = {"Temperatura":temperature, "Umidade":humidity, "Mensagem de alerta":mensagem_de_alerta, "Nível da água":mensagem_nivel_da_agua, "Status do alarme":alerta_value}
-        return render_template("dashboard.html", values=values)
+        return render_template("dashboard.html", values=values, medias=medias)
 
     # Configuração da conexão com o broker (tópicos)
     @mqtt_client.on_connect()
@@ -113,38 +117,38 @@ def create_app():
         if(message.topic==myTopicTemperatura):
             global temperature
             temperature = message.payload.decode()
-            save_with_integrity(app, myTopicTemperatura, temperature)
+            data = '2023-06-07 20:01:17'
+            save_with_integrity(app, myTopicTemperatura, temperature, data)
 
         if(message.topic==myTopicUmidade):
             global humidity
             humidity = message.payload.decode()
-            save_with_integrity(app, myTopicUmidade, humidity)
+            #save_with_integrity(app, myTopicUmidade, humidity)
 
         if(message.topic==myTopicMensagem):
             global mensagem_de_alerta
             mensagem_de_alerta = message.payload.decode()
-            save_with_integrity(app, myTopicMensagem, mensagem_de_alerta)
+            #save_with_integrity(app, myTopicMensagem, mensagem_de_alerta)
 
         if(message.topic==myTopicAction):
             global alerta_value
             alerta_value = message.payload.decode()
             if alerta_value == '0':
                 alerta_value = "Desligado"
-                save_with_integrity(app, myTopicAction, alerta_value)
+                #save_with_integrity(app, myTopicAction, alerta_value)
             elif alerta_value == "1":
                 alerta_value = "Ligado"
-                save_with_integrity(app, myTopicAction, alerta_value)
+                #save_with_integrity(app, myTopicAction, alerta_value)
 
         if(message.topic==myTopicButton):
             global botao_value
             botao_value = message.payload.decode()
-            # No momento não está em utilização, será verificado no RA 4
             # save_with_integrity(app, myTopicButton, botao_value)
 
         if(message.topic==myTopicWaterLevel):
             global mensagem_nivel_da_agua
             mensagem_nivel_da_agua = message.payload.decode()
-            save_with_integrity(app, myTopicWaterLevel, mensagem_nivel_da_agua)
+            #save_with_integrity(app, myTopicWaterLevel, mensagem_nivel_da_agua)
 
     return app
 

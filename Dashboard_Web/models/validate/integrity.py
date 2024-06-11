@@ -12,11 +12,11 @@ def create_with_integrity(object, tablename):
         return {"success": False, 
                 "errors": [str(e), f"Erro ao cadastrar {tablename} no banco de dados!"]}
 
-def save_with_integrity(app, myTopic, value):
+def save_with_integrity(app, myTopic, value, data):
     from models.iot.log import Log    
     try:
         with app.app_context():
-            Log.save_log(myTopic, value)
+            Log.save_log(myTopic, value, data)
     except:
         pass
 
