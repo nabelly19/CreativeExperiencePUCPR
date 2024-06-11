@@ -1,6 +1,0 @@
-pip install flask
-pip install joblib
-pip install load-bar termcolor
-pip install matplotlib
-pip install numpy
-pip install opencv-python
