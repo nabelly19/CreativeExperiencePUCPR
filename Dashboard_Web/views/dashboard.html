@@ -63,26 +63,13 @@
             </div>
             <div class="orientacao-cards">
                 <div class="null_rectangle">
+                    {% for media in medias %}
                     <div class="media_area">
-                        <p class="date_rectangle">31/05</p>
+                        <p class="date_rectangle">{{ media.date }}</p>
                         <i class="fa-solid fa-cloud-showers-heavy"></i>
-                        <p class="temp_rectangle">20 ºC</p>
+                        <p class="temp_rectangle">{{ media.avg_temperature }} ºC</p>
                     </div>
-                    <div class="media_area">
-                        <p class="date_rectangle">30/05</p>
-                        <i class="fa-solid fa-cloud-showers-heavy"></i>
-                        <p class="temp_rectangle">10 ºC</p>
-                    </div>
-                    <div class="media_area">
-                        <p class="date_rectangle">01/06</p>
-                        <i class="fa-solid fa-cloud-showers-heavy"></i>
-                        <p class="temp_rectangle">25 ºC</p>
-                    </div>
-                    <div class="media_area">
-                        <p class="date_rectangle">02/06</p>
-                        <i class="fa-solid fa-cloud-showers-heavy"></i>
-                        <p class="temp_rectangle">30 ºC</p>
-                    </div>
+                    {% endfor %}
                 </div>
                 <div class="date_time">
                     <p class="information_hour">HORÁRIO

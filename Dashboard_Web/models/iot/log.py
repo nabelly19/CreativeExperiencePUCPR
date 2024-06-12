@@ -1,8 +1,9 @@
 from models import db
-from models.db import datetime
+from models.db import datetime, timedelta
 from models.iot.device import Device
 from models.iot.topic import Topic
 from sqlalchemy.orm import joinedload
+from sqlalchemy import func, cast, Date, Float
 from models.validate.integrity import create_with_integrity
 
 #Log class, atributes and methods. The "db" from our models.py is being imported in order to create the data base especifications
@@ -61,3 +62,39 @@ class Log(db.Model):
                 .all())
         
         return logs
+    
+    def get_logs_media():
+
+        from models.iot.topic import Topic
+        # Define o nome do tópico que estamos interessados
+        topic_name = '/Temperatura'
+
+        # Define a data de hoje e os dias anteriores
+        today = datetime.now()
+        four_days_ago = today - timedelta(days=4)
+
+        # Consulta para calcular a média da temperatura para cada um dos quatro dias anteriores
+        results = (db.session.query(
+                        cast(Log.creation_date, Date).label('date'),
+                        func.avg(cast(Log.information, Float)).label('avg_temperature')
+                )
+                .join(Topic, Log.topic_id == Topic.id)
+                .filter(
+                    Topic.title == topic_name,
+                    Log.creation_date >= four_days_ago,
+                    Log.creation_date < today
+                )
+                .group_by(cast(Log.creation_date, Date))
+                .order_by(cast(Log.creation_date, Date))
+            .all())
+        
+            # Formatar os resultados para passar ao template
+        formatted_results = [
+            {
+                'date': result.date.strftime('%d/%m'),
+                'avg_temperature': f"{result.avg_temperature:.2f}"
+            }
+            for result in results
+        ]
+    
+        return formatted_results
