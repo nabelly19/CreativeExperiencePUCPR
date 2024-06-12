@@ -97,4 +97,4 @@ while True:
     print("Temperatura: ", temperature)
     print("Umidade: ", humidity)
 
-    time.sleep(30)
+    #time.sleep(2)
