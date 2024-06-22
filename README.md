@@ -1,5 +1,5 @@
 # Flood Prevention
-Hey There! Welcome to an College Project developed by Computer Science students - Flood Prevention ☔💧
+Hey There! Welcome to a College Project developed by Computer Science students - Flood Prevention ☔💧
 
 ## - Content 
 > What that project is? Let us explain to you :D
