@@ -13,5 +13,5 @@ The website interface contains a login, register, history and dashboard pages. S
 
 > Check out a little bit of our Frontend, if you want to see all of the project you can try a fork or clone 💻
 
-![Home Page](https://media.licdn.com/dms/image/D4D22AQFDB1yu7QCoxQ/feedshare-shrink_800/0/1718668700560?e=1721865600&v=beta&t=JPg4is3Dq9zCFwINVhOmlGzjp0zDMcimROmwyHZj8D4)
-![Dashboard Page](https://media.licdn.com/dms/image/D4D22AQHfN_c6WVhwYA/feedshare-shrink_800/0/1718668700877?e=1721865600&v=beta&t=l2IClYQrk0T42-4fVaSB87LWyqPOXrBr1EHG4cHhTUk)
+![Home Page](https://media.licdn.com/dms/image/v2/D4D22AQFDB1yu7QCoxQ/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1718668700589?e=1736380800&v=beta&t=rrEm3y-n9iyC4ijbQeX57POUEEdssPIVN6QjiEmG004)
+![Dashboard Page](https://media.licdn.com/dms/image/v2/D4D22AQHfN_c6WVhwYA/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1718668700966?e=1736380800&v=beta&t=IPAVj1O2vEXChi8EyGcJUe-Iy1RYLMgbdPeJ9oLeCLk)
